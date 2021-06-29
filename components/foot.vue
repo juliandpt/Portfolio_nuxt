@@ -1,33 +1,22 @@
 <template>
-  <v-footer dark padless>
-    <v-card flat tile class="indigo lighten-1 text-center">
+  <v-footer padless>
+    <v-card flat tile class="footer text-center flex">
       <v-card-text>
-        <v-btn icon class="mx-4 white--text" href="https://heroicons.com/" target="_blank">
+        <v-btn icon class="mx-4" color="blue darken-4" href="https://www.facebook.com/juli.depablo" target="_blank">
           <v-icon size="24px"> mdi-facebook </v-icon>
         </v-btn>
-        <v-btn icon class="mx-4 white--text" href="" target="_blank">
+        <v-btn icon class="mx-4" color="blue" href="https://twitter.com/Depabloj" target="_blank">
           <v-icon size="24px"> mdi-twitter </v-icon>
         </v-btn>
-        <v-btn icon class="mx-4 white--text" href="" target="_blank">
+        <v-btn icon class="mx-4" color="indigo" href="https://www.instagram.com/julidpt" target="_blank">
           <v-icon size="24px"> mdi-instagram </v-icon>
         </v-btn>
-      </v-card-text>
-
-      <v-card-text class="pt-0">
-        Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-        Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-        accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a
-        sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-        lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-        iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor
-        vel ut orci. Orci varius natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus.
       </v-card-text>
 
       <v-divider></v-divider>
 
       <v-card-text>
-        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        © {{ new Date().getFullYear() }} Portfolio. All rights reserved
       </v-card-text>
     </v-card>
   </v-footer>

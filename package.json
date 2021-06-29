@@ -9,7 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@heroicons/vue": "^1.0.1",
+    "@iconscout/vue-unicons": "0.0.3",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3"
   },

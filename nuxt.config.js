@@ -21,7 +21,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap' }
+      { 
+        rel: 'stylesheet', 
+        href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap' 
+      },
+      { 
+        rel: 'stylesheet', 
+        href: 'https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap'
+      }
     ]
   },
 
@@ -54,6 +61,11 @@ export default {
     theme: {
       dark: false,
       themes: {
+        light: {
+          primary: '#77B6C0',
+          secondary: '#f0f0f0',
+          error: '#C30000'
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,

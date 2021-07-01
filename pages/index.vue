@@ -8,7 +8,7 @@
       </v-col>
 
       <v-col md="4" sm="12" xs="12">
-        <h1>Hi there! I'm Julián</h1>
+        <h1>Hi! I'm Julián</h1>
         <h2>Computer scientist</h2>
         <p>caca</p>
         <div>
@@ -74,6 +74,7 @@
 }
 
 h1 {
+  font-family: 'Poppins', sans-serif;
   font-size: 350%;
 }
 </style>

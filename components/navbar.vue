@@ -45,19 +45,19 @@
         <v-btn
           icon
           :color="$vuetify.theme.dark ? 'white' : 'indigo'"
-          href="https://www.facebook.com/juli.depablo"
+          href="https://www.instagram.com/julidpt"
           target="_blank"
         >
           <img
-            src="@/assets/icons/facebook.svg"
-            alt="chevron-down"
+            src="@/assets/icons/instagram.svg"
+            alt="instagram" 
             style="height: 24px; width: 24px"
             v-if="!$vuetify.theme.dark"
           >
 
           <img
-            src="@/assets/icons/facebook-white.svg"
-            alt="chevron-down"
+            src="@/assets/icons/instagram-white.svg"
+            alt="instagram"
             style="height: 24px; width: 24px"
             v-if="$vuetify.theme.dark"
           >
@@ -71,14 +71,14 @@
         >
           <img
             src="@/assets/icons/twitter.svg"
-            alt="chevron-down" 
+            alt="twitter" 
             style="height: 24px; width: 24px"
             v-if="!$vuetify.theme.dark"
           >
 
           <img
             src="@/assets/icons/twitter-white.svg"
-            alt="chevron-down"
+            alt="twitter"
             style="height: 24px; width: 24px"
             v-if="$vuetify.theme.dark"
           >
@@ -87,10 +87,22 @@
         <v-btn
           icon
           :color="$vuetify.theme.dark ? 'white' : 'indigo'"
-          href="https://www.instagram.com/julidpt"
+          href="https://www.facebook.com/juli.depablo"
           target="_blank"
         >
-          <v-icon>mdi-instagram</v-icon>
+          <img
+            src="@/assets/icons/facebook.svg"
+            alt="facebook"
+            style="height: 24px; width: 24px"
+            v-if="!$vuetify.theme.dark"
+          >
+
+          <img
+            src="@/assets/icons/facebook-white.svg"
+            alt="facebook"
+            style="height: 24px; width: 24px"
+            v-if="$vuetify.theme.dark"
+          >
         </v-btn>
 
         <v-switch

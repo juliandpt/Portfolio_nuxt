@@ -76,7 +76,7 @@
               filled
               rounded
               clearable
-              clear-icon="mdi-close-circle"
+              clear-icon="mdi-window-close"
               label="Name"
               hide-details="auto"
               class="rounded"
@@ -94,7 +94,7 @@
               rounded
               auto-grow
               clearable
-              clear-icon="mdi-close-circle"
+              clear-icon="mdi-window-close"
               label="Email"
               hide-details="auto"
               class="rounded"
@@ -113,7 +113,7 @@
               auto-grow
               counter
               clearable
-              clear-icon="mdi-close-circle"
+              clear-icon="mdi-window-close"
               maxlength="500"
               label="Message"
               class="rounded"

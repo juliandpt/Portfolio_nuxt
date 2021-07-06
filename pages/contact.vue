@@ -1,21 +1,167 @@
 <template>
-  <v-container>
-    <v-row cols="12">
-      <v-col md="4" sm="12" xs="12">
-          
+  <v-container
+    class="d-flex align-center"
+    style="padding: 0 10%"
+  >
+    <v-row>
+      <v-col
+        md="6"
+        sm="12"
+        class="d-flex flex-column justify-center"
+      >
+        <h1 class="text-bol">
+          Contact me
+        </h1>
+
+        <h4>
+          Let's get in touch! 🤟
+        </h4>
+
+        <v-card 
+          v-for="(card, index) in cards"
+          :key="index"
+          elevation="2"
+          class="d-flex align-center card"
+        >
+          <v-icon
+            color="indigo"
+            class="mx-3"
+            v-text="card.icon"
+          >
+          </v-icon>
+
+          <v-card-text
+            class="px-0 pt-0 pb-0"
+            v-text="card.value"
+          >
+          </v-card-text>
+        </v-card>
       </v-col>
 
-      <v-col md="8" sm="12" xs="12">
-        
+      <v-col
+        md="6"
+        sm="12"
+        xs="12"
+      >
+        <v-card
+          outlined
+          class="rounded-card"
+        >
+          <v-card-title
+            style="font-size: 30px, padding-top: 0; padding-bottom: 0; margin-bottom: 40px;"
+          >
+          Send me a message 🚀
+          </v-card-title>
+
+          <v-card-text
+            class="pt-0"
+          >
+            <v-text-field
+              filled
+              rounded
+              clearable
+              clear-icon="mdi-close-circle"
+              label="Name"
+              hide-details="auto"
+              class="rounded"
+              :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+              :rules="[rules.required]"
+            >
+            </v-text-field>
+          </v-card-text>
+          
+          <v-card-text
+            class="pt-0"
+          >
+            <v-text-field
+              filled
+              rounded
+              auto-grow
+              clearable
+              clear-icon="mdi-close-circle"
+              label="Email"
+              hide-details="auto"
+              class="rounded"
+              :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+              :rules="[rules.required, rules.email]"
+            >
+            </v-text-field>
+          </v-card-text>
+
+          <v-card-text
+            class="pt-0"
+          >
+            <v-textarea
+              filled
+              rounded
+              auto-grow
+              counter
+              clearable
+              clear-icon="mdi-close-circle"
+              maxlength="500"
+              label="Message"
+              class="rounded"
+              :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+              :rules="[rules.required]"
+            ></v-textarea>
+          </v-card-text>
+
+          <v-card-text
+            class="pt-0"
+          >
+            <v-btn 
+              dark
+              x-large
+              color="indigo"
+              elevation="5"
+            >
+              Send Message
+            </v-btn>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <style lang="scss" scoped>
-.container,
-.row {
+.container {
   height: 100%;
+}
+
+.card {
+  margin: 0 0 1rem 0;
+  padding: 1rem 0.5rem;
+  width: auto;
+  max-width: 16rem;
+  border-radius:20px;
+}
+
+.rounded-card{
+  border-radius:20px;
+  padding: 40px;
+}
+
+.v-input__control {
+  margin: 0;
+  background-color: #f7f6ff;
+}
+
+h1 {
+  font-size: 52px;
+  margin-bottom: 30px;
+}
+
+h4 {
+  color: #9E9E9E;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 400px) {
+  .card {
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
 </style>
 
@@ -23,8 +169,28 @@
 export default {
   head() {
     return {
-      title: "Contact"
-    }
-  }
+      title: "Contact",
+    };
+  },
+  data: () => ({
+      cards: [
+        { 
+          icon: 'mdi-email',
+          value: 'juliandpt98@gmail.com'
+        },
+        { 
+          icon: 'mdi-phone',
+          value: '+34 620 69 69 68'
+        },
+      ],
+      rules: {
+        required: value => !!value || 'This field is required',
+        counter: value => value.length <= 20 || 'Max 20 characters',
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        },
+      },
+    }),
 };
 </script>

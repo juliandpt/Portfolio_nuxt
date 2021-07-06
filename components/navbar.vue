@@ -48,10 +48,19 @@
           href="https://www.facebook.com/juli.depablo"
           target="_blank"
         >
-          <v-icon
+          <img
+            src="@/assets/icons/facebook.svg"
+            alt="chevron-down"
+            style="height: 24px; width: 24px"
+            v-if="!$vuetify.theme.dark"
           >
-            mdi-facebook
-          </v-icon>
+
+          <img
+            src="@/assets/icons/facebook-white.svg"
+            alt="chevron-down"
+            style="height: 24px; width: 24px"
+            v-if="$vuetify.theme.dark"
+          >
         </v-btn>
 
         <v-btn
@@ -60,10 +69,19 @@
           href="https://twitter.com/Depabloj"
           target="_blank"
         >
-          <v-icon
+          <img
+            src="@/assets/icons/twitter.svg"
+            alt="chevron-down" 
+            style="height: 24px; width: 24px"
+            v-if="!$vuetify.theme.dark"
           >
-            mdi-twitter
-          </v-icon>
+
+          <img
+            src="@/assets/icons/twitter-white.svg"
+            alt="chevron-down"
+            style="height: 24px; width: 24px"
+            v-if="$vuetify.theme.dark"
+          >
         </v-btn>
 
         <v-btn
@@ -72,10 +90,7 @@
           href="https://www.instagram.com/julidpt"
           target="_blank"
         >
-          <v-icon
-          >
-            mdi-instagram
-          </v-icon>
+          <v-icon>mdi-instagram</v-icon>
         </v-btn>
 
         <v-switch

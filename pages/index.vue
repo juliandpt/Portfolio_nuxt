@@ -24,20 +24,20 @@
         <h2>Software Engineer</h2>
         <p>caca</p>
         <div>
-          <v-btn 
+          <v-btn
             dark
+            outlined
             x-large
             color="indigo"
-            elevation="5"
             to="/contact"
           >
             Contact me
 
-            <v-icon 
-              right
+            <img
+              src="@/assets/icons/send.svg"
+              alt="chevron-down" 
+              style="height: 18px; width: 18px; margin-right: -4px; margin-left: 8px;"
             >
-              mdi-send
-            </v-icon>
           </v-btn>
         </div>
       </v-col>
@@ -56,9 +56,11 @@
           href="https://www.linkedin.com/in/julián-de-pablo-torremocha"
           target="_blank"
         >
-          <v-icon> 
-            mdi-linkedin 
-          </v-icon>
+          <img
+            src="@/assets/icons/linkedin.svg"
+            alt="chevron-down" 
+            style="height: 28px; width: 28px;"
+          >
         </v-btn>
 
         <v-btn 
@@ -69,9 +71,11 @@
           href="https://github.com/julidpt"
           target="_blank"
         >
-          <v-icon> 
-            mdi-github 
-          </v-icon>
+          <img
+            src="@/assets/icons/github.svg"
+            alt="chevron-down" 
+            style="height: 28px; width: 28px;"
+          >
         </v-btn>
       </v-col>
     </v-row>

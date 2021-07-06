@@ -18,22 +18,38 @@
         </h4>
 
         <v-card 
-          v-for="(card, index) in cards"
-          :key="index"
           elevation="2"
           class="d-flex align-center card"
         >
-          <v-icon
-            color="indigo"
+          <img
+            src="@/assets/icons/mail.svg"
+            alt="chevron-down" 
             class="mx-3"
-            v-text="card.icon"
+            style="height: 24px; width:24px;"
           >
-          </v-icon>
 
           <v-card-text
             class="px-0 pt-0 pb-0"
-            v-text="card.value"
           >
+            juliandpt98@gmail.com
+          </v-card-text>
+        </v-card>
+
+        <v-card
+          elevation="2"
+          class="d-flex align-center card"
+        >
+          <img
+            src="@/assets/icons/phone.svg"
+            alt="chevron-down" 
+            class="mx-3"
+            style="height: 24px; width:24px;"
+          >
+
+          <v-card-text
+            class="px-0 pt-0 pb-0"
+          >
+            +34 620 69 69 68
           </v-card-text>
         </v-card>
       </v-col>
@@ -173,16 +189,6 @@ export default {
     };
   },
   data: () => ({
-      cards: [
-        { 
-          icon: 'mdi-email',
-          value: 'juliandpt98@gmail.com'
-        },
-        { 
-          icon: 'mdi-phone',
-          value: '+34 620 69 69 68'
-        },
-      ],
       rules: {
         required: value => !!value || 'This field is required',
         counter: value => value.length <= 20 || 'Max 20 characters',

@@ -52,14 +52,6 @@
             src="@/assets/icons/instagram.svg"
             alt="instagram" 
             style="height: 24px; width: 24px"
-            v-if="!$vuetify.theme.dark"
-          >
-
-          <img
-            src="@/assets/icons/instagram-white.svg"
-            alt="instagram"
-            style="height: 24px; width: 24px"
-            v-if="$vuetify.theme.dark"
           >
         </v-btn>
 
@@ -73,14 +65,6 @@
             src="@/assets/icons/twitter.svg"
             alt="twitter" 
             style="height: 24px; width: 24px"
-            v-if="!$vuetify.theme.dark"
-          >
-
-          <img
-            src="@/assets/icons/twitter-white.svg"
-            alt="twitter"
-            style="height: 24px; width: 24px"
-            v-if="$vuetify.theme.dark"
           >
         </v-btn>
 
@@ -94,14 +78,6 @@
             src="@/assets/icons/facebook.svg"
             alt="facebook"
             style="height: 24px; width: 24px"
-            v-if="!$vuetify.theme.dark"
-          >
-
-          <img
-            src="@/assets/icons/facebook-white.svg"
-            alt="facebook"
-            style="height: 24px; width: 24px"
-            v-if="$vuetify.theme.dark"
           >
         </v-btn>
 

@@ -53,7 +53,6 @@
         <div>
           <v-btn
             dark
-            outlined
             x-large
             color="indigo"
             to="/contact"
@@ -61,7 +60,7 @@
             Contact me
 
             <img
-              src="@/assets/icons/send.svg"
+              src="@/assets/icons/send-white.svg"
               alt="chevron-down" 
               style="height: 18px; width: 18px; margin-right: -4px; margin-left: 8px;"
             >

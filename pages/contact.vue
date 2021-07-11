@@ -23,7 +23,7 @@
         >
           <img
             src="@/assets/icons/mail.svg"
-            alt="chevron-down" 
+            alt="mail" 
             class="mx-3"
             style="height: 24px; width:24px;"
           >
@@ -41,7 +41,7 @@
         >
           <img
             src="@/assets/icons/phone.svg"
-            alt="chevron-down" 
+            alt="phone" 
             class="mx-3"
             style="height: 24px; width:24px;"
           >
@@ -66,7 +66,7 @@
           <v-card-title
             style="font-size: 30px, padding-top: 0; padding-bottom: 0; margin-bottom: 40px;"
           >
-          Send me a message 🚀
+            Send me a message 🚀
           </v-card-title>
 
           <v-card-text
@@ -77,7 +77,7 @@
               rounded
               clearable
               clear-icon="mdi-window-close"
-              label="Name"
+              label="name"
               hide-details="auto"
               class="rounded"
               :color="$vuetify.theme.dark ? 'white' : 'indigo'"
@@ -95,7 +95,8 @@
               auto-grow
               clearable
               clear-icon="mdi-window-close"
-              label="Email"
+              label="email"
+              placeholder="example@gmail.com"
               hide-details="auto"
               class="rounded"
               :color="$vuetify.theme.dark ? 'white' : 'indigo'"

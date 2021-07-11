@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row
+      class="py-8"
+    >
       <h1
         class="mx-auto"
       >
@@ -74,7 +76,9 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row
+      class="py-8"
+    >
       <h1
         class="mx-auto"
       >
@@ -89,10 +93,55 @@
         sm="6"
         xs="12"
         class="pb-0"
-        v-for="(skill, i) in skills"
+        v-for="(specialty, i) in specialties"
         :key="i"
       >
+        <v-card
+          dark
+          color="indigo"
+        >
+          <v-card-title>
+            {{ specialty.title }}
+          </v-card-title>
 
+          <v-card-text>
+            {{ specialty.text }}
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row
+      class="py-8"
+    >
+      <h1
+        class="mx-auto"
+      >
+        My Services
+      </h1>
+    </v-row>
+
+    <v-row>
+      <v-col
+        cols="12"
+        md="4"
+        sm="6"
+        xs="12"
+        class="pb-0"
+        v-for="(service, i) in services"
+        :key="i"
+      >
+        <v-card
+          flat
+        >
+          <v-card-title>
+            {{ service.title }}
+          </v-card-title>
+
+          <v-card-text>
+            {{ service.text }}
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -188,29 +237,37 @@ export default {
       specialties: [
         {
           title: "FRONT-END DEV",
-          content: "caca tambien"
+          text: "caca tambien"
+        },
+        {
+          title: "FRONT-END DEV",
+          text: "caca tambien"
+        },
+        {
+          title: "FRONT-END DEV",
+          text: "caca tambien"
         }
       ],
       services: [
         {
           title: "WEB DESIGN",
           icon: "caca",
-          content: "caca tambien"
+          text: "caca tambien"
         },
         {
           title: "RESPONSIVE DESIGN",
           icon: "caca",
-          content: "caca tambien"
+          text: "caca tambien"
         },
         {
           title: "UI / UX",
           icon: "caca",
-          content: "caca tambien"
+          text: "caca tambien"
         },
         {
           title: "WEB DEVELOPMENT",
           icon: "caca",
-          content: "caca tambien"
+          text: "caca tambien"
         },
       ]
     }

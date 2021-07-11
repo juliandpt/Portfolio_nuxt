@@ -85,7 +85,6 @@
           v-model="$vuetify.theme.dark"
           color="indigo"
           hide-details
-          inset
         ></v-switch>
       </v-toolbar> 
     </v-card>

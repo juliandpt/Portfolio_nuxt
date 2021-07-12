@@ -1,7 +1,7 @@
 <template>
   <v-container
     class="d-flex align-center"
-    style="padding: 0 10%"
+    style="padding: 0 15%"
   >
     <v-row>
       <v-col

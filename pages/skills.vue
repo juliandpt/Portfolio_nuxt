@@ -1,5 +1,7 @@
 <template>
-  <v-container>
+  <v-container
+    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
+  >
     <v-row
       class="py-8"
     >
@@ -15,8 +17,8 @@
         cols="12"
         sm="6"
         xs="12"
-        class="pb-0"
         v-for="(skill, i) in skills"
+        :class="$vuetify.breakpoint.xs ? 'pb-0' : ''"
         :key="i"
       >
         <v-expansion-panels
@@ -24,7 +26,18 @@
         >
           <v-expansion-panel>
             <v-expansion-panel-header>
-              {{ skill.title }}
+              <div class="d-flex align-center">
+                <img
+                  :src="skill.icon"
+                  height="32"
+                  width="32"
+                  class="pa-0 mr-3"
+                >
+
+                {{ skill.title }}
+              </div>
+              
+
               <template v-slot:actions>
                 <v-icon color="indigo">
                   $expand
@@ -92,8 +105,8 @@
         md="4"
         sm="6"
         xs="12"
-        class="pb-0"
         v-for="(specialty, i) in specialties"
+        :class="$vuetify.breakpoint.xs ? 'pb-0' : ''"
         :key="i"
       >
         <v-card
@@ -127,13 +140,21 @@
         md="4"
         sm="6"
         xs="12"
-        class="pb-0"
         v-for="(service, i) in services"
+        :class="$vuetify.breakpoint.xs ? 'pb-0' : ''"
         :key="i"
       >
         <v-card
           flat
+          class="d-flex flex-column align-center"
         >
+          <v-img
+            :src="service.icon"
+            height="64"
+            width="64"
+            class="ma-4"
+          ></v-img>
+
           <v-card-title>
             {{ service.title }}
           </v-card-title>
@@ -159,7 +180,7 @@ export default {
       skills: [
         {
           title: "Frontend",
-          icon: "@/assests/icons/tags",
+          icon: require("@/assets/icons/tags.svg"),
           cards: [
             {
               title: "HTML",
@@ -185,7 +206,7 @@ export default {
         },
         {
           title: "Backend",
-          icon: "@/assests/icons/server",
+          icon: require("@/assets/icons/server.svg"),
           cards: [
             {
               title: "Node",
@@ -199,7 +220,7 @@ export default {
         },
         {
           title: "Database",
-          icon: "@/assests/icons/tags",
+          icon: require("@/assets/icons/database.svg"),
           cards: [
             {
               title: "MariaDB",
@@ -217,7 +238,7 @@ export default {
         },
         {
           title: "Others",
-          icon: "@/assests/icons/tags",
+          icon: require("@/assets/icons/brackets.svg"),
           cards: [
             {
               title: "Python",
@@ -251,22 +272,22 @@ export default {
       services: [
         {
           title: "WEB DESIGN",
-          icon: "caca",
+          icon: require("@/assets/icons/design.svg"),
           text: "caca tambien"
         },
         {
           title: "RESPONSIVE DESIGN",
-          icon: "caca",
+          icon: require("@/assets/icons/responsive.svg"),
           text: "caca tambien"
         },
         {
           title: "UI / UX",
-          icon: "caca",
+          icon: require("@/assets/icons/crosshair.svg"),
           text: "caca tambien"
         },
         {
           title: "WEB DEVELOPMENT",
-          icon: "caca",
+          icon: require("@/assets/icons/settings.svg"),
           text: "caca tambien"
         },
       ]

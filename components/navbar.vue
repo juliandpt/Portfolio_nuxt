@@ -102,7 +102,7 @@
 }
 
 .v-toolbar__title {
-  font-family: "Caveat", cursive;
+  font-family: "Signatura", cursive;
   font-size: 3rem;
   padding: 0 0.1em;
 }

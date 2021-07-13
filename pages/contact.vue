@@ -1,49 +1,55 @@
 <template>
   <v-container
     class="d-flex align-center"
-    style="padding: 0 15%"
+    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
     <v-row>
       <v-col
         md="6"
-        sm="12"
+        sm="6"
         class="d-flex flex-column justify-center"
       >
-        <h1 class="text-bol">
+        <h1
+          :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
+        >
           Contact me
         </h1>
 
-        <h4>
+        <h4
+          :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
+        >
           Let's get in touch! 🤟
         </h4>
 
-        <v-card 
-          elevation="2"
-          class="d-flex align-center card"
+        <v-card
+          flat
+          class="d-flex align-center mb-5"
+          :style="$vuetify.breakpoint.xs ? 'padding: 1rem 0.5rem; width: 100%; border-radius:20px;' : 'padding: 1rem 0.5rem; width: auto; max-width: 16rem; border-radius:20px;'"
         >
           <img
             src="@/assets/icons/mail.svg"
-            alt="mail" 
             class="mx-3"
-            style="height: 24px; width:24px;"
+            height="24"
+            width="24"
           >
 
           <v-card-text
-            class="px-0 pt-0 pb-0"
+            class="pa-0"
           >
             juliandpt98@gmail.com
           </v-card-text>
         </v-card>
 
         <v-card
-          elevation="2"
-          class="d-flex align-center card"
+          flat
+          class="d-flex align-center mb-5"
+          :style="$vuetify.breakpoint.xs ? 'padding: 1rem 0.5rem; width: 100%; border-radius:20px;' : 'padding: 1rem 0.5rem; width: auto; max-width: 16rem; border-radius:20px;'"
         >
           <img
             src="@/assets/icons/phone.svg"
-            alt="phone" 
             class="mx-3"
-            style="height: 24px; width:24px;"
+            height="24"
+            width="24"
           >
 
           <v-card-text
@@ -56,11 +62,9 @@
 
       <v-col
         md="6"
-        sm="12"
-        xs="12"
+        sm="6"
       >
         <v-card
-          outlined
           class="rounded-card"
         >
           <v-card-title
@@ -130,7 +134,7 @@
               dark
               x-large
               color="indigo"
-              elevation="5"
+              elevation="0"
             >
               Send Message
             </v-btn>
@@ -146,17 +150,9 @@
   height: 100%;
 }
 
-.card {
-  margin: 0 0 1rem 0;
-  padding: 1rem 0.5rem;
-  width: auto;
-  max-width: 16rem;
-  border-radius:20px;
-}
-
 .rounded-card{
-  border-radius:20px;
-  padding: 40px;
+  border-radius:1.2rem;
+  padding: 2.5rem;
 }
 
 .v-input__control {
@@ -165,20 +161,13 @@
 }
 
 h1 {
-  font-size: 52px;
-  margin-bottom: 30px;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 h4 {
   color: #9E9E9E;
   margin-bottom: 20px;
-}
-
-@media (max-width: 400px) {
-  .card {
-    max-width: 100%;
-    min-width: 100%;
-  }
 }
 </style>
 

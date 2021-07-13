@@ -1,19 +1,27 @@
 <template>
-  <v-footer
-    padless
-    color="transparent"
+  <v-container
+    class="pa-0"
   >
-    <v-card
-      flat
-      tile
+    <v-footer
+      padless
       color="transparent"
-      class="footer text-center flex"
     >
-      <v-card-text>
-        Julián © {{ new Date().getFullYear() }}. All rights reserved
-      </v-card-text>
-    </v-card>
-  </v-footer>
+      <v-card
+        flat
+        tile
+        color="transparent"
+        class="flex"
+      >
+        <v-card-title>
+          <p>Julián © {{ new Date().getFullYear() }}. All rights reserved</p>
+
+          <v-spacer></v-spacer>
+
+          <p>caca</p>
+        </v-card-title>
+      </v-card>
+    </v-footer>
+  </v-container>
 </template>
 
 <style>

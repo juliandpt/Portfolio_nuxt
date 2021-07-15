@@ -1,15 +1,21 @@
 <template>
   <v-container
-    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
+    :style="$vuetify.breakpoint.xl ? 'padding-left: 15%; padding-right: 15%' : ''"
   >
     <v-row
-      class="py-8"
+      class="d-flex flex-column justify-center py-8"
     >
       <h1
         class="mx-auto"
       >
-        My Skills
+        Skills
       </h1>
+
+      <h4
+        class="mx-auto"
+      >
+        My thechnical level
+      </h4>
     </v-row>
       
     <v-row>
@@ -17,8 +23,8 @@
         cols="12"
         sm="6"
         v-for="(skill, i) in skills"
-        :class="$vuetify.breakpoint.xs ? 'pb-0' : ''"
         :key="i"
+        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
         <v-expansion-panels
           flat
@@ -109,7 +115,7 @@
         md="4"
         sm="6"
         v-for="(specialty, i) in specialties"
-        :class="$vuetify.breakpoint.xs ? 'pb-0' : ''"
+        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
         :key="i"
       >
         <v-card
@@ -145,7 +151,7 @@
         sm="6"
         v-for="(service, i) in services"
         :key="i"
-        :class="$vuetify.breakpoint.xs ? 'pb-0' : ''"
+        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
         <v-hover
           v-slot:default="{ hover }"
@@ -231,6 +237,18 @@
   </v-container>
 </template>
 
+<style lang="scss" scoped>
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  color: #9E9E9E;
+  margin-bottom: 20px;
+}
+</style>
+
 <script>
 export default {
   head() {
@@ -238,145 +256,143 @@ export default {
       title: "Skills"
     }
   },
-  data() {
-    return {
-      skills: [
-        {
-          title: "Frontend",
-          icon: require("@/assets/icons/tags.svg"),
-          cards: [
-            {
-              title: "HTML",
-              value: 70
-            },
-            {
-              title: "CSS",
-              value: 60
-            },
-            {
-              title: "Javascript",
-              value: 70
-            },
-            {
-              title: "Angular",
-              value: 70
-            },
-            {
-              title: "Vue",
-              value: 20
-            }
-          ]
-        },
-        {
-          title: "Backend",
-          icon: require("@/assets/icons/server.svg"),
-          cards: [
-            {
-              title: "Node",
-              value: 70
-            },
-            {
-              title: "Flask",
-              value: 70
-            },
-          ]
-        },
-        {
-          title: "Database",
-          icon: require("@/assets/icons/database.svg"),
-          cards: [
-            {
-              title: "MariaDB",
-              value: 70
-            },
-            {
-              title: "PostgreSQL",
-              value: 70
-            },
-            {
-              title: "Firebase",
-              value: 60
-            }
-          ]
-        },
-        {
-          title: "Others",
-          icon: require("@/assets/icons/brackets.svg"),
-          cards: [
-            {
-              title: "Python",
-              value: 70
-            },
-            {
-              title: "Java",
-              value: 70
-            },
-            {
-              title: "C++",
-              value: 60
-            }
-          ]
-        },
-      ],
-      specialties: [
-        {
-          title: "FRONT-END DEV",
-          text: "caca tambien"
-        },
-        {
-          title: "FRONT-END DEV",
-          text: "caca tambien"
-        },
-        {
-          title: "FRONT-END DEV",
-          text: "caca tambien"
-        }
-      ],
-      services: [
-        {
-          title: "WEB DESIGN",
-          icon: require("@/assets/icons/design.svg"),
-          text: "caca tambien",
-          descriptions: [
-            "caca1",
-            "caca2",
-            "caca3"
-          ]
-        },
-        {
-          title: "RESPONSIVE DESIGN",
-          icon: require("@/assets/icons/responsive.svg"),
-          text: "caca tambien",
-          descriptions: [
-            "caca1",
-            "caca2",
-            "caca3"
-          ]
-        },
-        {
-          title: "UI / UX",
-          icon: require("@/assets/icons/crosshair.svg"),
-          text: "caca tambien",
-          descriptions: [
-            "caca1",
-            "caca2",
-            "caca3"
-          ]
-        },
-        {
-          title: "WEB DEVELOPMENT",
-          icon: require("@/assets/icons/settings.svg"),
-          text: "caca tambien",
-          descriptions: [
-            "caca1",
-            "caca2"
-          ]
-        },
-      ],
-      info: { },
-      dialog: false
-    }
-  },
+  data: () => ({
+    skills: [
+      {
+        title: "Frontend",
+        icon: require("@/assets/icons/tags.svg"),
+        cards: [
+          {
+            title: "HTML",
+            value: 70
+          },
+          {
+            title: "CSS",
+            value: 60
+          },
+          {
+            title: "Javascript",
+            value: 70
+          },
+          {
+            title: "Angular",
+            value: 70
+          },
+          {
+            title: "Vue",
+            value: 20
+          }
+        ]
+      },
+      {
+        title: "Backend",
+        icon: require("@/assets/icons/server.svg"),
+        cards: [
+          {
+            title: "Node",
+            value: 70
+          },
+          {
+            title: "Flask",
+            value: 70
+          },
+        ]
+      },
+      {
+        title: "Database",
+        icon: require("@/assets/icons/database.svg"),
+        cards: [
+          {
+            title: "MariaDB",
+            value: 70
+          },
+          {
+            title: "PostgreSQL",
+            value: 70
+          },
+          {
+            title: "Firebase",
+            value: 60
+          }
+        ]
+      },
+      {
+        title: "Others",
+        icon: require("@/assets/icons/brackets.svg"),
+        cards: [
+          {
+            title: "Python",
+            value: 70
+          },
+          {
+            title: "Java",
+            value: 70
+          },
+          {
+            title: "C++",
+            value: 60
+          }
+        ]
+      },
+    ],
+    specialties: [
+      {
+        title: "FRONT-END DEV",
+        text: "caca tambien"
+      },
+      {
+        title: "FRONT-END DEV",
+        text: "caca tambien"
+      },
+      {
+        title: "FRONT-END DEV",
+        text: "caca tambien"
+      }
+    ],
+    services: [
+      {
+        title: "WEB DESIGN",
+        icon: require("@/assets/icons/design.svg"),
+        text: "caca tambien",
+        descriptions: [
+          "caca1",
+          "caca2",
+          "caca3"
+        ]
+      },
+      {
+        title: "RESPONSIVE DESIGN",
+        icon: require("@/assets/icons/responsive.svg"),
+        text: "caca tambien",
+        descriptions: [
+          "caca1",
+          "caca2",
+          "caca3"
+        ]
+      },
+      {
+        title: "UI / UX",
+        icon: require("@/assets/icons/crosshair.svg"),
+        text: "caca tambien",
+        descriptions: [
+          "caca1",
+          "caca2",
+          "caca3"
+        ]
+      },
+      {
+        title: "WEB DEVELOPMENT",
+        icon: require("@/assets/icons/settings.svg"),
+        text: "caca tambien",
+        descriptions: [
+          "caca1",
+          "caca2"
+        ]
+      },
+    ],
+    info: { },
+    dialog: false
+  }),
   methods: {
     showInfo (data) {
       this.info = data

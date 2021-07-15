@@ -1,5 +1,7 @@
-<template>
-  <v-container>
+<template :style="{ backgroundImage: `url(${backgroundUrl})` }">
+  <v-container
+    v-if="!$vuetify.breakpoint.xs"
+  >
     <v-card
       color="transparent"
       flat
@@ -15,6 +17,7 @@
         <v-btn
           to="/"
           text
+          style="textTransform: none; letter-spacing: 0;"
         >
           Home
         </v-btn>
@@ -22,6 +25,7 @@
         <v-btn
           to="/about"
           text
+          style="textTransform: none; letter-spacing: 0;"
         >
           About
         </v-btn>
@@ -29,6 +33,7 @@
         <v-btn
           to="/skills"
           text
+          style="textTransform: none; letter-spacing: 0;"
         >
           Skills
         </v-btn>
@@ -36,6 +41,7 @@
         <v-btn
           to="/contact"
           text
+          style="textTransform: none; letter-spacing: 0;"
         >
           Contact
         </v-btn>
@@ -51,7 +57,8 @@
           <img
             src="@/assets/icons/instagram.svg"
             alt="instagram" 
-            style="height: 24px; width: 24px"
+            height="24"
+            width="24"
           >
         </v-btn>
 
@@ -64,7 +71,8 @@
           <img
             src="@/assets/icons/twitter.svg"
             alt="twitter" 
-            style="height: 24px; width: 24px"
+            height="24"
+            width="24"
           >
         </v-btn>
 
@@ -77,7 +85,8 @@
           <img
             src="@/assets/icons/facebook.svg"
             alt="facebook"
-            style="height: 24px; width: 24px"
+            height="24"
+            width="24"
           >
         </v-btn>
 

@@ -9,23 +9,18 @@
         sm="12"
         class="d-flex flex-column justify-center"
       >
-        <svg viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#3F51B5" d="M38.6,22.9C25,45.8,-28.3,46.5,-41.3,23.8C-54.4,1.2,-27.2,-44.8,-0.5,-45.1C26.1,-45.4,52.2,-0.1,38.6,22.9Z" transform="translate(100 100)" />
-        </svg>
-        <!-- <img
-        class="rounded"
-        src="@/assets/images/profile.jpg"
-        width="100px"
-        height="100px"> -->
+        <img
+          src="@/assets/images/blob.svg"
+        >
       </v-col>
 
       <v-col
         cols="12"
         md="4"
         sm="10"
-        class="d-flex flex-column justify-center"
+        :class="$vuetify.breakpoint.xs ? 'd-flex flex-column justify-center align-center' : 'd-flex flex-column justify-center'"
       >
-        <p>Hello!</p>
+        <span>Hello!</span>
         <h1>I'm Julián</h1>
         <h2>Software Engineer</h2>
         <p>caca</p>
@@ -33,8 +28,10 @@
           <v-btn
             dark
             x-large
+            elevation="0"
             color="indigo"
             to="/contact"
+            style="textTransform: none"
           >
             Contact me
 
@@ -52,7 +49,7 @@
         cols="12"
         md="2"
         sm="2"
-        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center' : 'd-flex flex-column justify-center align-center'"
+        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center' : 'd-flex flex-column justify-center'"
       >
         <v-btn
           icon

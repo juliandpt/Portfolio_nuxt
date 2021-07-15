@@ -1,6 +1,50 @@
 <template>
+  <v-bottom-navigation
+    app
+    v-if="$vuetify.breakpoint.xs"
+    style="z-index: 999;"
+    color="transparent"
+  >
+    <v-btn to="/">
+      <img
+        src="@/assets/icons/home.svg"
+        alt="instagram"
+        height="24"
+        width="24"
+      >
+    </v-btn>
+
+    <v-btn to="/about">
+      <img
+        src="@/assets/icons/info.svg"
+        alt="instagram" 
+        height="24"
+        width="24"
+      >
+    </v-btn>
+
+    <v-btn to="/skills">
+      <img
+        src="@/assets/icons/laptop.svg"
+        alt="instagram" 
+        height="24"
+        width="24"
+      >
+    </v-btn>
+
+    <v-btn to="/contact">
+      <img
+        src="@/assets/icons/at.svg"
+        alt="instagram" 
+        height="24"
+        width="24"
+      >
+    </v-btn>
+  </v-bottom-navigation>
+
   <v-container
-    class="pa-0"
+    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
+    v-else
   >
     <v-footer
       padless
@@ -13,16 +57,29 @@
         class="flex"
       >
         <v-card-title>
-          <p>Julián © {{ new Date().getFullYear() }}. All rights reserved</p>
+          <span>Julián © {{ new Date().getFullYear() }}. All rights reserved</span>
 
           <v-spacer></v-spacer>
 
-          <p>caca</p>
+          <span>caca</span>
         </v-card-title>
       </v-card>
     </v-footer>
   </v-container>
 </template>
 
-<style>
-</style>
+// <script>
+// import backgroundUrl from "~/assets/images/waves.svg";
+
+// export default {
+//   data() {
+//     return {
+//       backgroundUrl,
+//     };
+//   },
+// };
+//
+// :style="{ backgroundImage: `url(${backgroundUrl})` }"
+//
+// :style="[ $vuetify.breakpoint.xl ? 'padding: 0 15%' : '', { backgroundImage: `url(${backgroundUrl})` }]"
+// </script>

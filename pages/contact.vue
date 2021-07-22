@@ -67,81 +67,117 @@
         <v-card
           class="rounded-card"
         >
-          <v-card-title
-            style="font-size: 30px, padding-top: 0; padding-bottom: 0; margin-bottom: 40px;"
+          <v-form
+            v-model="valid"
           >
-            Send me a message 🚀
-          </v-card-title>
-
-          <v-card-text
-            class="pt-0"
-          >
-            <v-text-field
-              filled
-              rounded
-              clearable
-              clear-icon="mdi-window-close"
-              label="name"
-              hide-details="auto"
-              class="rounded"
-              :color="$vuetify.theme.dark ? 'white' : 'indigo'"
-              :rules="[rules.required]"
+            <v-card-title
+              style="font-size: 30px, padding-top: 0; padding-bottom: 0; margin-bottom: 40px;"
             >
-            </v-text-field>
-          </v-card-text>
-          
-          <v-card-text
-            class="pt-0"
-          >
-            <v-text-field
-              filled
-              rounded
-              auto-grow
-              clearable
-              clear-icon="mdi-window-close"
-              label="email"
-              placeholder="example@gmail.com"
-              hide-details="auto"
-              class="rounded"
-              :color="$vuetify.theme.dark ? 'white' : 'indigo'"
-              :rules="[rules.required, rules.email]"
-            >
-            </v-text-field>
-          </v-card-text>
+              Send me a message 🚀
+            </v-card-title>
 
-          <v-card-text
-            class="pt-0"
-          >
-            <v-textarea
-              filled
-              rounded
-              auto-grow
-              counter
-              clearable
-              clear-icon="mdi-window-close"
-              maxlength="500"
-              label="Message"
-              class="rounded"
-              :color="$vuetify.theme.dark ? 'white' : 'indigo'"
-              :rules="[rules.required]"
-            ></v-textarea>
-          </v-card-text>
-
-          <v-card-text
-            class="pt-0"
-          >
-            <v-btn 
-              dark
-              x-large
-              color="indigo"
-              elevation="0"
+            <v-card-text
+              class="pt-0"
             >
-              Send Message
-            </v-btn>
-          </v-card-text>
+              <v-text-field
+                filled
+                rounded
+                clearable
+                required
+                clear-icon="mdi-window-close"
+                label="Name"
+                v-model="name"
+                hide-details="auto"
+                class="rounded"
+                :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+                :rules="nameRules"
+              >
+              </v-text-field>
+            </v-card-text>
+            
+            <v-card-text
+              class="pt-0"
+            >
+              <v-text-field
+                filled
+                rounded
+                auto-grow
+                clearable
+                required
+                clear-icon="mdi-window-close"
+                label="Email"
+                v-model="email"
+                placeholder="example@gmail.com"
+                hide-details="auto"
+                class="rounded"
+                :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+                :rules="emailRules"
+              >
+              </v-text-field>
+            </v-card-text>
+
+            <v-card-text
+              class="pt-0"
+            >
+              <v-textarea
+                filled
+                rounded
+                auto-grow
+                counter
+                clearable
+                required
+                clear-icon="mdi-window-close"
+                maxlength="500"
+                label="Message"
+                v-model="message"
+                class="rounded"
+                :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+                :rules="messageRules"
+              ></v-textarea>
+            </v-card-text>
+
+            <v-card-text
+              class="pt-0"
+            >
+              <v-btn 
+                dark
+                x-large
+                color="indigo"
+                elevation="0"
+                :disabled="!valid"
+                :loading="loading"
+                @click="sendEmail()"
+              >
+                Send Message
+              </v-btn>
+            </v-card-text>
+          </v-form>
         </v-card>
       </v-col>
     </v-row>
+
+    <v-snackbar
+      app
+      text
+      auto-height
+      v-model="snackbarShow"
+      :color="color"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          icon
+          v-bind="attrs"
+          :color="color"
+          @click="snackbarShow = false"
+        >
+          <v-icon>
+            mdi-window-close
+          </v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -172,6 +208,8 @@ h4 {
 </style>
 
 <script>
+import emailjs from 'emailjs-com';
+
 export default {
   head() {
     return {
@@ -179,14 +217,53 @@ export default {
     };
   },
   data: () => ({
-      rules: {
-        required: value => !!value || 'This field is required',
-        counter: value => value.length <= 20 || 'Max 20 characters',
-        email: value => {
-          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/
-          return pattern.test(value) || 'Invalid e-mail.'
+    valid: false,
+    loading: false,
+    text: '',
+    color: '',
+    snackbarShow: true,
+    name: '',
+    nameRules: [
+      value => !!value || 'Name is required'
+    ],
+    email: '',
+    emailRules: [
+      value => !!value || 'E-mail is required',
+      value => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/.test(value) || 'E-mail must be valid',
+    ],
+    message: '',
+    messageRules: [
+      value => !!value || 'Message is required'
+    ],
+  }),
+  methods: {
+    sendEmail: function () {
+      this.loading = true
+
+      var userParams = {
+        from_name: this.name,
+        from_email: this.email,
+        message: this.message
+      }
+
+      emailjs.send('service_julian', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
+      .then(
+        (response) => {
+          console.log(response)
+          this.text = 'Email sent Successfuly!'
+          this.color = 'green darken-2'
+          this.snackbarShow = true
+          this.loading = false
         },
-      },
-    }),
+        (error) => {
+          console.log(error)
+          this.text = 'An error ocurred'
+          this.color = 'red'
+          this.snackbarShow = true
+          this.loading = false
+        }
+      )
+    }
+  }
 };
 </script>

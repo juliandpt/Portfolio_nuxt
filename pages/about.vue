@@ -116,7 +116,6 @@
         <v-card
           flat
           color="transparent"
-          width="100%"
         >
           <v-tabs
             v-model="tab"
@@ -132,12 +131,21 @@
             <v-tab
               v-for="(qualification, i) in qualifications"
               :key="i"
+              :class="(i % 2 == 0) ? 'ml-auto' : 'mr-auto'"
             >
+              <img
+                :src="qualification.icon"
+                height="30"
+                width="30"
+                class="mx-1"
+              >
               {{ qualification.title }}
             </v-tab>
           </v-tabs>
 
-          <v-tabs-items v-model="tab">
+          <v-tabs-items
+            v-model="tab"
+          >
             <v-tab-item
               v-for="(qualification, i) in qualifications"
               :key="i"
@@ -145,28 +153,55 @@
               <template>
                 <v-timeline
                   align-top
+                  class="pa-0 my-4"
+                  color="transparent"
                 >
                   <v-timeline-item
                     color="indigo"
                     small
                     v-for="(item, j) in qualification.items"
                     :key="j"
+                    class="pa-0"
                   >
                     <v-card
-                      flat
+                    flat
+                    color="transparent"
+                    class="ml-auto"
                     >
-                      <v-card-title>
-                        {{ item.value }}
+                      <v-card-title
+                        class="pt-0 px-0"
+                      >
+                        <h2
+                          :class="j%2 != 0 ? 'ml-auto' : ''"
+                        >
+                          {{ item.title }}
+                        </h2>
                       </v-card-title>
 
-                      <v-card-text>
-                        {{ item.value }}
+                      <v-card-text
+                        class="d-flex align-center px-0"
+                      >
+                        <img
+                          src="@/assets/icons/location.svg"
+                          height="24"
+                          width="24"
+                          :class="j%2 != 0 ? 'ml-auto mr-2' : 'mr-2'"
+                        >
+
+                        {{ item.location }}
                       </v-card-text>
 
                       <v-card-text
-                        class="pt-0"
+                        class="d-flex align-center py-0 px-0"
                       >
-                        {{ item.value }}
+                        <img
+                          src="@/assets/icons/date.svg"
+                          height="24"
+                          width="24"
+                          :class="j%2 != 0 ? 'ml-auto mr-2' : 'mr-2'"
+                        >
+
+                        {{ item.date }}
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
@@ -203,15 +238,15 @@ export default {
     experiences: [
       {
         title: 'Years experience',
-        value: '4'
+        value: '4+'
       },
       {
-        title: 'caca',
-        value: '4'
+        title: 'Projects',
+        value: '1'
       },
       {
-        title: 'caca',
-        value: '4'
+        title: 'Companies',
+        value: '0'
       }
     ],
     qualifications: [
@@ -220,19 +255,14 @@ export default {
         icon: require("@/assets/icons/education.svg"),
         items: [
           {
-            value: "caca1",
-            location: "",
-            years: ""
+            title: "Bachiller",
+            location: "Madrid - School",
+            date: "2014-2017"
           },
           {
-            value: "caca1",
-            location: "",
-            years: ""
-          },
-          {
-            value: "caca1",
-            location: "",
-            years: ""
+            title: "Software Engineer",
+            location: "Madrid - University",
+            date: "2017-2022"
           }
         ]
       },
@@ -241,19 +271,9 @@ export default {
         icon: require("@/assets/icons/work.svg"),
         items: [
           {
-            value: "caca2",
-            location: "",
-            years: ""
-          },
-          {
-            value: "caca2",
-            location: "",
-            years: ""
-          },
-          {
-            value: "caca2",
-            location: "",
-            years: ""
+            title: "Incoming...",
+            location: "...",
+            date: "..."
           }
         ]
       }

@@ -24,10 +24,12 @@
         <v-card
           flat
           class="d-flex align-center mb-5"
-          :style="$vuetify.breakpoint.xs ? 'padding: 1rem 0.5rem; width: 100%; border-radius:20px;' : 'padding: 1rem 0.5rem; width: auto; max-width: 16rem; border-radius:20px;'"
+          v-for="(card, i) in cards"
+          :key="i"
+          :style="$vuetify.breakpoint.xs ? 'padding: 1rem 0.5rem; width: 100%; border-radius:20px;' : 'padding: 1rem 0.5rem; width: auto; width: 16rem; border-radius:20px;'"
         >
           <img
-            src="@/assets/icons/mail.svg"
+            :src="card.icon"
             class="mx-3"
             height="24"
             width="24"
@@ -36,26 +38,7 @@
           <v-card-text
             class="pa-0"
           >
-            juliandpt98@gmail.com
-          </v-card-text>
-        </v-card>
-
-        <v-card
-          flat
-          class="d-flex align-center mb-5"
-          :style="$vuetify.breakpoint.xs ? 'padding: 1rem 0.5rem; width: 100%; border-radius:20px;' : 'padding: 1rem 0.5rem; width: auto; max-width: 16rem; border-radius:20px;'"
-        >
-          <img
-            src="@/assets/icons/phone.svg"
-            class="mx-3"
-            height="24"
-            width="24"
-          >
-
-          <v-card-text
-            class="px-0 pt-0 pb-0"
-          >
-            +34 620 69 69 68
+            {{ card.text }}
           </v-card-text>
         </v-card>
       </v-col>
@@ -159,13 +142,14 @@
     <v-snackbar
       app
       text
-      auto-height
       v-model="snackbarShow"
       :color="color"
     >
       {{ text }}
 
-      <template v-slot:action="{ attrs }">
+      <template
+        v-slot:action="{ attrs }"
+      >
         <v-btn
           icon
           v-bind="attrs"
@@ -191,11 +175,6 @@
   padding: 2.5rem;
 }
 
-.v-input__control {
-  margin: 0;
-  background-color: #f7f6ff;
-}
-
 h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -219,9 +198,9 @@ export default {
   data: () => ({
     valid: false,
     loading: false,
+    snackbarShow: false,
     text: '',
     color: '',
-    snackbarShow: true,
     name: '',
     nameRules: [
       value => !!value || 'Name is required'
@@ -235,6 +214,16 @@ export default {
     messageRules: [
       value => !!value || 'Message is required'
     ],
+    cards: [
+      {
+        icon: require("@/assets/icons/mail.svg"),
+        text: "juliandpt98@gmail.com"
+      },
+      {
+        icon: require("@/assets/icons/phone.svg"),
+        text: "+34 620 69 69 68"
+      }
+    ]
   }),
   methods: {
     sendEmail: function () {
@@ -246,17 +235,15 @@ export default {
         message: this.message
       }
 
-      emailjs.send('service_julian', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
+      emailjs.send('service_caca', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
       .then(
         (response) => {
-          console.log(response)
           this.text = 'Email sent Successfuly!'
           this.color = 'green darken-2'
           this.snackbarShow = true
           this.loading = false
         },
         (error) => {
-          console.log(error)
           this.text = 'An error ocurred'
           this.color = 'red'
           this.snackbarShow = true

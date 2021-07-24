@@ -25,9 +25,9 @@
         class="d-flex flex-column justify-center align-center"
       >
         <img
-          src="@/assets/images/profile.jpg"
-          height="40"
-          width="40"
+          src="@/assets/images/me-profile.png"
+          height="300"
+          width="230"
         >
       </v-col>
 
@@ -153,7 +153,7 @@
               <template>
                 <v-timeline
                   align-top
-                  class="pa-0 my-4"
+                  class="px-4 py-0 my-4"
                   color="transparent"
                 >
                   <v-timeline-item
@@ -173,6 +173,7 @@
                       >
                         <h2
                           :class="j%2 != 0 ? 'ml-auto' : ''"
+                          :style="$vuetify.breakpoint.xs ? 'font-size: 1em' : ''"
                         >
                           {{ item.title }}
                         </h2>

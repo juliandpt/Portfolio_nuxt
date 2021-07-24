@@ -43,7 +43,6 @@
   </v-bottom-navigation>
 
   <v-container
-    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
     v-else
   >
     <v-footer
@@ -57,7 +56,7 @@
         class="flex"
       >
         <v-card-title>
-          <span>Julián © {{ new Date().getFullYear() }}. All rights reserved</span>
+          <span>Portfolio © {{ new Date().getFullYear() }}. All rights reserved</span>
 
           <v-spacer></v-spacer>
 
@@ -67,19 +66,3 @@
     </v-footer>
   </v-container>
 </template>
-
-// <script>
-// import backgroundUrl from "~/assets/images/waves.svg";
-
-// export default {
-//   data() {
-//     return {
-//       backgroundUrl,
-//     };
-//   },
-// };
-//
-// :style="{ backgroundImage: `url(${backgroundUrl})` }"
-//
-// :style="[ $vuetify.breakpoint.xl ? 'padding: 0 15%' : '', { backgroundImage: `url(${backgroundUrl})` }]"
-// </script>

@@ -234,6 +234,56 @@
         </v-card>
       </v-dialog>
     </v-row>
+
+    <v-row
+      class="py-8"
+    >
+      <h1
+        class="mx-auto"
+      >
+        My projects
+      </h1>
+    </v-row>
+
+    <v-row>
+      <v-col
+        cols="12"
+        md="3"
+        sm="6"
+        v-for="(project, i) in projects"
+        :key="i"
+        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
+      >
+        <v-card
+          class="mx-auto"
+        >
+          <v-img
+            :src="$vuetify.theme.dark ? project.imgWhite : project.img"
+            width="200"
+            class="align-center justify-center"
+          ></v-img>
+
+          <v-card-title>
+            {{ project.title }}
+          </v-card-title>
+
+          <v-card-subtitle>
+            {{ project.content }}
+          </v-card-subtitle>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn
+              color="orange lighten-2"
+              text
+            >
+              Explore
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -389,6 +439,21 @@ export default {
           "caca2"
         ]
       },
+    ],
+    projects: [
+      {
+        title: "Infopueblo",
+        img: require("@/assets/images/infopueblo.png"),
+        imgWhite: require("@/assets/images/infopueblo-white.png"),
+        content: "cacadevaca",
+        repository: "https://github.com/julidpt/Infopueblo-Frontend"
+      },
+      {
+        title: "Infopueblo",
+        img: require("@/assets/images/infopueblo-white.png"),
+        content: "cacadevaca",
+        repository: "https://github.com/julidpt/Infopueblo-Frontend"
+      }
     ],
     info: { },
     dialog: false

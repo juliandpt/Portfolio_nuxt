@@ -3,7 +3,7 @@
     :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
     <v-row
-      class="d-flex flex-column justify-center py-8"
+      class="d-flex flex-column justify-center my-8"
     >
       <h1
         class="mx-auto"
@@ -56,6 +56,7 @@
             >
               <v-card-title
                 class="justify-center"
+                style="font-size: 2rem"
               >
                 {{ experience.value }}
               </v-card-title>
@@ -80,6 +81,8 @@
               color="indigo"
               class="mx-auto"
               style="textTransform: none; letter-spacing: 0;"
+              download=""
+              href="../static/Julián-CV.pdf"
             >
               Download CV
 
@@ -96,7 +99,7 @@
     </v-row>
 
     <v-row
-      class="d-flex flex-column justify-center py-8"
+      class="d-flex flex-column justify-center title-wrapper"
     >
       <h1
         class="mx-auto"
@@ -217,6 +220,11 @@
 </template>
 
 <style lang="scss" scoped>
+.title-wrapper {
+  margin-top: 12rem;
+  margin-bottom: 3rem;
+}
+
 h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;

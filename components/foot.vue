@@ -56,11 +56,11 @@
         class="flex"
       >
         <v-card-title>
-          <span>Portfolio © {{ new Date().getFullYear() }}. All rights reserved</span>
-
-          <v-spacer></v-spacer>
-
-          <span>caca</span>
+          <span
+            class="mx-auto"
+          >
+            Julián de Pablo © {{ new Date().getFullYear() }}. All rights reserved
+          </span>
         </v-card-title>
       </v-card>
     </v-footer>

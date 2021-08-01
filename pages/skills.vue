@@ -3,7 +3,7 @@
     :style="$vuetify.breakpoint.xl ? 'padding-left: 15%; padding-right: 15%' : ''"
   >
     <v-row
-      class="d-flex flex-column justify-center py-8"
+      class="d-flex flex-column justify-center mt-8 mb-4"
     >
       <h1
         class="mx-auto"
@@ -100,54 +100,25 @@
     </v-row>
 
     <v-row
-      class="py-8"
-    >
-      <h1
-        class="mx-auto"
-      >
-        Specialing in
-      </h1>
-    </v-row>
-
-    <v-row>
-      <v-col
-        cols="12"
-        md="4"
-        sm="6"
-        v-for="(specialty, i) in specialties"
-        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
-        :key="i"
-      >
-        <v-card
-          flat
-          dark
-          color="indigo"
-        >
-          <v-card-title>
-            {{ specialty.title }}
-          </v-card-title>
-
-          <v-card-text>
-            {{ specialty.text }}
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-
-    <v-row
-      class="py-8"
+      class="d-flex flex-column justify-center title-wrapper"
     >
       <h1
         class="mx-auto"
       >
         My Services
       </h1>
+
+      <h4
+        class="mx-auto"
+      >
+        What I offer
+      </h4>
     </v-row>
 
     <v-row>
       <v-col
         cols="12"
-        md="3"
+        md="4"
         sm="6"
         v-for="(service, i) in services"
         :key="i"
@@ -157,8 +128,8 @@
           v-slot:default="{ hover }"
         >
           <v-card
-            outlined
             height="100%"
+            :outlined="!$vuetify.theme.dark"
           >
             <v-flex class="pt-4">
               <v-img
@@ -183,9 +154,10 @@
               >
                 <v-btn
                   color="indigo"
+                  style="textTransform: none; letter-spacing: 0;"
                   @click="showInfo(service)"
                 >
-                  view more
+                  View more
                 </v-btn>
               </v-overlay>
             </v-fade-transition>
@@ -236,19 +208,25 @@
     </v-row>
 
     <v-row
-      class="py-8"
+      class="d-flex flex-column justify-center title-wrapper"
     >
       <h1
         class="mx-auto"
       >
         My projects
       </h1>
+
+      <h4
+        class="mx-auto"
+      >
+        The projects I developed
+      </h4>
     </v-row>
 
     <v-row>
       <v-col
         cols="12"
-        md="3"
+        md="4"
         sm="6"
         v-for="(project, i) in projects"
         :key="i"
@@ -256,29 +234,44 @@
       >
         <v-card
           class="mx-auto"
+          height="100%"
         >
-          <v-img
-            :src="$vuetify.theme.dark ? project.imgWhite : project.img"
-            width="200"
-            class="align-center justify-center"
-          ></v-img>
-
-          <v-card-title>
+          <v-card-title
+           class="justify-center"
+          >
             {{ project.title }}
           </v-card-title>
 
-          <v-card-subtitle>
-            {{ project.content }}
-          </v-card-subtitle>
+          <v-divider
+          ></v-divider>
 
-          <v-card-actions>
+          <v-card-text
+            class="pb-0"
+          >
+            {{ project.content }}
+          </v-card-text>
+
+          <v-card-actions
+            class="pt-auto"
+          >
             <v-spacer></v-spacer>
 
             <v-btn
-              color="orange lighten-2"
               text
+              color="indigo"
+              class="mx-auto"
+              style="textTransform: none; letter-spacing: 0;"
+              :href="project.link"
+              target="_blank"
             >
-              Explore
+              See more
+
+              <img
+                src="@/assets/icons/arrow.svg"
+                height="18"
+                width="18"
+                class="mr-n1 ml-1"
+              >
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -288,6 +281,11 @@
 </template>
 
 <style lang="scss" scoped>
+.title-wrapper {
+  margin-top: 12rem;
+  margin-bottom: 3rem;
+}
+
 h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -412,7 +410,7 @@ export default {
       },
       {
         title: "RESPONSIVE DESIGN",
-        icon: require("@/assets/icons/responsive.svg"),
+        icon: require("@/assets/icons/mobile.svg"),
         text: "caca tambien",
         descriptions: [
           "caca1",
@@ -422,7 +420,7 @@ export default {
       },
       {
         title: "UI / UX",
-        icon: require("@/assets/icons/crosshair.svg"),
+        icon: require("@/assets/icons/grid.svg"),
         text: "caca tambien",
         descriptions: [
           "caca1",
@@ -432,7 +430,7 @@ export default {
       },
       {
         title: "WEB DEVELOPMENT",
-        icon: require("@/assets/icons/settings.svg"),
+        icon: require("@/assets/icons/dashboard.svg"),
         text: "caca tambien",
         descriptions: [
           "caca1",
@@ -443,16 +441,13 @@ export default {
     projects: [
       {
         title: "Infopueblo",
-        img: require("@/assets/images/infopueblo.png"),
-        imgWhite: require("@/assets/images/infopueblo-white.png"),
-        content: "cacadevaca",
-        repository: "https://github.com/julidpt/Infopueblo-Frontend"
+        content: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities",
+        link: "https://github.com/julidpt/Infopueblo-Frontend"
       },
       {
-        title: "Infopueblo",
-        img: require("@/assets/images/infopueblo-white.png"),
-        content: "cacadevaca",
-        repository: "https://github.com/julidpt/Infopueblo-Frontend"
+        title: "Ada 2012 Compiler",
+        content: "Basic compiler for Ada 2012 using Flex and Bison.",
+        link: "https://github.com/julidpt/Compilador"
       }
     ],
     info: { },

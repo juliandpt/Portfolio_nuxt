@@ -31,7 +31,7 @@
             elevation="0"
             color="indigo"
             to="/contact"
-            style="textTransform: none"
+            style="textTransform: none; letter-spacing: 0;"
           >
             Contact me
 
@@ -56,26 +56,13 @@
           large
           fab
           color="indigo"
-          href="https://www.linkedin.com/in/julián-de-pablo-torremocha"
+          v-for="(social, i) in socials"
+          :key="i"
+          :href="social.link"
           target="_blank"
         >
           <img
-            src="@/assets/icons/linkedin.svg"
-            height="28"
-            width="28"
-          >
-        </v-btn>
-
-        <v-btn 
-          icon
-          large
-          fab
-          color="indigo"
-          href="https://github.com/julidpt"
-          target="_blank"
-        >
-          <img
-            src="@/assets/icons/github.svg"
+            :src="social.icon"
             height="28"
             width="28"
           >
@@ -104,5 +91,21 @@ export default {
       title: "Home",
     };
   },
+  data: () => ({
+    socials: [
+      {
+        icon: require("@/assets/icons/linkedin.svg"),
+        link: 'https://www.linkedin.com/in/julián-de-pablo-torremocha'
+      },
+      {
+        icon: require("@/assets/icons/dribbble.svg"),
+        link: 'https://dribbble.com/juliandpt'
+      },
+      {
+        icon: require("@/assets/icons/github.svg"),
+        link: 'https://github.com/julidpt'
+      }
+    ]
+  })
 };
 </script>

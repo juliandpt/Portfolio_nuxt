@@ -23,10 +23,11 @@
 
         <v-card
           flat
-          class="d-flex align-center mb-5"
+          :class="$vuetify.breakpoint.xs ? 'd-flex align-center mb-3 py-4 px-2' : 'd-flex align-center mb-5 py-4 px-2'"
           v-for="(card, i) in cards"
           :key="i"
-          :style="$vuetify.breakpoint.xs ? 'padding: 1rem 0.5rem; width: 100%; border-radius:20px;' : 'padding: 1rem 0.5rem; width: auto; width: 16rem; border-radius:20px;'"
+          :outlined="!$vuetify.theme.dark"
+          :style="$vuetify.breakpoint.xs ? 'width: 100%;' : 'width: 16rem;'"
         >
           <img
             :src="card.icon"
@@ -48,15 +49,21 @@
         sm="6"
       >
         <v-card
-          class="rounded-card"
+          :class="$vuetify.breakpoint.xs ? 'pa-1' : 'pa-10 '"
         >
           <v-form
             v-model="valid"
           >
             <v-card-title
-              style="font-size: 30px, padding-top: 0; padding-bottom: 0; margin-bottom: 40px;"
+              :style="$vuetify.breakpoint.xs ? '' : 'font-size: 30px;'"
+              class="mb-10 py-0"
+              :class="$vuetify.breakpoint.xs ? 'mb-10 pt-4' : 'mb-10 py-0'"
             >
-              Send me a message 🚀
+              <span
+                :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
+              >
+                Send me a message 🚀
+              </span>
             </v-card-title>
 
             <v-card-text
@@ -127,7 +134,9 @@
                 x-large
                 color="indigo"
                 elevation="0"
+                style="textTransform: none; letter-spacing: 0;"
                 :disabled="!valid"
+                :block="$vuetify.breakpoint.xs"
                 :loading="loading"
                 @click="sendEmail()"
               >
@@ -142,10 +151,23 @@
     <v-snackbar
       app
       text
+      outlined
       v-model="snackbarShow"
       :color="color"
     >
-      {{ text }}
+      <v-layout
+        align-center
+        pr-4
+      >
+        <img
+          :src="icon"
+          class="mr-1"
+          height="24"
+          width="24"
+        >
+
+        {{ text }}
+      </v-layout>
 
       <template
         v-slot:action="{ attrs }"
@@ -168,11 +190,6 @@
 <style lang="scss" scoped>
 .container {
   height: 100%;
-}
-
-.rounded-card{
-  border-radius:1.2rem;
-  padding: 2.5rem;
 }
 
 h1 {
@@ -200,6 +217,7 @@ export default {
     loading: false,
     snackbarShow: false,
     text: '',
+    icon: '',
     color: '',
     name: '',
     nameRules: [
@@ -235,16 +253,18 @@ export default {
         message: this.message
       }
 
-      emailjs.send('service_caca', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
+      emailjs.send('service_julian', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
       .then(
         (response) => {
           this.text = 'Email sent Successfuly!'
+          this.icon = require("@/assets/icons/check-green.svg")
           this.color = 'green darken-2'
           this.snackbarShow = true
           this.loading = false
         },
         (error) => {
           this.text = 'An error ocurred'
+          this.icon = require("@/assets/icons/error.svg")
           this.color = 'red'
           this.snackbarShow = true
           this.loading = false

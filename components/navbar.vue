@@ -1,4 +1,4 @@
-<template :style="{ backgroundImage: `url(${backgroundUrl})` }">
+<template>
   <v-container
     v-if="!$vuetify.breakpoint.xs"
   >
@@ -50,7 +50,7 @@
 
         <v-btn
           icon
-          :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+          color="indigo"
           href="https://www.instagram.com/julidpt"
           target="_blank"
         >
@@ -64,7 +64,7 @@
 
         <v-btn
           icon
-          :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+          color="indigo"
           href="https://twitter.com/Depabloj"
           target="_blank"
         >
@@ -78,7 +78,7 @@
 
         <v-btn
           icon
-          :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+          color="indigo"
           href="https://www.facebook.com/juli.depablo"
           target="_blank"
         >
@@ -90,11 +90,39 @@
           >
         </v-btn>
 
-        <v-switch
-          v-model="$vuetify.theme.dark"
+        <v-divider
+          inset
+          vertical
+          class="mx-1"
+        ></v-divider>
+        
+        <v-btn
+          icon
           color="indigo"
-          hide-details
-        ></v-switch>
+          v-if="!$vuetify.theme.dark"
+          @click="toggleTheme()"
+        >
+          <img
+            src="@/assets/icons/moon.svg"
+            alt="facebook"
+            height="24"
+            width="24"
+          >
+        </v-btn>
+
+        <v-btn
+          icon
+          color="indigo"
+          v-else
+          @click="toggleTheme()"
+        >
+          <img
+            src="@/assets/icons/sun.svg"
+            alt="facebook"
+            height="30"
+            width="30"
+          >
+        </v-btn>
       </v-toolbar> 
     </v-card>
   </v-container>
@@ -109,18 +137,14 @@
 .v-input__control {
   margin: 0 0 0 0.5em;
 }
-
-.v-toolbar__title {
-  font-family: "Signatura", cursive;
-  font-size: 3rem;
-  padding: 0 0.1em;
-}
 </style>
 
 <script>
 export default({
-  darkMode() {
-    this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+  methods: {
+    toggleTheme: function () {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+    }
   }
 })
 </script>

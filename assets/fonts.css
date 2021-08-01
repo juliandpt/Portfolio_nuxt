@@ -5,19 +5,3 @@
     font-display: swap;
     src: url('~assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
 }
-
-@font-face {
-    font-family: 'Caveat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('~assets/fonts/Caveat/Caveat-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Signatura';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('~assets/fonts/Signatura/Signatura Monoline.ttf') format('truetype');
-}

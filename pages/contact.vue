@@ -27,7 +27,7 @@
           v-for="(card, i) in cards"
           :key="i"
           :outlined="!$vuetify.theme.dark"
-          :style="$vuetify.breakpoint.xs ? 'width: 100%;' : 'width: 16rem;'"
+          :style="$vuetify.breakpoint.xs ? 'width: 100%;' : 'width: 18rem;'"
         >
           <img
             :src="card.icon"
@@ -38,9 +38,20 @@
 
           <v-card-text
             class="pa-0"
+            ref="textToCopy"
           >
             {{ card.text }}
           </v-card-text>
+
+          <v-btn
+            icon
+            color="grey"
+            @click="copyText(card.text)"
+          >
+            <v-icon>
+              mdi-content-copy
+            </v-icon>
+          </v-btn>
         </v-card>
       </v-col>
 
@@ -129,12 +140,12 @@
             <v-card-text
               class="pt-0"
             >
-              <v-btn 
-                dark
+              <v-btn
                 x-large
                 color="indigo"
                 elevation="0"
                 style="textTransform: none; letter-spacing: 0;"
+                :dark="valid"
                 :disabled="!valid"
                 :block="$vuetify.breakpoint.xs"
                 :loading="loading"
@@ -221,16 +232,16 @@ export default {
     color: '',
     name: '',
     nameRules: [
-      value => !!value || 'Name is required'
+      value => !!value
     ],
     email: '',
     emailRules: [
-      value => !!value || 'E-mail is required',
-      value => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/.test(value) || 'E-mail must be valid',
+      value => !!value,
+      value => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/.test(value),
     ],
     message: '',
     messageRules: [
-      value => !!value || 'Message is required'
+      value => !!value
     ],
     cards: [
       {
@@ -270,6 +281,9 @@ export default {
           this.loading = false
         }
       )
+    },
+    copyText: function (text) {
+      navigator.clipboard.writeText(text);
     }
   }
 };

@@ -56,13 +56,56 @@
         class="flex"
       >
         <v-card-title>
-          <span
-            class="mx-auto"
-          >
+          <span>
             Julián de Pablo © {{ new Date().getFullYear() }}. All rights reserved
           </span>
+
+          <v-spacer></v-spacer>
+
+          <div>
+            <v-btn
+              icon
+              large
+              color="indigo"
+              v-for="(social, i) in socials"
+              :key="i"
+              :href="social.link"
+              target="_blank"
+            >
+              <img
+                :src="social.icon"
+                height="24"
+                width="24"
+              >
+            </v-btn>
+          </div>
         </v-card-title>
       </v-card>
     </v-footer>
   </v-container>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    socials: [
+      {
+        icon: require("@/assets/icons/instagram.svg"),
+        link: "https://www.instagram.com/julidpt"
+      },
+      {
+        icon: require("@/assets/icons/twitter.svg"),
+        link: "https://twitter.com/Depabloj"
+      },
+      {
+        icon: require("@/assets/icons/facebook.svg"),
+        link: "https://www.facebook.com/juli.depablo"
+      },
+      {
+        icon: require("@/assets/icons/linkedin.svg"),
+        link: 'https://www.linkedin.com/in/julián-de-pablo-torremocha'
+      }
+    ]
+  })
+}
+</script>

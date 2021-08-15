@@ -282,7 +282,7 @@
 
 <style lang="scss" scoped>
 .title-wrapper {
-  margin-top: 12rem;
+  margin-top: 8rem;
   margin-bottom: 3rem;
 }
 
@@ -316,15 +316,15 @@ export default {
           },
           {
             title: "CSS",
-            value: 60
+            value: 40
           },
           {
             title: "Javascript",
-            value: 70
+            value: 50
           },
           {
             title: "Angular",
-            value: 70
+            value: 50
           },
           {
             title: "Vue",
@@ -337,12 +337,12 @@ export default {
         icon: require("@/assets/icons/server.svg"),
         cards: [
           {
-            title: "Node",
-            value: 70
+            title: "Node.js",
+            value: 50
           },
           {
             title: "Flask",
-            value: 70
+            value: 50
           },
         ]
       },
@@ -360,7 +360,7 @@ export default {
           },
           {
             title: "Firebase",
-            value: 60
+            value: 20
           }
         ]
       },
@@ -374,11 +374,11 @@ export default {
           },
           {
             title: "Java",
-            value: 70
+            value: 40
           },
           {
             title: "C++",
-            value: 60
+            value: 40
           }
         ]
       },

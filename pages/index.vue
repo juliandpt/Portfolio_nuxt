@@ -3,16 +3,29 @@
     :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
     <v-row>
-      <v-col
+       <v-col
         cols="12"
-        md="6"
-        sm="12"
-        class="d-flex flex-column justify-center"
+        md="2"
+        sm="2"
+        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center' : 'd-flex flex-column justify-center'"
       >
-        <img
-          src="@/assets/images/blob.svg"
+        <v-btn
+          icon
+          large
+          fab
+          color="indigo"
+          v-for="(social, i) in socials"
+          :key="i"
+          :href="social.link"
+          target="_blank"
         >
-      </v-col>
+          <img
+            :src="social.icon"
+            height="28"
+            width="28"
+          >
+        </v-btn>
+       </v-col>
 
       <v-col
         cols="12"
@@ -20,10 +33,16 @@
         sm="10"
         :class="$vuetify.breakpoint.xs ? 'd-flex flex-column justify-center align-center' : 'd-flex flex-column justify-center'"
       >
-        <span>Hello!</span>
+        <h1>Hello!</h1>
+
         <h1>I'm Julián</h1>
-        <h2>Software Engineer</h2>
-        <p>caca</p>
+
+        <h2
+          class="grey--text mb-4"
+        >
+          Software Engineer
+        </h2>
+        
         <div>
           <v-btn
             dark
@@ -47,26 +66,13 @@
 
       <v-col
         cols="12"
-        md="2"
-        sm="2"
-        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center' : 'd-flex flex-column justify-center'"
+        md="6"
+        sm="12"
+        class="d-flex flex-column justify-center"
       >
-        <v-btn
-          icon
-          large
-          fab
-          color="indigo"
-          v-for="(social, i) in socials"
-          :key="i"
-          :href="social.link"
-          target="_blank"
+        <img
+          src="@/assets/images/blob.svg"
         >
-          <img
-            :src="social.icon"
-            height="28"
-            width="28"
-          >
-        </v-btn>
       </v-col>
     </v-row>
   </v-container>

@@ -36,10 +36,8 @@
         sm="12"
       >
         <v-row>
-          <v-col
-            class="text-center"
-          >
-            <p>mmmmmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmmmmmm</p>
+          <v-col>
+            <p>I am a computer engineering student finishing the last year of my degree. I am passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.</p>
           </v-col>
         </v-row>
 
@@ -221,7 +219,7 @@
 
 <style lang="scss" scoped>
 .title-wrapper {
-  margin-top: 12rem;
+  margin-top: 8rem;
   margin-bottom: 3rem;
 }
 
@@ -251,7 +249,7 @@ export default {
       },
       {
         title: 'Projects',
-        value: '1'
+        value: '2'
       },
       {
         title: 'Companies',

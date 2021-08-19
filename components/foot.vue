@@ -1,53 +1,50 @@
 <template>
-  <v-bottom-navigation
-    app
-    v-if="$vuetify.breakpoint.xs"
-    style="z-index: 999;"
-    color="transparent"
-  >
-    <v-btn to="/">
-      <img
-        src="@/assets/icons/home.svg"
-        alt="instagram"
-        height="24"
-        width="24"
-      >
-    </v-btn>
-
-    <v-btn to="/about">
-      <img
-        src="@/assets/icons/info.svg"
-        alt="instagram" 
-        height="24"
-        width="24"
-      >
-    </v-btn>
-
-    <v-btn to="/skills">
-      <img
-        src="@/assets/icons/laptop.svg"
-        alt="instagram" 
-        height="24"
-        width="24"
-      >
-    </v-btn>
-
-    <v-btn to="/contact">
-      <img
-        src="@/assets/icons/at.svg"
-        alt="instagram" 
-        height="24"
-        width="24"
-      >
-    </v-btn>
-  </v-bottom-navigation>
-
-  <v-container
-    v-else
-  >
+  <v-container>
     <v-footer
       padless
       color="transparent"
+      v-if="$vuetify.breakpoint.xs"
+    >
+      <v-card
+        flat
+        tile
+        width="100%"
+        color="transparent"
+        class="text-center"
+      >
+        <v-card-text
+          class="pa-0"
+        >
+          <v-btn
+            icon
+            large
+            color="indigo"
+            class="mx-1"
+            v-for="(social, i) in socials"
+            :key="i"
+            :href="social.link"
+            target="_blank"
+          >
+            <img
+              :src="social.icon"
+              height="24"
+              width="24"
+            >
+          </v-btn>
+        </v-card-text>
+
+        <v-card-text
+          class="pa-0"
+        >
+          Julián de Pablo © {{ new Date().getFullYear() }}. All rights reserved
+        </v-card-text>
+      </v-card>
+    </v-footer>
+
+    <v-footer
+      padless
+      color="transparent"
+      v-else
     >
       <v-card
         flat

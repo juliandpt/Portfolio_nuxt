@@ -161,8 +161,7 @@
 
     <v-snackbar
       app
-      text
-      outlined
+      :text="!$vuetify.theme.dark"
       v-model="snackbarShow"
       :color="color"
     >
@@ -186,7 +185,7 @@
         <v-btn
           icon
           v-bind="attrs"
-          :color="color"
+          :color="closeColor"
           @click="snackbarShow = false"
         >
           <v-icon>
@@ -230,6 +229,7 @@ export default {
     text: '',
     icon: '',
     color: '',
+    closeColor: '',
     name: '',
     nameRules: [
       value => !!value
@@ -268,15 +268,27 @@ export default {
       .then(
         (response) => {
           this.text = 'Email sent Successfuly!'
-          this.icon = require("@/assets/icons/check-green.svg")
           this.color = 'green darken-2'
+          if (this.$vuetify.theme.dark) {
+            this.icon = require("@/assets/icons/check-white.svg")
+            this.closeColor = 'white'
+          } else {
+            this.icon = require("@/assets/icons/check-green.svg")
+            this.closeColor = this.color
+          }
           this.snackbarShow = true
           this.loading = false
         },
         (error) => {
           this.text = 'An error ocurred'
-          this.icon = require("@/assets/icons/error.svg")
-          this.color = 'red'
+          this.color = 'red darken-3'
+          if (this.$vuetify.theme.dark) {
+            this.icon = require("@/assets/icons/error-white.svg")
+            this.closeColor = 'white'
+          } else {
+            this.icon = require("@/assets/icons/error.svg")
+            this.closeColor = this.color
+          }
           this.snackbarShow = true
           this.loading = false
         }

@@ -64,7 +64,7 @@
 
         <v-btn
           icon
-          plain
+          :plain="!$vuetify.breakpoint.xs"
           color="black"
           v-if="!$vuetify.theme.dark"
           @click="toggleTheme()"
@@ -79,7 +79,7 @@
 
         <v-btn
           icon
-          plain
+          :plain="!$vuetify.breakpoint.xs"
           color="white"
           v-else
           @click="toggleTheme()"

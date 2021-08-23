@@ -45,12 +45,23 @@
 
           <v-btn
             icon
+            :disabled="card.copied"
             color="grey"
-            @click="copyText(card.text)"
+            @click="copyText(card.text, i)"
           >
-            <v-icon>
-              mdi-content-copy
-            </v-icon>
+            <img
+              height="24"
+              width="24"
+              src="@/assets/icons/check.svg"
+              v-if="card.copied"
+            >
+
+            <img
+              height="24"
+              width="24"
+              src="@/assets/icons/copy.svg"
+              v-else
+            >
           </v-btn>
         </v-card>
       </v-col>
@@ -163,17 +174,42 @@
       app
       :text="!$vuetify.theme.dark"
       v-model="snackbarShow"
-      :color="color"
+      :color="error ? 'red darken-3' : 'green darken-2'"
     >
       <v-layout
         align-center
         pr-4
       >
         <img
-          :src="icon"
+          src="@/assets/icons/error-white.svg"
           class="mr-1"
           height="24"
           width="24"
+          v-if="error && $vuetify.theme.dark"
+        >
+
+        <img
+          src="@/assets/icons/error.svg"
+          class="mr-1"
+          height="24"
+          width="24"
+          v-if="error && !$vuetify.theme.dark"
+        >
+
+        <img
+          src="@/assets/icons/circle-check-white.svg"
+          class="mr-1"
+          height="24"
+          width="24"
+          v-if="!error && $vuetify.theme.dark"
+        >
+
+        <img
+          src="@/assets/icons/circle-check-green.svg"
+          class="mr-1"
+          height="24"
+          width="24"
+          v-if="!error && !$vuetify.theme.dark"
         >
 
         {{ text }}
@@ -185,12 +221,28 @@
         <v-btn
           icon
           v-bind="attrs"
-          :color="closeColor"
           @click="snackbarShow = false"
         >
-          <v-icon>
-            mdi-window-close
-          </v-icon>
+          <img
+            src="@/assets/icons/close-white.svg"
+            height="24"
+            width="24"
+            v-if="$vuetify.theme.dark"
+          >
+
+          <img
+            src="@/assets/icons/close-red.svg"
+            height="24"
+            width="24"
+            v-if="!$vuetify.theme.dark && error"
+          >
+
+          <img
+            src="@/assets/icons/close-green.svg"
+            height="24"
+            width="24"
+            v-if="!$vuetify.theme.dark && !error"
+          >
         </v-btn>
       </template>
     </v-snackbar>
@@ -224,12 +276,13 @@ export default {
   },
   data: () => ({
     valid: false,
+
     loading: false,
+
     snackbarShow: false,
     text: '',
-    icon: '',
-    color: '',
-    closeColor: '',
+    error: false,
+
     name: '',
     nameRules: [
       value => !!value
@@ -246,11 +299,13 @@ export default {
     cards: [
       {
         icon: require("@/assets/icons/mail.svg"),
-        text: "juliandpt98@gmail.com"
+        text: "juliandpt98@gmail.com",
+        copied: false
       },
       {
         icon: require("@/assets/icons/phone.svg"),
-        text: "+34 620 69 69 68"
+        text: "+34 620 69 69 68",
+        copied: false
       }
     ]
   }),
@@ -268,34 +323,25 @@ export default {
       .then(
         (response) => {
           this.text = 'Email sent Successfuly!'
-          this.color = 'green darken-2'
-          if (this.$vuetify.theme.dark) {
-            this.icon = require("@/assets/icons/check-white.svg")
-            this.closeColor = 'white'
-          } else {
-            this.icon = require("@/assets/icons/check-green.svg")
-            this.closeColor = this.color
-          }
           this.snackbarShow = true
           this.loading = false
         },
         (error) => {
           this.text = 'An error ocurred'
-          this.color = 'red darken-3'
-          if (this.$vuetify.theme.dark) {
-            this.icon = require("@/assets/icons/error-white.svg")
-            this.closeColor = 'white'
-          } else {
-            this.icon = require("@/assets/icons/error.svg")
-            this.closeColor = this.color
-          }
+          this.error = true
           this.snackbarShow = true
           this.loading = false
         }
       )
     },
-    copyText: function (text) {
+    copyText: function (text, i) {
       navigator.clipboard.writeText(text);
+
+      this.cards[i].copied = true
+
+      setTimeout (() => {
+        this.cards[i].copied = false
+      }, 3000)
     }
   }
 };

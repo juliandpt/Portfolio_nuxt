@@ -194,13 +194,12 @@
           >
             <div class="d-flex align-center">
               <img
-                src="@/assets/icons/check.svg"
+                src="@/assets/icons/circle-check.svg"
                 height="18"
                 width="18"
                 class="pa-0 mr-3"
               >
-
-              {{ description }}
+                {{ description }}
             </div>
           </v-card-text>
         </v-card>

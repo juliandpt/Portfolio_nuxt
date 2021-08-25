@@ -109,7 +109,7 @@ export default {
       },
       {
         icon: require("@/assets/icons/github.svg"),
-        link: 'https://github.com/julidpt'
+        link: 'https://github.com/juliandpt'
       }
     ]
   })

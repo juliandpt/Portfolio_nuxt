@@ -12,18 +12,18 @@
         <h1
           :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
         >
-          Contact me
+          Contact me.
         </h1>
 
         <h4
           :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
         >
-          Let's get in touch! 🤟
+          Let's get in touch! &#129311;
         </h4>
 
         <v-card
           flat
-          :class="$vuetify.breakpoint.xs ? 'd-flex align-center mb-3 py-4 px-2' : 'd-flex align-center mb-5 py-4 px-2'"
+          :class="$vuetify.breakpoint.xs ? 'd-flex align-center mt-3 py-4 px-2' : 'd-flex align-center mt-5 py-4 px-2'"
           v-for="(card, i) in cards"
           :key="i"
           :outlined="!$vuetify.theme.dark"
@@ -42,36 +42,49 @@
           >
             {{ card.text }}
           </v-card-text>
-
+          
           <v-btn
             icon
             :disabled="card.copied"
             color="grey"
             @click="copyText(card.text, i)"
           >
-            <img
-              height="24"
-              width="24"
-              src="@/assets/icons/check.svg"
-              v-if="card.copied"
+            <!-- v-fade-transition -->
+            <v-scroll-x-transition
+              hide-on-leave
             >
+              <img
+                height="24"
+                width="24"
+                src="@/assets/icons/check.svg"
+                v-if="card.copied"
+              >
+            </v-scroll-x-transition>
 
-            <img
-              height="24"
-              width="24"
-              src="@/assets/icons/copy.svg"
-              v-else
+            <v-scroll-x-transition
+              hide-on-leave
             >
+              <img
+                height="24"
+                width="24"
+                src="@/assets/icons/copy.svg"
+                v-if="!card.copied"
+              >
+            </v-scroll-x-transition>
           </v-btn>
+
+          
         </v-card>
       </v-col>
 
       <v-col
         md="6"
         sm="6"
+        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
         <v-card
-          :class="$vuetify.breakpoint.xs ? 'pa-1' : 'pa-10 '"
+          :outlined="!$vuetify.theme.dark"
+          :class="$vuetify.breakpoint.xs ? 'pa-1' : 'pa-10'"
         >
           <v-form
             v-model="valid"
@@ -82,9 +95,9 @@
               :class="$vuetify.breakpoint.xs ? 'mb-10 pt-4' : 'mb-10 py-0'"
             >
               <span
-                :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
+                class="mx-auto"
               >
-                Send me a message 🚀
+                Send me a message!
               </span>
             </v-card-title>
 
@@ -100,7 +113,7 @@
                 label="Name"
                 v-model="name"
                 hide-details="auto"
-                class="rounded"
+                class="rounded ma-0"
                 :color="$vuetify.theme.dark ? 'white' : 'indigo'"
                 :rules="nameRules"
               >
@@ -155,7 +168,7 @@
                 x-large
                 color="indigo"
                 elevation="0"
-                style="textTransform: none; letter-spacing: 0;"
+                style="textTransform: none; letter-spacing: 0; margin: 0 0 0 0.5em;"
                 :dark="valid"
                 :disabled="!valid"
                 :block="$vuetify.breakpoint.xs"
@@ -319,7 +332,7 @@ export default {
         message: this.message
       }
 
-      emailjs.send('service_julian', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
+      emailjs.send('service_julia', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
       .then(
         (response) => {
           this.text = 'Email sent Successfuly!'

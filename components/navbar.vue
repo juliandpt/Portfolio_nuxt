@@ -22,45 +22,20 @@
 
         <v-spacer></v-spacer>
 
-        <v-btn
-          text
-          plain
-          to="/"
+        <div
           v-if="!$vuetify.breakpoint.xs"
-          style="textTransform: none; letter-spacing: 0;"
         >
-          Home
-        </v-btn>
-
-        <v-btn
-          text
-          plain
-          to="/about"
-          v-if="!$vuetify.breakpoint.xs"
-          style="textTransform: none; letter-spacing: 0;"
-        >
-          About
-        </v-btn>
-
-        <v-btn
-          text
-          plain
-          to="/skills"
-          v-if="!$vuetify.breakpoint.xs"
-          style="textTransform: none; letter-spacing: 0;"
-        >
-          Skills
-        </v-btn>
-
-        <v-btn
-          text
-          plain
-          to="/contact"
-          v-if="!$vuetify.breakpoint.xs"
-          style="textTransform: none; letter-spacing: 0;"
-        >
-          Contact
-        </v-btn>
+          <v-btn
+            text
+            plain
+            style="textTransform: none; letter-spacing: 0;"
+            v-for="(route, i) in routes"
+            :key="i"
+            :to="route.link"
+          >
+            {{ route.title }}
+          </v-btn>
+        </div>
 
         <v-btn
           icon
@@ -102,17 +77,17 @@
     >
       <v-list flat>
         <v-list-item-group
-          v-model="selectedItem"
+          v-model="selectedRoute"
           color="indigo"
         >
           <v-list-item
-            v-for="(item, i) in items"
+            v-for="(route, i) in routes"
             :key="i"
-            :to="item.link"
+            :to="route.link"
           >
             <v-list-item-icon>
               <img
-                :src="item.icon"
+                :src="route.icon"
                 height="28"
                 width="28"
               >
@@ -120,7 +95,7 @@
 
             <v-list-item-content>
               <v-list-item-title
-                v-text="item.title"
+                v-text="route.title"
               ></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -146,8 +121,8 @@ export default({
   data: () => ({
     drawer: false,
     group: null,
-    selectedItem: 0,
-    items: [
+    selectedRoute: 0,
+    routes: [
       {
         title: 'Home',
         icon: require('@/assets/icons/home.svg'),

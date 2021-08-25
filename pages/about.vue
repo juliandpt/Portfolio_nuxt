@@ -79,8 +79,8 @@
               color="indigo"
               class="mx-auto"
               style="textTransform: none; letter-spacing: 0;"
-              download=""
-              href="../static/Julián-CV.pdf"
+              href="Julián-CV.pdf"
+              download
             >
               Download CV
 

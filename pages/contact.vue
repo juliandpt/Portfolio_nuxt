@@ -49,7 +49,6 @@
             color="grey"
             @click="copyText(card.text, i)"
           >
-            <!-- v-fade-transition -->
             <v-scroll-x-transition
               hide-on-leave
             >
@@ -72,8 +71,6 @@
               >
             </v-scroll-x-transition>
           </v-btn>
-
-          
         </v-card>
       </v-col>
 

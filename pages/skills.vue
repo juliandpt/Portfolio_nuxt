@@ -6,7 +6,7 @@
       class="d-flex flex-column justify-center mt-8 mb-4"
     >
       <h1
-        class="mx-auto"
+        class="mx-auto mb-0"
       >
         Skills
       </h1>
@@ -103,7 +103,7 @@
       class="d-flex flex-column justify-center title-wrapper"
     >
       <h1
-        class="mx-auto"
+        class="mx-auto mb-0"
       >
         My Services
       </h1>
@@ -210,7 +210,7 @@
       class="d-flex flex-column justify-center title-wrapper"
     >
       <h1
-        class="mx-auto"
+        class="mx-auto mb-0"
       >
         My projects
       </h1>

@@ -6,7 +6,7 @@
       class="d-flex flex-column justify-center my-8"
     >
       <h1
-        class="mx-auto"
+        class="mx-auto mb-0"
       >
         About Me
       </h1>
@@ -37,7 +37,11 @@
       >
         <v-row>
           <v-col>
-            <p>I am a computer engineering student finishing the last year of my degree. I am passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.</p>
+            <p
+              class="text-center"
+            >
+              I am a computer engineering student finishing the last year of my degree. I am passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.
+            </p>
           </v-col>
         </v-row>
 
@@ -100,7 +104,7 @@
       class="d-flex flex-column justify-center title-wrapper"
     >
       <h1
-        class="mx-auto"
+        class="mx-auto  mb-0"
       >
         Qualification
       </h1>
@@ -119,27 +123,36 @@
           color="transparent"
         >
           <v-tabs
-            v-model="tab"
-            align-with-title
+            centered
             background-color="transparent"
             color="indigo"
-            class="mx-auto"
+            v-model="tab"
           >
             <v-tabs-slider
               color="transparent"
             ></v-tabs-slider>
 
             <v-tab
+              style="textTransform: none; letter-spacing: 0;"
               v-for="(qualification, i) in qualifications"
               :key="i"
-              :class="(i % 2 == 0) ? 'ml-auto' : 'mr-auto'"
             >
               <img
                 :src="qualification.icon"
                 height="30"
                 width="30"
                 class="mx-1"
+                v-if="tab == i"
               >
+
+              <img
+                :src="qualification.icon_grey"
+                height="30"
+                width="30"
+                class="mx-1"
+                v-else
+              >
+
               {{ qualification.title }}
             </v-tab>
           </v-tabs>
@@ -154,26 +167,26 @@
               <template>
                 <v-timeline
                   align-top
-                  class="px-4 py-0 my-4"
-                  color="transparent"
+                  class="px-4 py-0 my-12"
+                  style="background-color: transparent !important;"
                 >
                   <v-timeline-item
                     color="indigo"
                     small
+                    fill-dot
                     v-for="(item, j) in qualification.items"
                     :key="j"
                     class="pa-0"
                   >
                     <v-card
-                    flat
-                    color="transparent"
-                    class="ml-auto"
+                      flat
+                      color="transparent"
+                      :style="!$vuetify.breakpoint.xs && j%2 != 0 ? 'padding-left: 45%' : ''"
                     >
                       <v-card-title
-                        class="pt-0 px-0"
+                        class="pt-0 px-0 pb-1"
                       >
                         <h2
-                          :class="j%2 != 0 ? 'ml-auto' : ''"
                           :style="$vuetify.breakpoint.xs ? 'font-size: 1em' : ''"
                         >
                           {{ item.title }}
@@ -181,26 +194,19 @@
                       </v-card-title>
 
                       <v-card-text
-                        class="d-flex align-center px-0"
+                        class="d-flex align-center px-0 grey--text"
                       >
-                        <img
-                          src="@/assets/icons/location.svg"
-                          height="24"
-                          width="24"
-                          :class="j%2 != 0 ? 'ml-auto mr-2' : 'mr-2'"
-                        >
-
                         {{ item.location }}
                       </v-card-text>
 
                       <v-card-text
-                        class="d-flex align-center py-0 px-0"
+                        class="d-flex align-center py-0 px-0 grey--text"
                       >
                         <img
                           src="@/assets/icons/date.svg"
                           height="24"
                           width="24"
-                          :class="j%2 != 0 ? 'ml-auto mr-2' : 'mr-2'"
+                          class="mr-2"
                         >
 
                         {{ item.date }}
@@ -242,6 +248,7 @@ export default {
     }
   },
   data: () => ({
+    tab: 0,
     experiences: [
       {
         title: 'Years experience',
@@ -260,6 +267,7 @@ export default {
       {
         title: "Education",
         icon: require("@/assets/icons/education.svg"),
+        icon_grey: require("@/assets/icons/education-grey.svg"),
         items: [
           {
             title: "Bachiller",
@@ -276,6 +284,7 @@ export default {
       {
         title: "Work",
         icon: require("@/assets/icons/work.svg"),
+        icon_grey: require("@/assets/icons/work-grey.svg"),
         items: [
           {
             title: "Incoming...",
@@ -285,7 +294,6 @@ export default {
         ]
       }
     ],
-    tab: null,
   })
 };
 </script>

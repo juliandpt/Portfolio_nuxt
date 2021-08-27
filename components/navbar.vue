@@ -40,31 +40,32 @@
         <v-btn
           icon
           :plain="!$vuetify.breakpoint.xs"
-          color="black"
-          v-if="!$vuetify.theme.dark"
+          :color="$vuetify.theme.dark ? 'black' : 'white'"
           @click="toggleTheme()"
         >
-          <img
-            src="@/assets/icons/moon-dark.svg"
-            alt="facebook"
-            height="24"
-            width="24"
+          <v-fab-transition
+            hide-on-leave
           >
-        </v-btn>
+            <img
+              src="@/assets/icons/moon-dark.svg"
+              alt="facebook"
+              height="24"
+              width="24"
+              v-if="!$vuetify.theme.dark"
+            >
+          </v-fab-transition>
 
-        <v-btn
-          icon
-          :plain="!$vuetify.breakpoint.xs"
-          color="white"
-          v-else
-          @click="toggleTheme()"
-        >
-          <img
-            src="@/assets/icons/sun-white.svg"
-            alt="facebook"
-            height="30"
-            width="30"
+          <v-fab-transition
+            hide-on-leave
           >
+            <img
+              src="@/assets/icons/sun-white.svg"
+              alt="facebook"
+              height="30"
+              width="30"
+              v-if="$vuetify.theme.dark"
+            >
+          </v-fab-transition>
         </v-btn>
       </v-app-bar>
     </v-card>

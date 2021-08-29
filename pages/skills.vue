@@ -223,58 +223,81 @@
     </v-row>
 
     <v-row>
-      <v-col
-        cols="12"
-        md="4"
-        sm="6"
-        v-for="(project, i) in projects"
-        :key="i"
-        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
+      <v-sheet
+        color="transparent"
+        class="mx-auto"
+        width="100%"
+        max-width="800"
       >
-        <v-card
-          class="mx-auto"
-          height="100%"
+        <v-slide-group
+          v-model="model"
+          class="custom pa-4"
+          active-class="success"
         >
-          <v-card-title
-           class="justify-center"
+          <v-slide-item
+            class="ma-1"
+            v-for="(project, i) in projects"
+            :key="i"
           >
-            {{ project.title }}
-          </v-card-title>
-
-          <v-divider
-          ></v-divider>
-
-          <v-card-text
-            class="pb-0"
-          >
-            {{ project.content }}
-          </v-card-text>
-
-          <v-card-actions
-            class="pt-auto"
-          >
-            <v-spacer></v-spacer>
-
-            <v-btn
-              text
-              color="indigo"
-              class="mx-auto"
-              style="textTransform: none; letter-spacing: 0;"
-              :href="project.link"
-              target="_blank"
+            <v-card
+              color="transparent"
+              elevation="0"
+              width="655"
             >
-              See more
-
-              <img
-                src="@/assets/icons/arrow.svg"
-                height="18"
-                width="18"
-                class="mr-n1 ml-1"
+              <v-row
+                class="fill-height"
+                align="center"
+                justify="center"
               >
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
+                <v-col
+                  md="6"
+                  sm="12"
+                  class="d-flex justify-center"
+                >
+                  <img
+                    src="@/assets/images/me-profile.png"
+                    height="300"
+                    width="230"
+                  >
+                </v-col>
+
+                <v-col
+                  md="6"
+                  sm="12"
+                >
+                  <v-card-title>
+                    {{ project.title }}
+                  </v-card-title>
+
+                  <v-card-text>
+                    {{ project.description }}
+                  </v-card-text>
+
+                  <v-card-actions>
+                    <v-btn
+                      dark
+                      elevation="0"
+                      color="indigo"
+                      style="textTransform: none; letter-spacing: 0;"
+                      :href="project.link"
+                      target="_blank"
+                    >
+                      See more
+
+                      <img
+                        src="@/assets/icons/arrow.svg"
+                        height="18"
+                        width="18"
+                        class="mr-n1 ml-2"
+                      >
+                    </v-btn>
+                  </v-card-actions>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-slide-item>
+        </v-slide-group>
+      </v-sheet>
     </v-row>
   </v-container>
 </template>
@@ -304,6 +327,9 @@ export default {
     }
   },
   data: () => ({
+    model: null,
+    dialog: false,
+    info: { },
     skills: [
       {
         title: "Frontend",
@@ -440,17 +466,20 @@ export default {
     projects: [
       {
         title: "Infopueblo",
-        content: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities",
+        description: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities",
         link: "https://github.com/julidpt/Infopueblo-Frontend"
       },
       {
         title: "Ada 2012 Compiler",
-        content: "Basic compiler for Ada 2012 using Flex and Bison.",
+        description: "Basic compiler for Ada 2012 using Flex and Bison.",
+        link: "https://github.com/julidpt/Compilador"
+      },
+      {
+        title: "Ada 2012 Compiler",
+        description: "Basic compiler for Ada 2012 using Flex and Bison.",
         link: "https://github.com/julidpt/Compilador"
       }
     ],
-    info: { },
-    dialog: false
   }),
   methods: {
     showInfo (data) {

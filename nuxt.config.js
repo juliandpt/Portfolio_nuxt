@@ -46,6 +46,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    // https://firebase.nuxtjs.org/
+    '@nuxtjs/firebase'
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -60,11 +62,31 @@ export default {
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
+          error: colors.red.accent2,
           success: colors.green.accent3
         }
       }
     }
+  },
+
+  firebase: {
+    config: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: "portfolio-juliandpt.firebaseapp.com",
+      projectId: "portfolio-juliandpt",
+      storageBucket: "portfolio-juliandpt.appspot.com",
+      messagingSenderId: "693697573848",
+      appId: process.env.FIREBASE_APP_ID,
+      measurementId: "G-46EEMHMP42"
+    },
+    services: {
+      auth: true
+    }
+  },
+
+  env: {
+    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

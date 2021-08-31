@@ -80,7 +80,7 @@
               dark
               x-large
               elevation="0"
-              color="indigo"
+              color="primary"
               class="mx-auto"
               style="textTransform: none; letter-spacing: 0;"
               href="Julián-CV.pdf"
@@ -125,7 +125,7 @@
           <v-tabs
             centered
             background-color="transparent"
-            color="indigo"
+            color="primary"
             v-model="tab"
           >
             <v-tabs-slider
@@ -171,7 +171,7 @@
                   style="background-color: transparent !important;"
                 >
                   <v-timeline-item
-                    color="indigo"
+                    color="primary"
                     small
                     fill-dot
                     v-for="(item, j) in qualification.items"

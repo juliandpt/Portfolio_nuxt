@@ -104,14 +104,14 @@
               <v-text-field
                 filled
                 rounded
-                clearable
                 required
+                clearable
                 clear-icon="mdi-window-close"
                 label="Name"
-                v-model="name"
                 hide-details="auto"
                 class="rounded ma-0"
-                :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+                color="primary"
+                v-model="name"
                 :rules="nameRules"
               >
               </v-text-field>
@@ -124,15 +124,15 @@
                 filled
                 rounded
                 auto-grow
-                clearable
                 required
+                clearable
                 clear-icon="mdi-window-close"
                 label="Email"
-                v-model="email"
                 placeholder="example@gmail.com"
                 hide-details="auto"
                 class="rounded"
-                :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+                color="primary"
+                v-model="email"
                 :rules="emailRules"
               >
               </v-text-field>
@@ -146,14 +146,14 @@
                 rounded
                 auto-grow
                 counter
-                clearable
                 required
+                clearable
                 clear-icon="mdi-window-close"
-                maxlength="500"
                 label="Message"
-                v-model="message"
                 class="rounded"
-                :color="$vuetify.theme.dark ? 'white' : 'indigo'"
+                color="primary"
+                maxlength="500"
+                v-model="message"
                 :rules="messageRules"
               ></v-textarea>
             </v-card-text>
@@ -163,9 +163,9 @@
             >
               <v-btn
                 x-large
-                color="indigo"
+                color="primary"
                 elevation="0"
-                style="textTransform: none; letter-spacing: 0; margin: 0 0 0 0.5em;"
+                style="textTransform: none; letter-spacing: 0;"
                 :dark="valid"
                 :disabled="!valid"
                 :block="$vuetify.breakpoint.xs"

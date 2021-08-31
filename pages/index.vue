@@ -48,7 +48,7 @@
             dark
             x-large
             elevation="0"
-            color="indigo"
+            color="primary"
             to="/contact"
             style="textTransform: none; letter-spacing: 0;"
           >

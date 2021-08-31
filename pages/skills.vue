@@ -29,7 +29,9 @@
         <v-expansion-panels
           flat
         >
-          <v-expansion-panel>
+          <v-expansion-panel
+            class="transparent"
+          >
             <v-expansion-panel-header>
               <div
                 class="d-flex align-center"
@@ -48,7 +50,7 @@
                 v-slot:actions
               >
                 <v-icon
-                  color="indigo"
+                  color="primary"
                 >
                   $expand
                 </v-icon>
@@ -88,7 +90,7 @@
                 >
                   <v-progress-linear
                     rounded
-                    color="indigo"
+                    color="primary"
                     :value="card.value"
                   ></v-progress-linear>
                 </v-card-text>
@@ -150,10 +152,10 @@
               <v-overlay
                 v-if="hover"
                 absolute
-                :color="$vuetify.theme.dark ? 'grey darken-4' : 'indigo lighten-5'"
+                :color="$vuetify.theme.dark ? 'secondary' : 'grey lighten-4'"
               >
                 <v-btn
-                  color="indigo"
+                  color="primary"
                   style="textTransform: none; letter-spacing: 0;"
                   @click="showInfo(service)"
                 >
@@ -179,7 +181,7 @@
 
             <v-btn
               icon
-              color="indigo"
+              color="primary"
               @click="dialog = false"
             >
               <v-icon>
@@ -277,7 +279,7 @@
                     <v-btn
                       dark
                       elevation="0"
-                      color="indigo"
+                      color="primary"
                       style="textTransform: none; letter-spacing: 0;"
                       :href="project.link"
                       target="_blank"

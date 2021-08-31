@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <navbar
-      v-show="$route.name !== 'dashboard'"
+      v-show="$route.name !== 'dashboard' && $route.name !== 'login'"
     />
 
     <v-main>
@@ -9,7 +9,7 @@
     </v-main>
 
     <foot
-      v-show="$route.name !== 'dashboard'"
+      v-show="$route.name !== 'dashboard' && $route.name !== 'login'"
     />
   </v-app>
 </template>

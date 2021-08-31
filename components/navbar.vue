@@ -47,7 +47,7 @@
             hide-on-leave
           >
             <img
-              src="@/assets/icons/moon-dark.svg"
+              src="@/assets/icons/moon.svg"
               alt="facebook"
               height="24"
               width="24"
@@ -59,7 +59,7 @@
             hide-on-leave
           >
             <img
-              src="@/assets/icons/sun-white.svg"
+              src="@/assets/icons/sun.svg"
               alt="facebook"
               height="30"
               width="30"
@@ -109,11 +109,7 @@
 <style lang="scss">
 .v-btn--active {
   background-color: transparent !important;
-  color: #3f51b5 !important;
-}
-
-.v-input__control {
-  margin: 0 0 0 0.5em;
+  color: #536DFE !important;
 }
 </style>
 

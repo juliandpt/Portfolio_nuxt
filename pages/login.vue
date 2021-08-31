@@ -4,7 +4,6 @@
     :style="$vuetify.breakpoint.xl ? 'padding: 0 15%; height: 100%;' : 'height: 100%;'"
   >
     <v-row>
-
       <v-col
         md=6
         sm=12
@@ -13,7 +12,7 @@
       >
         <img
           src="@/assets/images/pc.png"
-          height="100%"
+          height="auto"
           width="100%"
         >
       </v-col>
@@ -27,65 +26,71 @@
           color="transparent"
           elevation="0"
           class="pa-0"
-          min-width="75%"
-          :max-width="$vuetify.breakpoint.xs ? '' : '75%'"
+          width="100%"
+          :max-width="$vuetify.breakpoint.xs ? '100%' : '75%'"
         >
           <v-form
             v-model="valid"
           >
             <v-card-title
-              class="mb-10 py-0"
+              :class="$vuetify.breakpoint.xs ? 'justify-center' : 'mb-5'"
             >
-              <h1 
-                class="mb-5"
-              >
-                Log in
+              <h1>
+                Hello, Me!
               </h1>
             </v-card-title>
 
-            <v-card-subtitle>
-              
+            <v-card-subtitle
+              :class="$vuetify.breakpoint.xs ? 'mb-5 mt-0 text-center primary--text' : 'mb-5 primary--text'"
+            >
+              <span>
+                Sign in to acces to the portfolio dashboard
+              </span>
             </v-card-subtitle>
 
             <v-card-text
-              class="py-6"
+              class="pt-6 pb-3"
             >
               <v-text-field
                 outlined
-                auto-grow
                 required
-                hide-details="auto"
+                hide-details
+                clearable
+                clear-icon="mdi-window-close"
                 label="Email"
-                color="indigo accent-2"
+                color="primary"
                 v-model="email"
+                :append-icon="email == '' || email == null ? 'mdi-email-outline' : ''"
                 :rules="emailRules"
               >
               </v-text-field>
             </v-card-text>
 
             <v-card-text
-              class="py-6"
+              class="pt-6 pb-3"
             >
               <v-text-field
                 outlined
                 auto-grow
                 required
-                hide-details="auto"
+                hide-details
                 label="Password"
-                color="indigo accent-2"
+                color="primary"
                 v-model="password"
+                @click:append="show = !show"
+                :append-icon="show ? 'mdi-lock-open-variant-outline' : 'mdi-lock-outline'"
+                :type="show ? 'text' : 'password'"
                 :rules="passwordRules"
               ></v-text-field>
             </v-card-text>
 
             <v-card-text
               class="py-6"
-              style="margin: 0 0 0 0.5em;"
             >
               <v-btn
                 block
                 x-large
-                color="indigo"
+                color="primary"
                 elevation="0"
                 style="textTransform: none; letter-spacing: 0;"
                 :dark="valid"
@@ -93,18 +98,81 @@
                 :loading="loading"
                 @click="login()"
               >
-                Send Message
+                Sign in
               </v-btn>
             </v-card-text>
           </v-form>
+
+          <p
+            class="mx-4 my-0 text-center"
+          >
+            - or -
+          </p>
+
+          <v-card-text
+              class="py-6 d-flex"
+            >
+              <v-col
+                md="6"
+                class="pl-0 py-0"
+              >
+                <v-btn
+                  x-large
+                  block
+                  color="error"
+                  elevation="0"
+                  style="textTransform: none; letter-spacing: 0;"
+                  :outlined="!$vuetify.theme.dark"
+                  to="/"
+                >
+                  <img
+                    src="@/assets/icons/arrow-back-white.svg"
+                    height="18"
+                    width="18"
+                    class="ml-n1 mr-2"
+                    v-if="$vuetify.theme.dark"
+                  >
+
+                  <img
+                    src="@/assets/icons/arrow-back.svg"
+                    height="18"
+                    width="18"
+                    class="ml-n1 mr-2"
+                    v-if="!$vuetify.theme.dark"
+                  >
+
+                  Home
+                </v-btn>
+              </v-col>
+
+              <v-col
+                md="6"
+                class="pr-0 py-0"
+              >
+                <v-btn
+                  x-large
+                  block
+                  dark
+                  color="blue darken-4"
+                  elevation="0"
+                  style="textTransform: none; letter-spacing: 0;"
+                  @click="loginWithGoogle()"
+                >
+                  <v-icon
+                    left
+                  >
+                    mdi-google
+                  </v-icon>
+
+                  Google
+                </v-btn>
+              </v-col>
+            </v-card-text>
         </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
-
-<style scoped>
-</style>
 
 <script>
 export default {
@@ -120,6 +188,7 @@ export default {
 
     error: false,
 
+    show: false,
     
     email: '',
     emailRules: [
@@ -133,7 +202,23 @@ export default {
   }),
   methods: {
     login: () => {
-
+      this.$fire.auth().signInWithEmailAndPassword(this.email, this.password)
+        .then(() =>{
+          $nuxt.$router.push('/dashboard')
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    },
+    loginWithGoogle: async () => {
+      try {
+        const provider = new firebase.auth.signInWithPopup()
+        const result = await this.$fireAuth.signInWithPopup(provider)
+        console.log(result)
+      } catch(error) {
+        console.log(error)
+        $nuxt.$router.push('/')
+      }
     }
   }
 };

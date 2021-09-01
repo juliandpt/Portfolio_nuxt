@@ -47,7 +47,23 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://firebase.nuxtjs.org/
-    '@nuxtjs/firebase'
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyBKPVxliNqeek6UO0508YALZfvalXXZCNQ",
+          authDomain: "portfolio-juliandpt.firebaseapp.com",
+          projectId: "portfolio-juliandpt",
+          storageBucket: "portfolio-juliandpt.appspot.com",
+          messagingSenderId: "693697573848",
+          appId: "1:693697573848:web:b5d25f09c2799d77f6f8ad",
+          measurementId: "G-46EEMHMP42"
+        },
+        services: {
+          auth: true
+        }
+      }
+    ]
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -75,21 +91,6 @@ export default {
           success: colors.green.accent3
         }
       }
-    }
-  },
-
-  firebase: {
-    config: {
-      apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: "portfolio-juliandpt.firebaseapp.com",
-      projectId: "portfolio-juliandpt",
-      storageBucket: "portfolio-juliandpt.appspot.com",
-      messagingSenderId: "693697573848",
-      appId: process.env.FIREBASE_APP_ID,
-      measurementId: "G-46EEMHMP42"
-    },
-    services: {
-      auth: true
     }
   },
 

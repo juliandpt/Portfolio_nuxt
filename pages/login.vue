@@ -96,7 +96,7 @@
                 :dark="valid"
                 :disabled="!valid"
                 :loading="loading"
-                @click="login()"
+                @click="login"
               >
                 Sign in
               </v-btn>
@@ -156,7 +156,7 @@
                   color="blue darken-4"
                   elevation="0"
                   style="textTransform: none; letter-spacing: 0;"
-                  @click="loginWithGoogle()"
+                  @click="loginWithGoogle"
                 >
                   <v-icon
                     left
@@ -178,47 +178,57 @@
 export default {
   head() {
     return {
-      title: "Contact",
+      title: "Sign in",
     };
   },
-  data: () => ({
-    valid: false,
+  data() {
+    return {
+      valid: false,
 
-    loading: false,
+      loading: false,
 
-    error: false,
+      error: false,
 
-    show: false,
-    
-    email: '',
-    emailRules: [
-      value => !!value,
-      value => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/.test(value),
-    ],
-    password: '',
-    passwordRules: [
-      value => !!value
-    ],
-  }),
+      show: false,
+      
+      email: '',
+      emailRules: [
+        value => !!value,
+        value => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/.test(value),
+      ],
+      password: '',
+      passwordRules: [
+        value => !!value
+      ],
+    }
+  },
   methods: {
-    login: () => {
-      this.$fire.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then(() =>{
-          $nuxt.$router.push('/dashboard')
+    login() {
+      this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
+        .then((userCredential) => {
+          console.log(userCredential)
+          this.$router.push("/dashboard")
         })
         .catch((error) => {
-          console.error(error)
-        })
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.error(errorCode, errorMessage)
+        });
     },
-    loginWithGoogle: async () => {
-      try {
-        const provider = new firebase.auth.signInWithPopup()
-        const result = await this.$fireAuth.signInWithPopup(provider)
-        console.log(result)
-      } catch(error) {
-        console.log(error)
-        $nuxt.$router.push('/')
-      }
+    loginWithGoogle() {
+      var provider = new this.$fire.auth.GoogleAuthProvider();
+
+      this.$fire.auth().signInWithPopup(provider)
+        .then((result) => {
+          var credential = result.credential;
+          var token = credential.accessToken;
+          var user = result.user;
+        }).catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          var email = error.email;
+          var credential = error.credential;
+        })
     }
   }
 };

@@ -79,7 +79,7 @@
       <v-list flat>
         <v-list-item-group
           v-model="selectedRoute"
-          color="indigo"
+          color="primary"
         >
           <v-list-item
             v-for="(route, i) in routes"
@@ -91,12 +91,21 @@
                 :src="route.icon"
                 height="28"
                 width="28"
+                v-if="selectedRoute == i"
+              >
+
+              <img
+                :src="route.icon_grey"
+                height="28"
+                width="28"
+                v-else
               >
             </v-list-item-icon>
 
             <v-list-item-content>
               <v-list-item-title
                 v-text="route.title"
+                :class="selectedRoute === i ? '' : 'grey--text'"
               ></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -118,26 +127,30 @@ export default({
   data: () => ({
     drawer: false,
     group: null,
-    selectedRoute: 0,
+    selectedRoute: null,
     routes: [
       {
         title: 'Home',
         icon: require('@/assets/icons/home.svg'),
+        icon_grey: require('@/assets/icons/home-grey.svg'),
         link: "/"
       },
       {
         title: 'About',
         icon: require('@/assets/icons/info.svg'),
+        icon_grey: require('@/assets/icons/info-grey.svg'),
         link: "/about"
       },
       {
         title: 'Skills',
         icon: require('@/assets/icons/laptop.svg'),
+        icon_grey: require('@/assets/icons/laptop-grey.svg'),
         link: "/skills"
       },
       {
         title: 'Contact',
         icon: require('@/assets/icons/at.svg'),
+        icon_grey: require('@/assets/icons/at-grey.svg'),
         link: "/contact"
       },
     ],

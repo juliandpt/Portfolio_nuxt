@@ -44,48 +44,50 @@
               :class="$vuetify.breakpoint.xs ? 'mb-5 mt-0 text-center primary--text' : 'mb-5 primary--text'"
             >
               <span>
-                Sign in to acces to the portfolio dashboard
+                Sign in to access to the portfolio dashboard
               </span>
             </v-card-subtitle>
 
             <v-card-text
-              class="pt-6 pb-3"
+              class="pt-0 pb-3"
             >
               <v-text-field
                 outlined
                 required
-                hide-details
                 clearable
+                persistent-hint
                 clear-icon="mdi-window-close"
-                label="Email"
+                label="Enter your email"
                 color="primary"
                 v-model="email"
-                :append-icon="email == '' || email == null ? 'mdi-email-outline' : ''"
-                :rules="emailRules"
+                :error="errorEmail"
+                :append-icon="email === '' || email == null ? 'mdi-email-outline' : ''"
+                :error-messages="errorEmail ? errorEmailMessage : ''"
               >
               </v-text-field>
             </v-card-text>
 
             <v-card-text
-              class="pt-6 pb-3"
+              class="pt-0 pb-3"
             >
               <v-text-field
                 outlined
                 auto-grow
                 required
-                hide-details
-                label="Password"
+                persistent-hint
+                label="Enter your password"
                 color="primary"
                 v-model="password"
                 @click:append="show = !show"
                 :append-icon="show ? 'mdi-lock-open-variant-outline' : 'mdi-lock-outline'"
                 :type="show ? 'text' : 'password'"
-                :rules="passwordRules"
+                :error="errorPassword"
+                :error-messages="errorPassword ? errorPasswordMessage : ''"
               ></v-text-field>
             </v-card-text>
 
             <v-card-text
-              class="py-6"
+              class="pt-0 pb-4"
             >
               <v-btn
                 block
@@ -93,10 +95,9 @@
                 color="primary"
                 elevation="0"
                 style="textTransform: none; letter-spacing: 0;"
-                :dark="valid"
-                :disabled="!valid"
+                dark
                 :loading="loading"
-                @click="login"
+                @click="login()"
               >
                 Sign in
               </v-btn>
@@ -110,7 +111,7 @@
           </p>
 
           <v-card-text
-              class="py-6 d-flex"
+              class="d-flex"
             >
               <v-col
                 md="6"
@@ -187,33 +188,60 @@ export default {
 
       loading: false,
 
-      error: false,
+      errorEmail: false,
+      errorEmailMessage: "",
+      errorPassword: false,
+      errorPasswordMessage: "",
 
       show: false,
       
-      email: '',
-      emailRules: [
-        value => !!value,
-        value => /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/.test(value),
-      ],
-      password: '',
-      passwordRules: [
-        value => !!value
-      ],
+      email: "",
+      password: "",
     }
   },
   methods: {
     login() {
-      this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
+      this.loading = true
+
+      if (this.email === "") {
+        this.loading = false
+        this.errorPassword = false
+        this.errorEmailMessage = "Enter your email"
+        this.errorEmail = true
+      }
+      else if (this.password === "") {
+        this.loading = false
+        this.errorEmail = false
+        this.errorPasswordMessage = "Enter a password"
+        this.errorPassword = true
+      }
+      else{
+        this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           console.log(userCredential)
           this.$router.push("/dashboard")
         })
         .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.error(errorCode, errorMessage)
+          this.loading = false
+          if (error.code === 'auth/invalid-email') {
+            this.errorPassword = false
+            this.errorEmailMessage = "invalid email format"
+            this.errorEmail = true
+          }
+          else if (error.code === 'auth/user-not-found') {
+            this.errorPassword = false
+            this.errorEmailMessage = "Couldn't find yout account"
+            this.errorEmail = true
+          }
+          else {
+            this.errorEmail = false
+            this.errorPasswordMessage = "Wrong password. Try again or click ‘Forgot password’"
+            this.errorPassword = true
+          }
         });
+
+        
+      }
     },
     loginWithGoogle() {
       var provider = new this.$fire.auth.GoogleAuthProvider();

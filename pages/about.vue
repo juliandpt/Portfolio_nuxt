@@ -11,11 +11,11 @@
         About Me
       </h1>
 
-      <h4
-        class="mx-auto"
+      <p
+        class="mx-auto secondary--text"
       >
         My introduction
-      </h4>
+      </p>
     </v-row>
 
     <v-row>
@@ -64,7 +64,7 @@
               </v-card-title>
 
               <v-card-text
-                class="text-center"
+                class="text-center secondary--text"
               >
                 {{ experience.title }}
               </v-card-text>
@@ -101,7 +101,7 @@
     </v-row>
 
     <v-row
-      class="d-flex flex-column justify-center title-wrapper"
+      class="mt-16 mb-6 d-flex flex-column justify-center"
     >
       <h1
         class="mx-auto  mb-0"
@@ -109,11 +109,11 @@
         Qualification
       </h1>
 
-      <h4
-        class="mx-auto"
+      <p
+        class="mx-auto secondary--text"
       >
         My personal journey
-      </h4>
+      </p>
     </v-row>
 
     <v-row>
@@ -168,10 +168,10 @@
                 <v-timeline
                   align-top
                   class="px-4 py-0 my-12"
-                  style="background-color: transparent !important;"
                 >
                   <v-timeline-item
                     color="primary"
+                    background-color="transparent"
                     small
                     fill-dot
                     v-for="(item, j) in qualification.items"
@@ -194,13 +194,13 @@
                       </v-card-title>
 
                       <v-card-text
-                        class="d-flex align-center px-0 grey--text"
+                        class="px-0 secondary--text d-flex align-center "
                       >
                         {{ item.location }}
                       </v-card-text>
 
                       <v-card-text
-                        class="d-flex align-center py-0 px-0 grey--text"
+                        class="pa-0 secondary--text d-flex align-center"
                       >
                         <img
                           src="@/assets/icons/date.svg"
@@ -224,19 +224,8 @@
 </template>
 
 <style lang="scss" scoped>
-.title-wrapper {
-  margin-top: 8rem;
-  margin-bottom: 3rem;
-}
-
-h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-}
-
-h4 {
-  color: #9E9E9E;
-  margin-bottom: 20px;
+.v-timeline {
+  background: transparent !important;
 }
 </style>
 

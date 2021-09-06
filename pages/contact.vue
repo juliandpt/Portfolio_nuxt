@@ -37,7 +37,7 @@
           >
 
           <v-card-text
-            class="pa-0"
+            class="pa-0 grey--text"
             ref="textToCopy"
           >
             {{ card.text }}

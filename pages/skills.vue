@@ -3,7 +3,7 @@
     :style="$vuetify.breakpoint.xl ? 'padding-left: 15%; padding-right: 15%' : ''"
   >
     <v-row
-      class="d-flex flex-column justify-center mt-8 mb-4"
+      class="mt-8 mb-4 d-flex flex-column justify-center"
     >
       <h1
         class="mx-auto mb-0"
@@ -11,11 +11,11 @@
         Skills
       </h1>
 
-      <h4
-        class="mx-auto"
+      <p
+        class="mx-auto secondary--text"
       >
         My thechnical level
-      </h4>
+      </p>
     </v-row>
       
     <v-row>
@@ -62,7 +62,7 @@
                 flat
                 tile
                 color="transparent"
-                v-for="(card, j) in skill.cards"
+                v-for="(card, j) in skill.items"
                 :key="j"
               >
                 <v-card-title
@@ -102,7 +102,7 @@
     </v-row>
 
     <v-row
-      class="d-flex flex-column justify-center title-wrapper"
+      class="mt-16 mb-6 d-flex flex-column justify-center title-wrapper"
     >
       <h1
         class="mx-auto mb-0"
@@ -110,11 +110,11 @@
         My Services
       </h1>
 
-      <h4
-        class="mx-auto"
+      <p
+        class="mx-auto secondary--text"
       >
         What I offer
-      </h4>
+      </p>
     </v-row>
 
     <v-row>
@@ -152,7 +152,7 @@
               <v-overlay
                 v-if="hover"
                 absolute
-                :color="$vuetify.theme.dark ? 'secondary' : 'grey lighten-4'"
+                color="secondary"
               >
                 <v-btn
                   color="primary"
@@ -209,7 +209,7 @@
     </v-row>
 
     <v-row
-      class="d-flex flex-column justify-center title-wrapper"
+      class="mt-16 mb-6 d-flex flex-column justify-center"
     >
       <h1
         class="mx-auto mb-0"
@@ -217,11 +217,11 @@
         My projects
       </h1>
 
-      <h4
-        class="mx-auto"
+      <p
+        class="mx-auto secondary--text"
       >
         The projects I developed
-      </h4>
+      </p>
     </v-row>
 
     <v-row>
@@ -271,20 +271,25 @@
                     {{ project.title }}
                   </v-card-title>
 
-                  <v-card-text>
+                  <v-card-text
+                    class="secondary--text"
+                  >
                     {{ project.description }}
                   </v-card-text>
 
-                  <v-card-actions>
+                  <v-card-text>
                     <v-btn
                       dark
                       elevation="0"
                       color="primary"
                       style="textTransform: none; letter-spacing: 0;"
-                      :href="project.link"
+                      class="mr-2"
+                      v-for="(link, j) in project.links"
+                      :key="j"
+                      :href="link.target"
                       target="_blank"
                     >
-                      See more
+                      {{ link.title }}
 
                       <img
                         src="@/assets/icons/arrow.svg"
@@ -293,7 +298,7 @@
                         class="mr-n1 ml-2"
                       >
                     </v-btn>
-                  </v-card-actions>
+                  </v-card-text>
                 </v-col>
               </v-row>
             </v-card>
@@ -303,23 +308,6 @@
     </v-row>
   </v-container>
 </template>
-
-<style lang="scss" scoped>
-.title-wrapper {
-  margin-top: 8rem;
-  margin-bottom: 3rem;
-}
-
-h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-}
-
-h4 {
-  color: #9E9E9E;
-  margin-bottom: 20px;
-}
-</style>
 
 <script>
 export default {
@@ -336,7 +324,7 @@ export default {
       {
         title: "Frontend",
         icon: require("@/assets/icons/tags.svg"),
-        cards: [
+        items: [
           {
             title: "HTML",
             value: 70
@@ -362,7 +350,7 @@ export default {
       {
         title: "Backend",
         icon: require("@/assets/icons/server.svg"),
-        cards: [
+        items: [
           {
             title: "Node.js",
             value: 50
@@ -376,7 +364,7 @@ export default {
       {
         title: "Database",
         icon: require("@/assets/icons/database.svg"),
-        cards: [
+        items: [
           {
             title: "MariaDB",
             value: 70
@@ -394,7 +382,7 @@ export default {
       {
         title: "Others",
         icon: require("@/assets/icons/brackets.svg"),
-        cards: [
+        items: [
           {
             title: "Python",
             value: 70
@@ -469,17 +457,26 @@ export default {
       {
         title: "Infopueblo",
         description: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities",
-        link: "https://github.com/julidpt/Infopueblo-Frontend"
+        links: [
+          {
+            title: "Front-end",
+            target: "https://github.com/juliandpt/Infopueblo-Frontend"
+          },
+          {
+            title: "Back-end",
+            target: "https://github.com/juliandpt/Infopueblo-Backend"
+          }
+        ]
       },
       {
         title: "Ada 2012 Compiler",
         description: "Basic compiler for Ada 2012 using Flex and Bison.",
-        link: "https://github.com/julidpt/Compilador"
-      },
-      {
-        title: "Ada 2012 Compiler",
-        description: "Basic compiler for Ada 2012 using Flex and Bison.",
-        link: "https://github.com/julidpt/Compilador"
+        links: [
+          {
+            title: "See more",
+            target: "https://github.com/juliandpt/Compilador"
+          }
+        ]
       }
     ],
   }),

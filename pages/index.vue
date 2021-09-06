@@ -3,7 +3,7 @@
     :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
     <v-row>
-       <v-col
+      <v-col
         cols="12"
         md="2"
         sm="2"
@@ -35,10 +35,18 @@
       >
         <h1>Hello!</h1>
 
-        <h1>I'm Julián</h1>
+        <h1>
+          I'm 
+
+          <span 
+            class="primary--text"
+          >
+            Julián
+          </span>
+        </h1>
 
         <h2
-          class="grey--text mb-4"
+          class="mb-4 secondary--text"
         >
           Software Engineer
         </h2>
@@ -71,7 +79,7 @@
         class="d-flex flex-column justify-center"
       >
         <img
-          src="@/assets/images/blob.svg"
+          src="@/assets/images/me.svg"
         >
       </v-col>
     </v-row>
@@ -82,11 +90,6 @@
 .container,
 .row {
   height: 100%;
-}
-
-h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 350%;
 }
 </style>
 

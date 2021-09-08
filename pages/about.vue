@@ -82,7 +82,6 @@
               elevation="0"
               color="primary"
               class="mx-auto"
-              style="textTransform: none; letter-spacing: 0;"
               href="Julián-CV.pdf"
               download
             >
@@ -133,7 +132,6 @@
             ></v-tabs-slider>
 
             <v-tab
-              style="textTransform: none; letter-spacing: 0;"
               v-for="(qualification, i) in qualifications"
               :key="i"
             >
@@ -170,13 +168,13 @@
                   class="px-4 py-0 my-12"
                 >
                   <v-timeline-item
-                    color="primary"
-                    background-color="transparent"
                     small
                     fill-dot
+                    color="primary"
+                    background-color="transparent"
+                    class="pa-0"
                     v-for="(item, j) in qualification.items"
                     :key="j"
-                    class="pa-0"
                   >
                     <v-card
                       flat
@@ -222,12 +220,6 @@
     </v-row>
   </v-container>
 </template>
-
-<style lang="scss" scoped>
-.v-timeline {
-  background: transparent !important;
-}
-</style>
 
 <script>
 export default {

@@ -28,7 +28,6 @@
           <v-btn
             text
             plain
-            style="textTransform: none; letter-spacing: 0;"
             v-for="(route, i) in routes"
             :key="i"
             :to="route.link"
@@ -40,14 +39,14 @@
         <v-btn
           icon
           :plain="!$vuetify.breakpoint.xs"
-          :color="$vuetify.theme.dark ? 'black' : 'white'"
+          color="transparent"
           @click="toggleTheme()"
         >
           <v-fab-transition
             hide-on-leave
           >
             <img
-              src="@/assets/icons/moon.svg"
+              src="@/assets/icons/sun.svg"
               alt="facebook"
               height="24"
               width="24"
@@ -59,10 +58,10 @@
             hide-on-leave
           >
             <img
-              src="@/assets/icons/sun.svg"
+              src="@/assets/icons/moon.svg"
               alt="facebook"
-              height="30"
-              width="30"
+              height="24"
+              width="24"
               v-if="$vuetify.theme.dark"
             >
           </v-fab-transition>
@@ -127,7 +126,7 @@ export default({
   data: () => ({
     drawer: false,
     group: null,
-    selectedRoute: null,
+    selectedRoute: 0,
     routes: [
       {
         title: 'Home',

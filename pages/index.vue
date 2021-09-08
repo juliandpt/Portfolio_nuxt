@@ -45,20 +45,17 @@
           </span>
         </h1>
 
-        <h2
-          class="mb-4 secondary--text"
-        >
-          Software Engineer
-        </h2>
+        <h1>Software Engineer</h1>
         
-        <div>
+        <div
+          class="mt-10"
+        >
           <v-btn
             dark
             x-large
             elevation="0"
             color="primary"
             to="/contact"
-            style="textTransform: none; letter-spacing: 0;"
           >
             Contact me
 

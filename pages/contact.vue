@@ -165,7 +165,6 @@
                 x-large
                 color="primary"
                 elevation="0"
-                style="textTransform: none; letter-spacing: 0;"
                 :dark="valid"
                 :disabled="!valid"
                 :block="$vuetify.breakpoint.xs"
@@ -329,7 +328,7 @@ export default {
         message: this.message
       }
 
-      emailjs.send('service_julia', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
+      emailjs.send('service_julian', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
       .then(
         (response) => {
           this.text = 'Email sent Successfuly!'

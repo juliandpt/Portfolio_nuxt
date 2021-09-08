@@ -94,7 +94,6 @@
                 x-large
                 color="primary"
                 elevation="0"
-                style="textTransform: none; letter-spacing: 0;"
                 dark
                 :loading="loading"
                 @click="login()"
@@ -122,7 +121,6 @@
                   block
                   color="error"
                   elevation="0"
-                  style="textTransform: none; letter-spacing: 0;"
                   :outlined="!$vuetify.theme.dark"
                   to="/"
                 >
@@ -156,7 +154,6 @@
                   dark
                   color="blue darken-4"
                   elevation="0"
-                  style="textTransform: none; letter-spacing: 0;"
                   @click="loginWithGoogle"
                 >
                   <v-icon

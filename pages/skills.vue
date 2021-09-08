@@ -156,7 +156,6 @@
               >
                 <v-btn
                   color="primary"
-                  style="textTransform: none; letter-spacing: 0;"
                   @click="showInfo(service)"
                 >
                   View more
@@ -282,7 +281,6 @@
                       dark
                       elevation="0"
                       color="primary"
-                      style="textTransform: none; letter-spacing: 0;"
                       class="mr-2"
                       v-for="(link, j) in project.links"
                       :key="j"

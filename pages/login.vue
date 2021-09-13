@@ -63,6 +63,7 @@
                 :error="errorEmail"
                 :append-icon="email === '' || email == null ? 'mdi-email-outline' : ''"
                 :error-messages="errorEmail ? errorEmailMessage : ''"
+                @keyup.enter="login()"
               >
               </v-text-field>
             </v-card-text>
@@ -83,6 +84,7 @@
                 :type="show ? 'text' : 'password'"
                 :error="errorPassword"
                 :error-messages="errorPassword ? errorPasswordMessage : ''"
+                @keyup.enter="login()"
               ></v-text-field>
             </v-card-text>
 
@@ -173,6 +175,9 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+import 'firebase/auth'
+
 export default {
   head() {
     return {
@@ -214,45 +219,39 @@ export default {
       }
       else{
         this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
-        .then((userCredential) => {
-          console.log(userCredential)
-          this.$router.push("/dashboard")
-        })
-        .catch((error) => {
-          this.loading = false
-          if (error.code === 'auth/invalid-email') {
-            this.errorPassword = false
-            this.errorEmailMessage = "invalid email format"
-            this.errorEmail = true
-          }
-          else if (error.code === 'auth/user-not-found') {
-            this.errorPassword = false
-            this.errorEmailMessage = "Couldn't find yout account"
-            this.errorEmail = true
-          }
-          else {
-            this.errorEmail = false
-            this.errorPasswordMessage = "Wrong password. Try again or click ‘Forgot password’"
-            this.errorPassword = true
-          }
-        });
-
-        
+          .then((userCredential) => {
+            console.log(userCredential)
+            this.$router.push("/dashboard")
+          })
+          .catch((error) => {
+            this.loading = false
+            if (error.code === 'auth/invalid-email') {
+              this.errorPassword = false
+              this.errorEmailMessage = "invalid email format"
+              this.errorEmail = true
+            }
+            else if (error.code === 'auth/user-not-found') {
+              this.errorPassword = false
+              this.errorEmailMessage = "Couldn't find yout account"
+              this.errorEmail = true
+            }
+            else {
+              this.errorEmail = false
+              this.errorPasswordMessage = "Wrong password. Try again or click ‘Forgot password’"
+              this.errorPassword = true
+            }
+          });
       }
     },
     loginWithGoogle() {
-      var provider = new this.$fire.auth.GoogleAuthProvider();
+      var provider = new firebase.auth.GoogleAuthProvider();
 
-      this.$fire.auth().signInWithPopup(provider)
+      firebase.auth().signInWithPopup(provider)
         .then((result) => {
-          var credential = result.credential;
-          var token = credential.accessToken;
-          var user = result.user;
+          console.log(result)
+          this.$router.push("/dashboard")
         }).catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          var email = error.email;
-          var credential = error.credential;
+          console.log(error)
         })
     }
   }

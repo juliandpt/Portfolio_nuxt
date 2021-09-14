@@ -87,24 +87,16 @@
           >
             <v-list-item-icon>
               <img
-                :src="route.icon"
+                :src="route.link === $route.path ? route.icon : route.icon_grey"
                 height="28"
                 width="28"
-                v-if="selectedRoute == i"
-              >
-
-              <img
-                :src="route.icon_grey"
-                height="28"
-                width="28"
-                v-else
               >
             </v-list-item-icon>
 
             <v-list-item-content>
               <v-list-item-title
                 v-text="route.title"
-                :class="selectedRoute === i ? '' : 'grey--text'"
+                :class="route.link === $route.path ? 'primary--text' : 'grey--text'"
               ></v-list-item-title>
             </v-list-item-content>
           </v-list-item>

@@ -7,7 +7,8 @@
         cols="12"
         md="2"
         sm="2"
-        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center' : 'd-flex flex-column justify-center'"
+        :order="$vuetify.breakpoint.xs ? '3' : '1'"
+        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center mb-12' : 'd-flex flex-column justify-center'"
       >
         <v-btn
           icon
@@ -31,6 +32,7 @@
         cols="12"
         md="4"
         sm="10"
+        order="2"
         :class="$vuetify.breakpoint.xs ? 'd-flex flex-column justify-center align-center' : 'd-flex flex-column justify-center'"
       >
         <h1>Hello!</h1>
@@ -73,6 +75,7 @@
         cols="12"
         md="6"
         sm="12"
+        :order="$vuetify.breakpoint.xs ? '1' : '3'"
         class="d-flex flex-column justify-center"
       >
         <img

@@ -396,20 +396,6 @@ export default {
         ]
       },
     ],
-    specialties: [
-      {
-        title: "FRONT-END DEV",
-        text: "caca tambien"
-      },
-      {
-        title: "FRONT-END DEV",
-        text: "caca tambien"
-      },
-      {
-        title: "FRONT-END DEV",
-        text: "caca tambien"
-      }
-    ],
     services: [
       {
         title: "WEB DESIGN",
@@ -436,9 +422,9 @@ export default {
         icon: require("@/assets/icons/grid.svg"),
         text: "caca tambien",
         descriptions: [
-          "caca1",
-          "caca2",
-          "caca3"
+          "I develop the user interface.",
+          "Web page development.",
+          "I create ux element interactions."
         ]
       },
       {

@@ -1,6 +1,6 @@
 <template>
   <v-container
-    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
+    :style="$vuetify.breakpoint.xl || $vuetify.breakpoint.sm ? 'padding: 0 15%' : ''"
   >
     <v-row
       class="d-flex flex-column justify-center my-8"

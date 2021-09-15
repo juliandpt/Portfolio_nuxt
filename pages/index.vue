@@ -1,14 +1,14 @@
 <template>
   <v-container
-    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
+    :style="$vuetify.breakpoint.xl || $vuetify.breakpoint.sm ? 'padding: 0 15%' : ''"
   >
     <v-row>
       <v-col
         cols="12"
         md="2"
-        sm="2"
-        :order="$vuetify.breakpoint.xs ? '3' : '1'"
-        :class="$vuetify.breakpoint.xs ? 'd-flex justify-center mb-12' : 'd-flex flex-column justify-center'"
+        sm="12"
+        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '3' : '1'"
+        :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'd-flex justify-center mb-12' : 'd-flex flex-column justify-center'"
       >
         <v-btn
           icon
@@ -31,9 +31,9 @@
       <v-col
         cols="12"
         md="4"
-        sm="10"
+        sm="12"
         order="2"
-        :class="$vuetify.breakpoint.xs ? 'd-flex flex-column justify-center align-center' : 'd-flex flex-column justify-center'"
+        :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'd-flex flex-column justify-center align-center' : 'd-flex flex-column justify-center'"
       >
         <h1>Hello!</h1>
 
@@ -75,7 +75,7 @@
         cols="12"
         md="6"
         sm="12"
-        :order="$vuetify.breakpoint.xs ? '1' : '3'"
+        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '1' : '3'"
         class="d-flex flex-column justify-center"
       >
         <img

@@ -133,7 +133,9 @@
             height="100%"
             :outlined="!$vuetify.theme.dark"
           >
-            <v-flex class="pt-4">
+            <v-flex
+              class="pt-4"
+            >
               <v-img
                 :src="service.icon"
                 height="64"
@@ -232,6 +234,7 @@
       >
         <v-slide-group
           v-model="model"
+          show-arrows
           class="custom pa-4"
           active-class="success"
         >
@@ -241,64 +244,42 @@
             :key="i"
           >
             <v-card
-              color="transparent"
               elevation="0"
-              width="655"
+              :outlined="!$vuetify.theme.dark"
+              max-width="400"
             >
-              <v-row
-                class="fill-height"
-                align="center"
-                justify="center"
+              
+              <v-card-title>
+                {{ project.title }}
+              </v-card-title>
+
+              <v-card-text
+                class="secondary--text"
               >
-                <v-col
-                  md="6"
-                  sm="12"
-                  class="d-flex justify-center"
+                {{ project.description }}
+              </v-card-text>
+
+              <v-card-text>
+                <v-btn
+                  dark
+                  elevation="0"
+                  color="primary"
+                  class="mr-2"
+                  v-for="(link, j) in project.links"
+                  :key="j"
+                  :href="link.target"
+                  target="_blank"
                 >
+                  {{ link.title }}
+
                   <img
-                    src="@/assets/images/me-profile.png"
-                    height="300"
-                    width="230"
+                    src="@/assets/icons/arrow.svg"
+                    height="18"
+                    width="18"
+                    class="mr-n1 ml-2"
                   >
-                </v-col>
-
-                <v-col
-                  md="6"
-                  sm="12"
-                >
-                  <v-card-title>
-                    {{ project.title }}
-                  </v-card-title>
-
-                  <v-card-text
-                    class="secondary--text"
-                  >
-                    {{ project.description }}
+                </v-btn>
                   </v-card-text>
-
-                  <v-card-text>
-                    <v-btn
-                      dark
-                      elevation="0"
-                      color="primary"
-                      class="mr-2"
-                      v-for="(link, j) in project.links"
-                      :key="j"
-                      :href="link.target"
-                      target="_blank"
-                    >
-                      {{ link.title }}
-
-                      <img
-                        src="@/assets/icons/arrow.svg"
-                        height="18"
-                        width="18"
-                        class="mr-n1 ml-2"
-                      >
-                    </v-btn>
-                  </v-card-text>
-                </v-col>
-              </v-row>
             </v-card>
           </v-slide-item>
         </v-slide-group>

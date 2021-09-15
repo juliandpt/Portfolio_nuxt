@@ -77,7 +77,6 @@
     >
       <v-list flat>
         <v-list-item-group
-          v-model="selectedRoute"
           color="primary"
         >
           <v-list-item
@@ -118,7 +117,6 @@ export default({
   data: () => ({
     drawer: false,
     group: null,
-    selectedRoute: 0,
     routes: [
       {
         title: 'Home',

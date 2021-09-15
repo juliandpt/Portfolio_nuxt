@@ -1,33 +1,33 @@
 <template>
   <v-container
     class="d-flex align-center"
-    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
+    :style="$vuetify.breakpoint.xl || $vuetify.breakpoint.sm ? 'padding: 0 15%' : ''"
   >
     <v-row>
       <v-col
         md="6"
-        sm="6"
+        sm="12"
         class="d-flex flex-column justify-center"
       >
         <h1
-          :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
+          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'mx-auto' : ''"
         >
-          Contact me.
+          Contact me
         </h1>
 
         <h4
-          :class="$vuetify.breakpoint.xs ? 'mx-auto' : ''"
+          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'mx-auto' : ''"
         >
           Let's get in touch! &#129311;
         </h4>
 
         <v-card
           flat
-          :class="$vuetify.breakpoint.xs ? 'd-flex align-center mt-3 py-4 px-2' : 'd-flex align-center mt-5 py-4 px-2'"
+          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'd-flex align-center mt-3 py-4 px-2' : 'd-flex align-center mt-5 py-4 px-2'"
           v-for="(card, i) in cards"
           :key="i"
           :outlined="!$vuetify.theme.dark"
-          :style="$vuetify.breakpoint.xs ? 'width: 100%;' : 'width: 18rem;'"
+          :style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'width: 100%;' : 'width: 18rem;'"
         >
           <img
             :src="card.icon"
@@ -76,12 +76,12 @@
 
       <v-col
         md="6"
-        sm="6"
-        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
+        sm="12"
+        :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'pt-0' : ''"
       >
         <v-card
           :outlined="!$vuetify.theme.dark"
-          :class="$vuetify.breakpoint.xs ? 'pa-1' : 'pa-10'"
+          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'pa-1' : 'pa-10'"
         >
           <v-form
             v-model="valid"
@@ -89,7 +89,7 @@
             <v-card-title
               :style="$vuetify.breakpoint.xs ? '' : 'font-size: 30px;'"
               class="mb-10 py-0"
-              :class="$vuetify.breakpoint.xs ? 'mb-10 pt-4' : 'mb-10 py-0'"
+              :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'mb-10 pt-4' : 'mb-10 py-0'"
             >
               <span
                 class="mx-auto"
@@ -128,7 +128,7 @@
                 clearable
                 clear-icon="mdi-window-close"
                 label="Email"
-                placeholder="example@gmail.com"
+                placeholder="example@domain.com"
                 hide-details="auto"
                 class="rounded"
                 color="primary"
@@ -167,7 +167,7 @@
                 elevation="0"
                 :dark="valid"
                 :disabled="!valid"
-                :block="$vuetify.breakpoint.xs"
+                :block="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
                 :loading="loading"
                 @click="sendEmail()"
               >

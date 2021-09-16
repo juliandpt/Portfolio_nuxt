@@ -1,33 +1,37 @@
 <template>
   <v-container
-    class="d-flex align-center"
-    :style="$vuetify.breakpoint.xl || $vuetify.breakpoint.sm ? 'padding: 0 15%' : ''"
+    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
+    <v-row
+      class="mt-8 mb-8 d-flex flex-column justify-center"
+    >
+      <h1
+        class="mx-auto mb-0"
+      >
+        Contact me
+      </h1>
+
+      <p
+        class="mx-auto secondary--text"
+      >
+        Let's get in touch! &#129311;
+      </p>
+    </v-row>
+
     <v-row>
       <v-col
         md="6"
-        sm="12"
-        class="d-flex flex-column justify-center"
+        sm="6"
+        class="d-flex flex-column align-center"
       >
-        <h1
-          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'mx-auto' : ''"
-        >
-          Contact me
-        </h1>
-
-        <h4
-          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'mx-auto' : ''"
-        >
-          Let's get in touch! &#129311;
-        </h4>
-
         <v-card
           flat
-          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'd-flex align-center mt-3 py-4 px-2' : 'd-flex align-center mt-5 py-4 px-2'"
+          elevation="0"
+          color="transparent"
+          class="d-flex align-center mb-4"
           v-for="(card, i) in cards"
           :key="i"
-          :outlined="!$vuetify.theme.dark"
-          :style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'width: 100%;' : 'width: 18rem;'"
+          :width="$vuetify.breakpoint.xs ? '100%' : '18rem'"
         >
           <img
             :src="card.icon"
@@ -45,8 +49,9 @@
           
           <v-btn
             icon
-            :disabled="card.copied"
             color="grey"
+            x-large
+            :disabled="card.copied"
             @click="copyText(card.text, i)"
           >
             <v-scroll-x-transition
@@ -76,90 +81,93 @@
 
       <v-col
         md="6"
-        sm="12"
-        :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'pt-0' : ''"
+        sm="6"
+        :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
         <v-card
-          :outlined="!$vuetify.theme.dark"
-          :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'pa-1' : 'pa-10'"
+          color="transparent"
+          elevation="0"
+          :class="$vuetify.breakpoint.sm ? 'pr-8' : ''"
         >
           <v-form
             v-model="valid"
           >
-            <v-card-title
-              :style="$vuetify.breakpoint.xs ? '' : 'font-size: 30px;'"
-              class="mb-10 py-0"
-              :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? 'mb-10 pt-4' : 'mb-10 py-0'"
+            <v-card-text
+              class="pt-0 px-0"
             >
-              <span
-                class="mx-auto"
-              >
-                Send me a message!
-              </span>
-            </v-card-title>
+              <v-row>
+                <v-col
+                  cols="12"
+                  md="6"
+                  sm="12"
+                >
+                  <v-text-field
+                    filled
+                    rounded
+                    required
+                    clearable
+                    clear-icon="mdi-window-close"
+                    label="Name"
+                    hide-details="auto"
+                    class="rounded ma-0"
+                    color="primary"
+                    v-model="name"
+                    :rules="nameRules"
+                  >
+                  </v-text-field>
+                </v-col>
+
+                <v-col
+                  cols="12"
+                  md="6"
+                  sm="12"
+                  :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
+                >
+                  <v-text-field
+                    filled
+                    rounded
+                    auto-grow
+                    required
+                    clearable
+                    clear-icon="mdi-window-close"
+                    label="Email"
+                    placeholder="example@domain.com"
+                    hide-details="auto"
+                    class="rounded"
+                    color="primary"
+                    v-model="email"
+                    :rules="emailRules"
+                  >
+                  </v-text-field>
+                </v-col>
+              </v-row>
+
+              <v-row>
+                <v-col
+                  :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
+                >
+                  <v-textarea
+                    filled
+                    rounded
+                    auto-grow
+                    counter
+                    required
+                    clearable
+                    clear-icon="mdi-window-close"
+                    label="Message"
+                    class="rounded"
+                    color="primary"
+                    maxlength="500"
+                    rows="8"
+                    v-model="message"
+                    :rules="messageRules"
+                  ></v-textarea>
+                </v-col>
+              </v-row>
+            </v-card-text>
 
             <v-card-text
-              class="pt-0"
-            >
-              <v-text-field
-                filled
-                rounded
-                required
-                clearable
-                clear-icon="mdi-window-close"
-                label="Name"
-                hide-details="auto"
-                class="rounded ma-0"
-                color="primary"
-                v-model="name"
-                :rules="nameRules"
-              >
-              </v-text-field>
-            </v-card-text>
-            
-            <v-card-text
-              class="pt-0"
-            >
-              <v-text-field
-                filled
-                rounded
-                auto-grow
-                required
-                clearable
-                clear-icon="mdi-window-close"
-                label="Email"
-                placeholder="example@domain.com"
-                hide-details="auto"
-                class="rounded"
-                color="primary"
-                v-model="email"
-                :rules="emailRules"
-              >
-              </v-text-field>
-            </v-card-text>
-
-            <v-card-text
-              class="pt-0"
-            >
-              <v-textarea
-                filled
-                rounded
-                auto-grow
-                counter
-                required
-                clearable
-                clear-icon="mdi-window-close"
-                label="Message"
-                class="rounded"
-                color="primary"
-                maxlength="500"
-                v-model="message"
-                :rules="messageRules"
-              ></v-textarea>
-            </v-card-text>
-
-            <v-card-text
-              class="pt-0"
+              class="pt-0 px-0"
             >
               <v-btn
                 x-large
@@ -260,17 +268,7 @@
 
 <style lang="scss" scoped>
 .container {
-  height: 100%;
-}
-
-h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-}
-
-h4 {
-  color: #9E9E9E;
-  margin-bottom: 20px;
+  min-height: 100%;
 }
 </style>
 

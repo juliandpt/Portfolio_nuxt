@@ -170,7 +170,7 @@
 
       <v-dialog
         v-model="dialog"
-        width="325"
+        max-width="400"
       >
         <v-card>
           <v-card-title
@@ -197,7 +197,7 @@
           >
             <div class="d-flex align-center">
               <img
-                src="@/assets/icons/circle-check.svg"
+                src="/icons/circle-check.svg"
                 height="18"
                 width="18"
                 class="pa-0 mr-3"
@@ -225,46 +225,53 @@
       </p>
     </v-row>
 
-    <v-row>
-      <v-sheet
+    <v-row
+      v-if="!$vuetify.breakpoint.xs"
+    >
+      <!-- <v-sheet
         color="transparent"
         class="mx-auto"
         width="100%"
-        max-width="800"
+        max-width="1000"
       >
         <v-slide-group
           v-model="model"
           show-arrows
-          class="custom pa-4"
-          active-class="success"
+          class="pa-4"
         >
           <v-slide-item
-            class="ma-1"
+            class="mr-6"
+            style="position: relative;"
             v-for="(project, i) in projects"
             :key="i"
           >
             <v-card
               elevation="0"
+              min-width="100%"
+              max-width="100%"
               :outlined="!$vuetify.theme.dark"
-              max-width="400"
             >
-              
-              <v-card-title>
+              <v-card-title
+                class="justify-center"
+              >
                 {{ project.title }}
               </v-card-title>
 
               <v-card-text
-                class="secondary--text"
+                class="secondary--text pb-auto"
               >
                 {{ project.description }}
               </v-card-text>
 
-              <v-card-text>
+              <v-card-actions
+                class="px-4 pb-4"
+              >
+                <v-spacer></v-spacer>
+                
                 <v-btn
                   dark
                   elevation="0"
                   color="primary"
-                  class="mr-2"
                   v-for="(link, j) in project.links"
                   :key="j"
                   :href="link.target"
@@ -273,17 +280,129 @@
                   {{ link.title }}
 
                   <img
-                    src="@/assets/icons/arrow.svg"
+                    src="/icons/arrow.svg"
                     height="18"
                     width="18"
                     class="mr-n1 ml-2"
                   >
                 </v-btn>
-                  </v-card-text>
+              </v-card-actions>
             </v-card>
           </v-slide-item>
         </v-slide-group>
-      </v-sheet>
+      </v-sheet> -->
+
+      <div 
+        class="mx-auto"
+        style="max-width: 50%"
+      >
+        <v-carousel
+          cycle
+          hide-delimiter-background
+          hide-delimiters
+          height="auto"
+        >
+          <v-carousel-item
+            v-for="(project, i) in projects"
+            :key="i"
+            class="px-16"
+          >
+            <v-card
+              elevation="0"
+              :outlined="!$vuetify.theme.dark"
+            >
+              <v-card-title
+                class="justify-center"
+              >
+                {{ project.title }}
+              </v-card-title>
+
+              <v-card-text
+                class="secondary--text pb-auto"
+              >
+                {{ project.description }}
+              </v-card-text>
+
+              <v-card-actions
+                class="px-4 pb-4"
+              >
+                <v-spacer></v-spacer>
+                
+                <v-btn
+                  dark
+                  elevation="0"
+                  color="primary"
+                  v-for="(link, j) in project.links"
+                  :key="j"
+                  :href="link.target"
+                  target="_blank"
+                >
+                  {{ link.title }}
+
+                  <img
+                    src="/icons/arrow.svg"
+                    height="18"
+                    width="18"
+                    class="mr-n1 ml-2"
+                  >
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-carousel-item>
+        </v-carousel>
+      </div>
+    </v-row>
+
+    <v-row
+      v-if="$vuetify.breakpoint.xs"
+    >
+      <v-col
+        cols="12"
+        class="pt-0"
+        v-for="(project, i) in projects"
+        :key="i"
+      >
+        <v-card
+          elevation="0"
+          :outlined="!$vuetify.theme.dark"
+        >
+          <v-card-title>
+            {{ project.title }}
+          </v-card-title>
+
+          <v-card-text
+            class="secondary--text"
+          >
+            {{ project.description }}
+          </v-card-text>
+
+          <v-card-actions
+            class="px-4 pb-4"
+          >
+            <v-spacer></v-spacer>
+
+            <v-btn
+              dark
+              elevation="0"
+              color="primary"
+              class="mr-2"
+              v-for="(link, j) in project.links"
+              :key="j"
+              :href="link.target"
+              target="_blank"
+            >
+              {{ link.title }}
+
+              <img
+                src="/icons/arrow.svg"
+                height="18"
+                width="18"
+                class="mr-n1 ml-2"
+              >
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -302,7 +421,7 @@ export default {
     skills: [
       {
         title: "Frontend",
-        icon: require("@/assets/icons/tags.svg"),
+        icon: "/icons/tags.svg",
         items: [
           {
             title: "HTML",
@@ -328,7 +447,7 @@ export default {
       },
       {
         title: "Backend",
-        icon: require("@/assets/icons/server.svg"),
+        icon: "/icons/server.svg",
         items: [
           {
             title: "Node.js",
@@ -342,7 +461,7 @@ export default {
       },
       {
         title: "Database",
-        icon: require("@/assets/icons/database.svg"),
+        icon: "/icons/database.svg",
         items: [
           {
             title: "MariaDB",
@@ -360,7 +479,7 @@ export default {
       },
       {
         title: "Others",
-        icon: require("@/assets/icons/brackets.svg"),
+        icon: "/icons/brackets.svg",
         items: [
           {
             title: "Python",
@@ -380,7 +499,7 @@ export default {
     services: [
       {
         title: "WEB DESIGN",
-        icon: require("@/assets/icons/design.svg"),
+        icon: "/icons/design.svg",
         text: "caca tambien",
         descriptions: [
           "caca1",
@@ -390,7 +509,7 @@ export default {
       },
       {
         title: "RESPONSIVE DESIGN",
-        icon: require("@/assets/icons/mobile.svg"),
+        icon: "/icons/mobile.svg",
         text: "caca tambien",
         descriptions: [
           "caca1",
@@ -400,7 +519,7 @@ export default {
       },
       {
         title: "UI / UX",
-        icon: require("@/assets/icons/grid.svg"),
+        icon: "/icons/grid.svg",
         text: "caca tambien",
         descriptions: [
           "I develop the user interface.",
@@ -410,7 +529,7 @@ export default {
       },
       {
         title: "WEB DEVELOPMENT",
-        icon: require("@/assets/icons/dashboard.svg"),
+        icon: "/icons/dashboard.svg",
         text: "caca tambien",
         descriptions: [
           "caca1",
@@ -421,7 +540,7 @@ export default {
     projects: [
       {
         title: "Infopueblo",
-        description: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities",
+        description: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities.",
         links: [
           {
             title: "Front-end",
@@ -442,7 +561,7 @@ export default {
             target: "https://github.com/juliandpt/Compilador"
           }
         ]
-      }
+      },
     ],
   }),
   methods: {

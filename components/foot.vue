@@ -87,19 +87,19 @@ export default {
   data: () => ({
     socials: [
       {
-        icon: require("@/assets/icons/instagram.svg"),
+        icon: "/icons/instagram.svg",
         link: "https://www.instagram.com/julidpt"
       },
       {
-        icon: require("@/assets/icons/twitter.svg"),
+        icon: "/icons/twitter.svg",
         link: "https://twitter.com/Depabloj"
       },
       {
-        icon: require("@/assets/icons/facebook.svg"),
+        icon: "/icons/facebook.svg",
         link: "https://www.facebook.com/juli.depablo"
       },
       {
-        icon: require("@/assets/icons/linkedin.svg"),
+        icon: "/icons/linkedin.svg",
         link: 'https://www.linkedin.com/in/julián-de-pablo-torremocha'
       }
     ]

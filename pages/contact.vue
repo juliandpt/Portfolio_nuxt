@@ -60,7 +60,7 @@
               <img
                 height="24"
                 width="24"
-                src="@/assets/icons/check.svg"
+                src="/icons/check.svg"
                 v-if="card.copied"
               >
             </v-scroll-x-transition>
@@ -71,7 +71,7 @@
               <img
                 height="24"
                 width="24"
-                src="@/assets/icons/copy.svg"
+                src="/icons/copy.svg"
                 v-if="!card.copied"
               >
             </v-scroll-x-transition>
@@ -198,7 +198,7 @@
         pr-4
       >
         <img
-          src="@/assets/icons/error-white.svg"
+          src="/icons/error-white.svg"
           class="mr-1"
           height="24"
           width="24"
@@ -206,7 +206,7 @@
         >
 
         <img
-          src="@/assets/icons/error.svg"
+          src="/icons/error.svg"
           class="mr-1"
           height="24"
           width="24"
@@ -214,7 +214,7 @@
         >
 
         <img
-          src="@/assets/icons/circle-check-white.svg"
+          src="/icons/circle-check-white.svg"
           class="mr-1"
           height="24"
           width="24"
@@ -222,7 +222,7 @@
         >
 
         <img
-          src="@/assets/icons/circle-check-green.svg"
+          src="/icons/circle-check-green.svg"
           class="mr-1"
           height="24"
           width="24"
@@ -241,21 +241,21 @@
           @click="snackbarShow = false"
         >
           <img
-            src="@/assets/icons/close-white.svg"
+            src="/icons/close-white.svg"
             height="24"
             width="24"
             v-if="$vuetify.theme.dark"
           >
 
           <img
-            src="@/assets/icons/close-red.svg"
+            src="/icons/close-red.svg"
             height="24"
             width="24"
             v-if="!$vuetify.theme.dark && error"
           >
 
           <img
-            src="@/assets/icons/close-green.svg"
+            src="/icons/close-green.svg"
             height="24"
             width="24"
             v-if="!$vuetify.theme.dark && !error"
@@ -305,13 +305,18 @@ export default {
     ],
     cards: [
       {
-        icon: require("@/assets/icons/mail.svg"),
+        icon: "/icons/mail.svg",
         text: "juliandpt98@gmail.com",
         copied: false
       },
       {
-        icon: require("@/assets/icons/phone.svg"),
+        icon: "/icons/phone.svg",
         text: "+34 620 69 69 68",
+        copied: false
+      },
+      {
+        icon: "/icons/location.svg",
+        text: "c/ Moralzarzal, 61, Madrid",
         copied: false
       }
     ]

@@ -1,75 +1,80 @@
 <template>
-  <v-container>
+  <div
+    class="glass"
+  >
     <v-card
       flat
       color="transparent"
     >
-      <v-app-bar
-        flat
-        plain
-        color="transparent"
-      >
-        <v-app-bar-nav-icon
-          v-if="$vuetify.breakpoint.xs"
-          @click.stop="drawer = !drawer"
-        ></v-app-bar-nav-icon>
-
-        <v-toolbar-title
-          class="pa-0"
-        >
-          Julián de Pablo
-        </v-toolbar-title>
-
-        <v-spacer></v-spacer>
-
-        <div
-          v-if="!$vuetify.breakpoint.xs"
-        >
-          <v-btn
-            text
-            plain
-            v-for="(route, i) in routes"
-            :key="i"
-            :to="route.link"
-          >
-            {{ route.title }}
-          </v-btn>
-        </div>
-
-        <v-btn
-          icon
-          :plain="!$vuetify.breakpoint.xs"
+      <v-container>
+        <v-app-bar
+          flat
+          plain
           color="transparent"
-          @click="toggleTheme()"
         >
-          <v-fab-transition
-            hide-on-leave
-          >
-            <img
-              src="@/assets/icons/sun.svg"
-              alt="facebook"
-              height="24"
-              width="24"
-              v-if="!$vuetify.theme.dark"
-            >
-          </v-fab-transition>
+          <v-app-bar-nav-icon
+            v-if="$vuetify.breakpoint.xs"
+            @click.stop="drawer = !drawer"
+          ></v-app-bar-nav-icon>
 
-          <v-fab-transition
-            hide-on-leave
+          <v-toolbar-title
+            class="pa-0"
           >
-            <img
-              src="@/assets/icons/moon.svg"
-              alt="facebook"
-              height="24"
-              width="24"
-              v-if="$vuetify.theme.dark"
+            Julián de Pablo
+          </v-toolbar-title>
+
+          <v-spacer></v-spacer>
+
+          <div
+            v-if="!$vuetify.breakpoint.xs"
+          >
+            <v-btn
+              text
+              plain
+              v-for="(route, i) in routes"
+              :key="i"
+              :to="route.link"
             >
-          </v-fab-transition>
-        </v-btn>
-      </v-app-bar>
+              {{ route.title }}
+            </v-btn>
+          </div>
+
+          <v-btn
+            icon
+            :plain="!$vuetify.breakpoint.xs"
+            color="transparent"
+            @click="toggleTheme()"
+          >
+            <v-fab-transition
+              hide-on-leave
+            >
+              <img
+                src="/icons/sun.svg"
+                alt="facebook"
+                height="24"
+                width="24"
+                v-if="!$vuetify.theme.dark"
+              >
+            </v-fab-transition>
+
+            <v-fab-transition
+              hide-on-leave
+            >
+              <img
+                src="/icons/moon.svg"
+                alt="facebook"
+                height="24"
+                width="24"
+                v-if="$vuetify.theme.dark"
+              >
+            </v-fab-transition>
+          </v-btn>
+        </v-app-bar>
+      </v-container>
     </v-card>
 
     <v-navigation-drawer
+      app
       absolute
       temporary
       v-model="drawer"
@@ -102,13 +107,20 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  </v-container>
+  </div>
 </template>
 
 <style lang="scss">
 .v-btn--active {
   background-color: transparent !important;
   color: #536DFE !important;
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 </style>
 
@@ -120,26 +132,26 @@ export default({
     routes: [
       {
         title: 'Home',
-        icon: require('@/assets/icons/home.svg'),
-        icon_grey: require('@/assets/icons/home-grey.svg'),
+        icon: "/icons/home.svg",
+        icon_grey: "/icons/home-grey.svg",
         link: "/"
       },
       {
         title: 'About',
-        icon: require('@/assets/icons/info.svg'),
-        icon_grey: require('@/assets/icons/info-grey.svg'),
+        icon: "/icons/info.svg",
+        icon_grey: "/icons/info-grey.svg",
         link: "/about"
       },
       {
         title: 'Skills',
-        icon: require('@/assets/icons/laptop.svg'),
-        icon_grey: require('@/assets/icons/laptop-grey.svg'),
+        icon: "/icons/laptop.svg",
+        icon_grey: "/icons/laptop-grey.svg",
         link: "/skills"
       },
       {
         title: 'Contact',
-        icon: require('@/assets/icons/at.svg'),
-        icon_grey: require('@/assets/icons/at-grey.svg'),
+        icon: "/icons/at.svg",
+        icon_grey: "/icons/at-grey.svg",
         link: "/contact"
       },
     ],

@@ -25,7 +25,7 @@
         class="d-flex flex-column justify-center align-center"
       >
         <img
-          src="@/assets/images/me-profile.png"
+          src="/images/me-profile.png"
           height="300"
           width="230"
         >
@@ -88,7 +88,7 @@
               Download CV
 
               <img
-                src="@/assets/icons/download.svg"
+                src="/icons/download.svg"
                 height="18"
                 width="18"
                 class="mr-n1 ml-2"
@@ -201,7 +201,7 @@
                         class="pa-0 secondary--text d-flex align-center"
                       >
                         <img
-                          src="@/assets/icons/date.svg"
+                          src="/icons/date.svg"
                           height="24"
                           width="24"
                           class="mr-2"
@@ -247,8 +247,8 @@ export default {
     qualifications: [
       {
         title: "Education",
-        icon: require("@/assets/icons/education.svg"),
-        icon_grey: require("@/assets/icons/education-grey.svg"),
+        icon: "/icons/education.svg",
+        icon_grey: "/icons/education-grey.svg",
         items: [
           {
             title: "Bachiller",
@@ -264,8 +264,8 @@ export default {
       },
       {
         title: "Work",
-        icon: require("@/assets/icons/work.svg"),
-        icon_grey: require("@/assets/icons/work-grey.svg"),
+        icon: "/icons/work.svg",
+        icon_grey: "/icons/work-grey.svg",
         items: [
           {
             title: "Incoming...",

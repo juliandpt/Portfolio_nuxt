@@ -62,7 +62,7 @@
             Contact me
 
             <img
-              src="@/assets/icons/send-white.svg"
+              src="/icons/send-white.svg"
               height="18"
               width="18"
               class="mr-n1 ml-2"
@@ -79,7 +79,7 @@
         class="d-flex flex-column justify-center"
       >
         <img
-          src="@/assets/images/me.svg"
+          src="/images/me.png"
         >
       </v-col>
     </v-row>
@@ -103,15 +103,15 @@ export default {
   data: () => ({
     socials: [
       {
-        icon: require("@/assets/icons/linkedin.svg"),
+        icon: "/icons/linkedin.svg",
         link: 'https://www.linkedin.com/in/julián-de-pablo-torremocha'
       },
       {
-        icon: require("@/assets/icons/dribbble.svg"),
+        icon: "/icons/dribbble.svg",
         link: 'https://dribbble.com/juliandpt'
       },
       {
-        icon: require("@/assets/icons/github.svg"),
+        icon: "/icons/github.svg",
         link: 'https://github.com/juliandpt'
       }
     ]

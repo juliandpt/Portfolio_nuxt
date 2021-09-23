@@ -80,6 +80,8 @@
       >
         <img
           src="/images/me.png"
+          height="100%"
+          width="100%"
         >
       </v-col>
     </v-row>

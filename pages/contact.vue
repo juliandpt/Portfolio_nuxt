@@ -14,7 +14,7 @@
       <p
         class="mx-auto secondary--text"
       >
-        Let's get in touch! &#129311;
+        Let's get in touch!
       </p>
     </v-row>
 

@@ -132,6 +132,7 @@
             ></v-tabs-slider>
 
             <v-tab
+              background-color="transparent"
               v-for="(qualification, i) in qualifications"
               :key="i"
             >
@@ -157,62 +158,56 @@
 
           <v-tabs-items
             v-model="tab"
+            style="background-color: transparent"
           >
             <v-tab-item
               v-for="(qualification, i) in qualifications"
               :key="i"
             >
-              <template>
-                <v-timeline
-                  align-top
-                  class="px-4 py-0 my-12"
+              <v-timeline
+                align-top
+                class="px-4 py-0 my-12"
+              >
+                <v-timeline-item
+                  small
+                  fill-dot
+                  color="primary"
+                  background-color="transparent"
+                  class="pa-0"
+                  v-for="(item, j) in qualification.items"
+                  :key="j"
                 >
-                  <v-timeline-item
-                    small
-                    fill-dot
-                    color="primary"
-                    background-color="transparent"
-                    class="pa-0"
-                    v-for="(item, j) in qualification.items"
-                    :key="j"
+                  <v-card
+                    flat
+                    color="transparent"
                   >
-                    <v-card
-                      flat
-                      color="transparent"
-                      :style="!$vuetify.breakpoint.xs && j%2 != 0 ? 'padding-left: 45%' : ''"
+                    <v-card-text
+                      :class="j%2 === 0 ? 'pt-0 px-0 pb-1 text-h6' : 'pt-0 px-0 pb-1 text-h6 text-right'"
                     >
-                      <v-card-title
-                        class="pt-0 px-0 pb-1"
-                      >
-                        <h2
-                          :style="$vuetify.breakpoint.xs ? 'font-size: 1em' : ''"
-                        >
-                          {{ item.title }}
-                        </h2>
-                      </v-card-title>
+                      {{ item.title }}
+                    </v-card-text>
 
-                      <v-card-text
-                        class="px-0 secondary--text d-flex align-center "
-                      >
-                        {{ item.location }}
-                      </v-card-text>
+                    <v-card-text
+                      :class="j%2 === 0 ? 'pt-0 px-0 secondary--text d-flex align-center' : 'pt-0 px-0 secondary--text d-flex align-center justify-end'"
+                    >
+                      {{ item.location }}
+                    </v-card-text>
 
-                      <v-card-text
-                        class="pa-0 secondary--text d-flex align-center"
+                    <v-card-text
+                      :class="j%2 === 0 ? 'pa-0 secondary--text d-flex align-center' : 'pa-0 secondary--text d-flex align-center justify-end'"
+                    >
+                      <img
+                        src="/icons/date.svg"
+                        height="24"
+                        width="24"
+                        class="mr-2"
                       >
-                        <img
-                          src="/icons/date.svg"
-                          height="24"
-                          width="24"
-                          class="mr-2"
-                        >
 
-                        {{ item.date }}
-                      </v-card-text>
-                    </v-card>
-                  </v-timeline-item>
-                </v-timeline>
-              </template>
+                      {{ item.date }}
+                    </v-card-text>
+                  </v-card>
+                </v-timeline-item>
+              </v-timeline>
             </v-tab-item>
           </v-tabs-items>
         </v-card>

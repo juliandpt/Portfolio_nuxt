@@ -131,7 +131,8 @@
         >
           <v-card
             height="100%"
-            :outlined="!$vuetify.theme.dark"
+            elevation="0"
+            color="transparent"
           >
             <v-flex
               class="pt-4"
@@ -228,126 +229,109 @@
     <v-row
       v-if="!$vuetify.breakpoint.xs"
     >
-      <!-- <v-sheet
-        color="transparent"
-        class="mx-auto"
-        width="100%"
-        max-width="1000"
-      >
-        <v-slide-group
-          v-model="model"
-          show-arrows
-          class="pa-4"
-        >
-          <v-slide-item
-            class="mr-6"
-            style="position: relative;"
-            v-for="(project, i) in projects"
-            :key="i"
-          >
-            <v-card
-              elevation="0"
-              min-width="100%"
-              max-width="100%"
-              :outlined="!$vuetify.theme.dark"
-            >
-              <v-card-title
-                class="justify-center"
-              >
-                {{ project.title }}
-              </v-card-title>
-
-              <v-card-text
-                class="secondary--text pb-auto"
-              >
-                {{ project.description }}
-              </v-card-text>
-
-              <v-card-actions
-                class="px-4 pb-4"
-              >
-                <v-spacer></v-spacer>
-                
-                <v-btn
-                  dark
-                  elevation="0"
-                  color="primary"
-                  v-for="(link, j) in project.links"
-                  :key="j"
-                  :href="link.target"
-                  target="_blank"
-                >
-                  {{ link.title }}
-
-                  <img
-                    src="/icons/arrow.svg"
-                    height="18"
-                    width="18"
-                    class="mr-n1 ml-2"
-                  >
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-slide-item>
-        </v-slide-group>
-      </v-sheet> -->
-
       <div 
         class="mx-auto"
-        style="max-width: 50%"
+        style="min-width: 60%; max-width: 60%;"
       >
         <v-carousel
           cycle
-          hide-delimiter-background
           hide-delimiters
-          height="auto"
+          interval="10000"
+          height="300"
         >
+          <template
+            v-slot:prev="{ on, attrs }"
+          >
+            <v-btn
+              icon
+              text
+              tile
+              large
+              color="primary"
+              class="rounded"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <img
+                src="/icons/arrow-prev.svg"
+                height="40"
+                width="40"
+              >
+            </v-btn>
+          </template>
+
+          <template
+            v-slot:next="{ on, attrs }"
+          >
+            <v-btn
+              icon
+              text
+              large
+              color="primary"
+              v-bind="attrs"
+              v-on="on"
+            >
+              <img
+                src="/icons/arrow-next.svg"
+                height="40"
+                width="40"
+              >
+            </v-btn>
+          </template>
+
           <v-carousel-item
             v-for="(project, i) in projects"
             :key="i"
-            class="px-16"
+            class="px-16 align-center"
           >
-            <v-card
-              elevation="0"
-              :outlined="!$vuetify.theme.dark"
+            <v-row
+              class="fill-height px-4"
+              align="center"
+              justify="center"
             >
-              <v-card-title
-                class="justify-center"
+              <v-card
+                elevation="0"
+                width="100%"
+                :outlined="!$vuetify.theme.dark"
               >
-                {{ project.title }}
-              </v-card-title>
-
-              <v-card-text
-                class="secondary--text pb-auto"
-              >
-                {{ project.description }}
-              </v-card-text>
-
-              <v-card-actions
-                class="px-4 pb-4"
-              >
-                <v-spacer></v-spacer>
-                
-                <v-btn
-                  dark
-                  elevation="0"
-                  color="primary"
-                  v-for="(link, j) in project.links"
-                  :key="j"
-                  :href="link.target"
-                  target="_blank"
+                <v-card-title
+                  class="justify-center"
                 >
-                  {{ link.title }}
+                  {{ project.title }}
+                </v-card-title>
 
-                  <img
-                    src="/icons/arrow.svg"
-                    height="18"
-                    width="18"
-                    class="mr-n1 ml-2"
+                <v-card-text
+                  class="secondary--text text-center"
+                >
+                  {{ project.description }}
+                </v-card-text>
+
+                <v-card-actions
+                  class="px-4 pb-4"
+                >
+                  <v-spacer></v-spacer>
+                  
+                  <v-btn
+                    dark
+                    elevation="0"
+                    color="primary"
+                    v-for="(link, j) in project.links"
+                    :key="j"
+                    :href="link.target"
+                    target="_blank"
                   >
-                </v-btn>
-              </v-card-actions>
-            </v-card>
+                    {{ link.title }}
+
+                    <img
+                      src="/icons/arrow.svg"
+                      height="18"
+                      width="18"
+                      class="mr-n1 ml-2"
+                    >
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-row>
           </v-carousel-item>
         </v-carousel>
       </div>
@@ -406,6 +390,12 @@
     </v-row>
   </v-container>
 </template>
+
+<style>
+.v-window__next, .v-window__prev {
+  background: transparent !important
+}
+</style>
 
 <script>
 export default {

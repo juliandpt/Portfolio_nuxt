@@ -245,10 +245,8 @@
             <v-btn
               icon
               text
-              tile
               large
               color="primary"
-              class="rounded"
               v-bind="attrs"
               v-on="on"
             >
@@ -488,39 +486,34 @@ export default {
     ],
     services: [
       {
-        title: "WEB DESIGN",
-        icon: "/icons/design.svg",
-        text: "caca tambien",
+        title: "SOFTWARE DEVELOPMENT",
+        icon: "/icons/web-programming.svg",
         descriptions: [
-          "caca1",
-          "caca2",
-          "caca3"
-        ]
-      },
-      {
-        title: "RESPONSIVE DESIGN",
-        icon: "/icons/mobile.svg",
-        text: "caca tambien",
-        descriptions: [
-          "caca1",
-          "caca2",
-          "caca3"
+          "I develop the user interface.",
+          "Web page design.",
+          "I create ux element interactions."
         ]
       },
       {
         title: "UI / UX",
-        icon: "/icons/grid.svg",
-        text: "caca tambien",
+        icon: "/icons/ux-design.svg",
         descriptions: [
           "I develop the user interface.",
-          "Web page development.",
+          "Web page design.",
           "I create ux element interactions."
         ]
       },
       {
         title: "WEB DEVELOPMENT",
-        icon: "/icons/dashboard.svg",
-        text: "caca tambien",
+        icon: "/icons/speedometer.svg",
+        descriptions: [
+          "caca1",
+          "caca2"
+        ]
+      },
+      {
+        title: "TEAM WORK",
+        icon: "/icons/team.svg",
         descriptions: [
           "caca1",
           "caca2"

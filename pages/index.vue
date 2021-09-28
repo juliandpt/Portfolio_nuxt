@@ -47,7 +47,7 @@
           </span>
         </h1>
 
-        <h1>Software Engineer</h1>
+        <h1>Computer Engineer</h1>
         
         <div
           class="mt-10"
@@ -80,7 +80,7 @@
       >
         <img
           src="/images/me.png"
-          height="100%"
+          height="auto"
           width="100%"
         >
       </v-col>

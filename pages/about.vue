@@ -228,7 +228,7 @@ export default {
     experiences: [
       {
         title: 'Years experience',
-        value: '4+'
+        value: '1'
       },
       {
         title: 'Projects',
@@ -236,7 +236,7 @@ export default {
       },
       {
         title: 'Companies',
-        value: '0'
+        value: '1'
       }
     ],
     qualifications: [
@@ -263,9 +263,9 @@ export default {
         icon_grey: "/icons/work-grey.svg",
         items: [
           {
-            title: "Incoming...",
-            location: "...",
-            date: "..."
+            title: "Software development intern",
+            location: "Madrid - SAS Software",
+            date: "2021 - present"
           }
         ]
       }

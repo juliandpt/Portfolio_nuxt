@@ -23,9 +23,11 @@
         md="6"
         sm="6"
         class="d-flex flex-column align-center"
+        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '2' : '1'"
       >
         <v-card
           flat
+          height="50"
           elevation="0"
           color="transparent"
           class="d-flex align-center mb-4"
@@ -51,6 +53,7 @@
             icon
             color="grey"
             x-large
+            v-if="card.canCopy"
             :disabled="card.copied"
             @click="copyText(card.text, i)"
           >
@@ -83,6 +86,7 @@
         md="6"
         sm="6"
         :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
+        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '1' : '2'"
       >
         <v-card
           color="transparent"
@@ -307,16 +311,19 @@ export default {
       {
         icon: "/icons/mail.svg",
         text: "juliandpt98@gmail.com",
+        canCopy: true,
         copied: false
       },
       {
         icon: "/icons/phone.svg",
         text: "+34 620 69 69 68",
+        canCopy: true,
         copied: false
       },
       {
         icon: "/icons/location.svg",
-        text: "c/ Moralzarzal, 61, Madrid",
+        text: "Madrid, Spain",
+        canCopy: false,
         copied: false
       }
     ]

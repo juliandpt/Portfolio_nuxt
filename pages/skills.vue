@@ -158,10 +158,18 @@
                 color="secondary"
               >
                 <v-btn
+                  elevation="0"
                   color="primary"
                   @click="showInfo(service)"
                 >
-                  View more
+                  See more
+
+                  <img
+                    src="/icons/arrow.svg"
+                    height="18"
+                    width="18"
+                    class="mr-n1 ml-2"
+                  >
                 </v-btn>
               </v-overlay>
             </v-fade-transition>
@@ -175,7 +183,7 @@
       >
         <v-card>
           <v-card-title
-            class="pr-3"
+            class="pa-4"
           >
             {{ info.title }}
 
@@ -193,6 +201,7 @@
           </v-card-title>
 
           <v-card-text
+            class="px-4"
             v-for="(description, i) in info.descriptions"
             :key="i"
           >
@@ -231,7 +240,7 @@
     >
       <div 
         class="mx-auto"
-        style="min-width: 60%; max-width: 60%;"
+        :style="$vuetify.breakpoint.sm ? 'min-width: 80%; max-width: 80%;' : 'min-width: 60%; max-width: 60%;'"
       >
         <v-carousel
           cycle
@@ -321,7 +330,7 @@
                     {{ link.title }}
 
                     <img
-                      src="/icons/arrow.svg"
+                      src="/icons/link.svg"
                       height="18"
                       width="18"
                       class="mr-n1 ml-2"
@@ -376,7 +385,7 @@
               {{ link.title }}
 
               <img
-                src="/icons/arrow.svg"
+                src="/icons/link.svg"
                 height="18"
                 width="18"
                 class="mr-n1 ml-2"

@@ -78,11 +78,11 @@
         :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '1' : '3'"
         class="d-flex flex-column justify-center"
       >
-        <img
+        <v-img
           src="/images/me.png"
           height="auto"
-          width="100%"
-        >
+          contain
+        ></v-img>
       </v-col>
     </v-row>
   </v-container>

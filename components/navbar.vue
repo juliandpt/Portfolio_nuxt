@@ -1,6 +1,6 @@
 <template>
   <div
-    class="glass"
+    :class="$vuetify.theme.dark ? 'glass-black' : 'glass-white'"
   >
     <v-card
       flat
@@ -12,10 +12,28 @@
           plain
           color="transparent"
         >
-          <v-app-bar-nav-icon
+          <v-btn
+            icon
+            text
+            large
+            :color="$vuetify.theme.dark ? 'white' : 'black'"
             v-if="$vuetify.breakpoint.xs"
             @click.stop="drawer = !drawer"
-          ></v-app-bar-nav-icon>
+          >
+            <img
+              src="/icons/bars-white.svg"
+              height="24"
+              width="24"
+              v-if="$vuetify.theme.dark"
+            >
+
+            <img
+              src="/icons/bars-black.svg"
+              height="24"
+              width="24"
+              v-else
+            >
+          </v-btn>
 
           <v-toolbar-title
             class="pa-0"
@@ -41,8 +59,8 @@
 
           <v-btn
             icon
-            :plain="!$vuetify.breakpoint.xs"
             color="transparent"
+            :plain="!$vuetify.breakpoint.xs"
             @click="toggleTheme()"
           >
             <v-fab-transition
@@ -50,7 +68,6 @@
             >
               <img
                 src="/icons/sun.svg"
-                alt="facebook"
                 height="24"
                 width="24"
                 v-if="!$vuetify.theme.dark"
@@ -62,7 +79,6 @@
             >
               <img
                 src="/icons/moon.svg"
-                alt="facebook"
                 height="24"
                 width="24"
                 v-if="$vuetify.theme.dark"
@@ -80,10 +96,27 @@
       v-model="drawer"
       v-if="$vuetify.breakpoint.xs"
     >
-      <v-list flat>
+      <v-list
+        flat
+      >
         <v-list-item-group
           color="primary"
         >
+          <v-btn
+            icon
+            text
+            x-large
+            color="secondary"
+            v-if="$vuetify.breakpoint.xs"
+            @click.stop="drawer = !drawer"
+          >
+            <img
+              src="/icons/close-grey.svg"
+              height="24"
+              width="24"
+            >
+          </v-btn>
+
           <v-list-item
             v-for="(route, i) in routes"
             :key="i"
@@ -100,7 +133,7 @@
             <v-list-item-content>
               <v-list-item-title
                 v-text="route.title"
-                :class="route.link === $route.path ? 'primary--text' : 'grey--text'"
+                :class="route.link === $route.path ? 'primary--text' : 'secondary--text'"
               ></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -116,7 +149,16 @@
   color: #536DFE !important;
 }
 
-.glass {
+.glass-white {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.glass-black {
+  background-color: rgb(18, 18, 18, 0.8);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;

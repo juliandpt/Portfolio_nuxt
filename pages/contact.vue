@@ -23,7 +23,7 @@
         md="6"
         sm="6"
         class="d-flex flex-column align-center"
-        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '2' : '1'"
+        :order="$vuetify.breakpoint.xs ? '2' : '1'"
       >
         <v-card
           flat
@@ -86,7 +86,7 @@
         md="6"
         sm="6"
         :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
-        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '1' : '2'"
+        :order="$vuetify.breakpoint.xs ? '1' : '2'"
       >
         <v-card
           color="transparent"

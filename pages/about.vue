@@ -24,11 +24,12 @@
         sm="12"
         class="d-flex flex-column justify-center align-center"
       >
-        <img
-          src="/images/me-profile.png"
-          height="300"
-          width="230"
-        >
+        <v-img
+          src="/images/me-alt.png"
+          height="auto"
+          max-height="350"
+          contain
+        ></v-img>
       </v-col>
 
       <v-col
@@ -38,7 +39,7 @@
         <v-row>
           <v-col>
             <p
-              class="text-center"
+              :class="$vuetify.breakpoint.xs ? 'text-center' : ''"
             >
               I am a computer engineering student finishing the last year of my degree. I am passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.
             </p>
@@ -66,7 +67,11 @@
               <v-card-text
                 class="text-center secondary--text"
               >
-                {{ experience.title }}
+                {{ experience.title_top }}
+
+                <br>
+
+                {{ experience.title_bottom }}
               </v-card-text>
             </v-card>
           </v-col>
@@ -166,14 +171,16 @@
             >
               <v-timeline
                 align-top
-                class="px-4 py-0 my-12"
+                :dense="$vuetify.breakpoint.xs"
+                class="pt-0 my-12"
               >
                 <v-timeline-item
                   small
                   fill-dot
                   color="primary"
                   background-color="transparent"
-                  class="pa-0"
+                  class="px-0 pt-0"
+                  :right="$vuetify.breakpoint.xs"
                   v-for="(item, j) in qualification.items"
                   :key="j"
                 >
@@ -182,19 +189,19 @@
                     color="transparent"
                   >
                     <v-card-text
-                      :class="j%2 === 0 ? 'pt-0 px-0 pb-1 text-h6' : 'pt-0 px-0 pb-1 text-h6 text-right'"
+                      :class="j%2 !== 0 && !$vuetify.breakpoint.xs ? 'pt-0 px-0 pb-1 text-h6 text-right' : 'pt-0 px-0 pb-1 text-h6'"
                     >
                       {{ item.title }}
                     </v-card-text>
 
                     <v-card-text
-                      :class="j%2 === 0 ? 'pt-0 px-0 secondary--text d-flex align-center' : 'pt-0 px-0 secondary--text d-flex align-center justify-end'"
+                      :class="j%2 !== 0 && !$vuetify.breakpoint.xs ? 'pt-0 px-0 secondary--text text-right' : 'pt-0 px-0 secondary--text'"
                     >
                       {{ item.location }}
                     </v-card-text>
 
                     <v-card-text
-                      :class="j%2 === 0 ? 'pa-0 secondary--text d-flex align-center' : 'pa-0 secondary--text d-flex align-center justify-end'"
+                      :class="j%2 !== 0 && !$vuetify.breakpoint.xs ? 'pa-0 secondary--text d-flex align-center justify-end' : 'pa-0 secondary--text d-flex align-center'"
                     >
                       <img
                         src="/icons/date.svg"
@@ -227,15 +234,18 @@ export default {
     tab: 0,
     experiences: [
       {
-        title: 'Years experience',
+        title_top: 'Years',
+        title_bottom: 'experience',
         value: '1'
       },
       {
-        title: 'Projects',
+        title_top: 'Completed',
+        title_bottom: 'projects',
         value: '2'
       },
       {
-        title: 'Companies',
+        title_top: 'Companies',
+        title_bottom: 'worked',
         value: '1'
       }
     ],
@@ -246,15 +256,10 @@ export default {
         icon_grey: "/icons/education-grey.svg",
         items: [
           {
-            title: "Bachiller",
-            location: "Madrid - School",
-            date: "2014-2017"
+            title: "Computer Engineer",
+            location: "Madrid - Universidad Europea",
+            date: "2017-present"
           },
-          {
-            title: "Software Engineer",
-            location: "Madrid - University",
-            date: "2017-2022"
-          }
         ]
       },
       {
@@ -263,10 +268,10 @@ export default {
         icon_grey: "/icons/work-grey.svg",
         items: [
           {
-            title: "Software development intern",
+            title: "Consulting Intern",
             location: "Madrid - SAS Software",
             date: "2021 - present"
-          }
+          },
         ]
       }
     ],

@@ -498,34 +498,36 @@ export default {
         title: "SOFTWARE DEVELOPMENT",
         icon: "/icons/web-programming.svg",
         descriptions: [
-          "I develop the user interface.",
-          "Web page design.",
-          "I create ux element interactions."
+          "I develope quality software products.",
+          "I manage software maintenance.",
+          "Knowledge of some of the most popular programming languages."
         ]
       },
       {
         title: "UI / UX",
         icon: "/icons/ux-design.svg",
         descriptions: [
-          "I develop the user interface.",
+          "I develope the user interface.",
           "Web page design.",
-          "I create ux element interactions."
+          "I create ux element interactions.",
         ]
       },
       {
         title: "WEB DEVELOPMENT",
         icon: "/icons/speedometer.svg",
         descriptions: [
-          "caca1",
-          "caca2"
+          "I perform modern web pages.",
+          "Multiple frameworks knowledge.",
+          "Full Stack development.",
         ]
       },
       {
-        title: "TEAM WORK",
+        title: "SOCIAL SKILLS",
         icon: "/icons/team.svg",
         descriptions: [
-          "caca1",
-          "caca2"
+          "I am an interactive and communicative person.",
+          "I prefer to work in a team instead of alone.",
+          "Speech abilities.",
         ]
       },
     ],

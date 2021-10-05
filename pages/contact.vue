@@ -94,6 +94,7 @@
           :class="$vuetify.breakpoint.sm ? 'pr-8' : ''"
         >
           <v-form
+            ref="form"
             v-model="valid"
           >
             <v-card-text
@@ -341,6 +342,7 @@ export default {
       emailjs.send('service_julian', 'template_julian', userParams, 'user_WjMXCOdbdqCzwQpCDkjtL')
       .then(
         (response) => {
+          this.$refs.form.reset()
           this.text = 'Email sent Successfuly!'
           this.snackbarShow = true
           this.loading = false

@@ -157,7 +157,12 @@
                 v-else
               >
 
-              {{ qualification.title }}
+              <span
+                class="mx-1"
+                v-if="!$vuetify.breakpoint.xs"
+              >
+                {{ qualification.title }}
+              </span>
             </v-tab>
           </v-tabs>
 
@@ -168,10 +173,12 @@
             <v-tab-item
               v-for="(qualification, i) in qualifications"
               :key="i"
+              :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '' : 'mx-auto'"
+              :style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '' : 'width: 50%'"
             >
               <v-timeline
                 align-top
-                :dense="$vuetify.breakpoint.xs"
+                :dense="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
                 class="pt-0 my-12"
               >
                 <v-timeline-item
@@ -180,7 +187,7 @@
                   color="primary"
                   background-color="transparent"
                   class="px-0 pt-0"
-                  :right="$vuetify.breakpoint.xs"
+                  :right="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
                   v-for="(item, j) in qualification.items"
                   :key="j"
                 >
@@ -189,19 +196,19 @@
                     color="transparent"
                   >
                     <v-card-text
-                      :class="j%2 !== 0 && !$vuetify.breakpoint.xs ? 'pt-0 px-0 pb-1 text-h6 text-right' : 'pt-0 px-0 pb-1 text-h6'"
+                      :class="(j%2 !== 0 && !$vuetify.breakpoint.xs) && (j%2 !== 0 && !$vuetify.breakpoint.sm) ? 'pt-0 px-0 pb-1 text-h6 text-right' : 'pt-0 px-0 pb-1 text-h6'"
                     >
                       {{ item.title }}
                     </v-card-text>
 
                     <v-card-text
-                      :class="j%2 !== 0 && !$vuetify.breakpoint.xs ? 'pt-0 px-0 secondary--text text-right' : 'pt-0 px-0 secondary--text'"
+                      :class="(j%2 !== 0 && !$vuetify.breakpoint.xs) && (j%2 !== 0 && !$vuetify.breakpoint.sm) ? 'pt-0 px-0 secondary--text text-right' : 'pt-0 px-0 secondary--text'"
                     >
                       {{ item.location }}
                     </v-card-text>
 
                     <v-card-text
-                      :class="j%2 !== 0 && !$vuetify.breakpoint.xs ? 'pa-0 secondary--text d-flex align-center justify-end' : 'pa-0 secondary--text d-flex align-center'"
+                      :class="(j%2 !== 0 && !$vuetify.breakpoint.xs) && (j%2 !== 0 && !$vuetify.breakpoint.sm) ? 'pa-0 secondary--text d-flex align-center justify-end' : 'pa-0 secondary--text d-flex align-center'"
                     >
                       <img
                         src="/icons/date.svg"
@@ -224,11 +231,22 @@
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
   head() {
     return {
       title: "About"
     }
+  },
+  mounted() {
+    axios.get("https://api.linkedin.com/people/(id:{juliandepablo})")
+    .then((result) => { 
+      console.log(result)
+    },
+    (error) => {
+      console.log(error)
+    })
   },
   data: () => ({
     tab: 0,
@@ -258,7 +276,7 @@ export default {
           {
             title: "Computer Engineer",
             location: "Madrid - Universidad Europea",
-            date: "2017-present"
+            date: "2017 - present"
           },
         ]
       },
@@ -269,8 +287,50 @@ export default {
         items: [
           {
             title: "Consulting Intern",
-            location: "Madrid - SAS Software",
+            location: "Madrid - SAS Institute",
             date: "2021 - present"
+          },
+        ]
+      },
+      {
+        title: "Courses",
+        icon: "/icons/courses.svg",
+        icon_grey: "/icons/courses-grey.svg",
+        items: [
+          {
+            title: "Programming for SAS Viya",
+            location: "SAS",
+            date: "nov 2021"
+          },
+          {
+            title: "SAS Macro Language 1: Essentials",
+            location: "SAS",
+            date: "nov 2021"
+          },
+          {
+            title: "SAS SQL 1: Essentials",
+            location: "SAS",
+            date: "nov 2021"
+          },
+          {
+            title: "SAS Certified Specialist: Base Programming Using SAS 9.4",
+            location: "SAS",
+            date: "oct 2021"
+          },
+          {
+            title: "SAS Programming 2: Data Manipulation Techniques",
+            location: "SAS",
+            date: "oct 2021"
+          },
+          {
+            title: "SAS Programming 1: Essentials",
+            location: "SAS",
+            date: "oct 2021"
+          },
+          {
+            title: "Google Cloud Platform Fundamentals: Core Infrastructure",
+            location: "Coursera",
+            date: "oct 2020"
           },
         ]
       }

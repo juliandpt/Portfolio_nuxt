@@ -100,7 +100,7 @@ export default {
       },
       {
         icon: "/icons/linkedin.svg",
-        link: 'https://www.linkedin.com/in/julián-de-pablo-torremocha'
+        link: 'https://www.linkedin.com/in/juliandepablo'
       }
     ]
   })

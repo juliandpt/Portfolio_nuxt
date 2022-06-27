@@ -1,16 +1,12 @@
 <template>
   <v-app>
-    <navbar
-      v-show="$route.name !== 'dashboard' && $route.name !== 'login'"
-    />
+    <navbar/>
 
     <v-main>
       <nuxt />
     </v-main>
 
-    <foot
-      v-show="$route.name !== 'dashboard' && $route.name !== 'login'"
-    />
+    <foot />
   </v-app>
 </template>
 

@@ -25,7 +25,7 @@
         class="d-flex flex-column justify-center align-center"
       >
         <v-img
-          src="/images/me-alt.png"
+          src="/images/about.png"
           height="auto"
           max-height="350"
           contain
@@ -74,31 +74,6 @@
                 {{ experience.title_bottom }}
               </v-card-text>
             </v-card>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col
-            class="d-flex justify-center"
-          >
-            <v-btn
-              dark
-              x-large
-              elevation="0"
-              color="primary"
-              class="mx-auto"
-              href="Julián-CV.pdf"
-              download
-            >
-              Download CV
-
-              <img
-                src="/icons/download.svg"
-                height="18"
-                width="18"
-                class="mr-n1 ml-2"
-              >
-            </v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -231,22 +206,11 @@
 </template>
 
 <script>
-import axios from "axios"
-
 export default {
   head() {
     return {
       title: "About"
     }
-  },
-  mounted() {
-    axios.get("https://api.linkedin.com/people/(id:{juliandepablo})")
-    .then((result) => { 
-      console.log(result)
-    },
-    (error) => {
-      console.log(error)
-    })
   },
   data: () => ({
     tab: 0,
@@ -297,11 +261,6 @@ export default {
         icon: "/icons/courses.svg",
         icon_grey: "/icons/courses-grey.svg",
         items: [
-          {
-            title: "Programming for SAS Viya",
-            location: "SAS",
-            date: "nov 2021"
-          },
           {
             title: "SAS Macro Language 1: Essentials",
             location: "SAS",

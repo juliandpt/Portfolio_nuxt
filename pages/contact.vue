@@ -176,11 +176,11 @@
             >
               <v-btn
                 x-large
+                block
                 color="primary"
                 elevation="0"
                 :dark="valid"
                 :disabled="!valid"
-                :block="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
                 :loading="loading"
                 @click="sendEmail()"
               >

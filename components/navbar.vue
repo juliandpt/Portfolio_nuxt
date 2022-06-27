@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="$vuetify.theme.dark ? 'glass-black' : 'glass-white'"
+    class='glass'
   >
     <v-card
       flat
@@ -37,11 +37,18 @@
 
           <v-toolbar-title
             class="pa-0"
+            style="font-size: 1.5em;"
           >
-            Julián de Pablo
+            Julián
+
+            <span 
+              class="primary--text"
+            >
+              .
+            </span>
           </v-toolbar-title>
 
-          <v-spacer></v-spacer>
+          <v-spacer />
 
           <div
             v-if="!$vuetify.breakpoint.xs"
@@ -56,6 +63,8 @@
               {{ route.title }}
             </v-btn>
           </div>
+
+          <v-spacer />
 
           <v-btn
             icon
@@ -149,20 +158,15 @@
   color: #536DFE !important;
 }
 
-.glass-white {
-  background-color: rgba(255, 255, 255, 0.8);
+.glass {
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 50;
 }
 
-.glass-black {
-  background-color: rgb(18, 18, 18, 0.8);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+.title {
+
 }
 </style>
 

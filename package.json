@@ -12,7 +12,9 @@
     "axios": "^0.25.0",
     "core-js": "^3.9.1",
     "emailjs-com": "^3.2.0",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "typed.js": "^2.0.12",
+    "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
     "@nuxt/image": "^0.6.0",

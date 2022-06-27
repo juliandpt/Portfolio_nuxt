@@ -3,7 +3,7 @@
     :style="$vuetify.breakpoint.xl ? 'padding-left: 15%; padding-right: 15%' : ''"
   >
     <v-row
-      class="mt-8 mb-4 d-flex flex-column justify-center"
+      class="mt-8 separation d-flex flex-column justify-center"
     >
       <h1
         class="mx-auto mb-0"
@@ -102,7 +102,7 @@
     </v-row>
 
     <v-row
-      class="mt-16 mb-6 d-flex flex-column justify-center title-wrapper"
+      class="separation d-flex flex-column justify-center title-wrapper"
     >
       <h1
         class="mx-auto mb-0"
@@ -126,101 +126,49 @@
         :key="i"
         :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
-        <v-hover
-          v-slot:default="{ hover }"
+        <v-card
+          loading
+          outlined
+          :color="!$vuetify.theme.dark ? 'grey lighten-5' : ''"
+          height="100%"
         >
-          <v-card
-            height="100%"
-            elevation="0"
-            color="transparent"
+          <template 
+            slot="progress"
           >
-            <v-flex
-              class="pt-4"
-            >
-              <v-img
-                :src="service.icon"
-                height="64"
-                width="64"
-                class="mx-auto"
-              ></v-img>
-            </v-flex>
+            <v-progress-linear 
+              value="100"
+            />
+          </template>
 
-            <v-card-title
-              class="justify-center pb-auto"
-            >
-              {{ service.title }}
-            </v-card-title>
-
-            <v-fade-transition>
-              <v-overlay
-                v-if="hover"
-                absolute
-                color="secondary"
-              >
-                <v-btn
-                  elevation="0"
-                  color="primary"
-                  @click="showInfo(service)"
-                >
-                  See more
-
-                  <img
-                    src="/icons/arrow.svg"
-                    height="18"
-                    width="18"
-                    class="mr-n1 ml-2"
-                  >
-                </v-btn>
-              </v-overlay>
-            </v-fade-transition>
-          </v-card>
-        </v-hover>
-      </v-col>
-
-      <v-dialog
-        v-model="dialog"
-        max-width="400"
-      >
-        <v-card>
-          <v-card-title
-            class="pa-4"
+          <v-card-title>
+            <img 
+              :src="service.icon"
+              height="40"
+              width="40"
+            />
+          </v-card-title>
+          
+          <v-card-title 
+            class="pt-0 font-weight-black"
           >
-            {{ info.title }}
-
-            <v-spacer></v-spacer>
-
-            <v-btn
-              icon
-              color="primary"
-              @click="dialog = false"
-            >
-              <v-icon>
-                mdi-window-close
-              </v-icon>
-            </v-btn>
+            {{ service.title }}
           </v-card-title>
 
+          <v-divider 
+            class="mx-4"
+          />
+
           <v-card-text
-            class="px-4"
-            v-for="(description, i) in info.descriptions"
-            :key="i"
+            class="px-4 pb-12"
           >
-            <div class="d-flex align-center">
-              <img
-                src="/icons/circle-check.svg"
-                height="18"
-                width="18"
-                class="pa-0 mr-3"
-              >
-                {{ description }}
-            </div>
+            {{ service.description }}
           </v-card-text>
         </v-card>
-      </v-dialog>
+      </v-col>
     </v-row>
 
     <v-row
-      class="mt-16 mb-6 d-flex flex-column justify-center"
+      class="separation d-flex flex-column justify-center"
     >
       <h1
         class="mx-auto mb-0"
@@ -236,171 +184,83 @@
     </v-row>
 
     <v-row
-      v-if="!$vuetify.breakpoint.xs"
-    >
-      <div 
-        class="mx-auto"
-        :style="$vuetify.breakpoint.sm ? 'min-width: 80%; max-width: 80%;' : 'min-width: 60%; max-width: 60%;'"
-      >
-        <v-carousel
-          cycle
-          hide-delimiters
-          interval="10000"
-          height="300"
-        >
-          <template
-            v-slot:prev="{ on, attrs }"
-          >
-            <v-btn
-              icon
-              text
-              large
-              color="primary"
-              v-bind="attrs"
-              v-on="on"
-            >
-              <img
-                src="/icons/arrow-prev.svg"
-                height="40"
-                width="40"
-              >
-            </v-btn>
-          </template>
-
-          <template
-            v-slot:next="{ on, attrs }"
-          >
-            <v-btn
-              icon
-              text
-              large
-              color="primary"
-              v-bind="attrs"
-              v-on="on"
-            >
-              <img
-                src="/icons/arrow-next.svg"
-                height="40"
-                width="40"
-              >
-            </v-btn>
-          </template>
-
-          <v-carousel-item
-            v-for="(project, i) in projects"
-            :key="i"
-            class="px-16 align-center"
-          >
-            <v-row
-              class="fill-height px-4"
-              align="center"
-              justify="center"
-            >
-              <v-card
-                elevation="0"
-                width="100%"
-                :outlined="!$vuetify.theme.dark"
-              >
-                <v-card-title
-                  class="justify-center"
-                >
-                  {{ project.title }}
-                </v-card-title>
-
-                <v-card-text
-                  class="secondary--text text-center"
-                >
-                  {{ project.description }}
-                </v-card-text>
-
-                <v-card-actions
-                  class="px-4 pb-4"
-                >
-                  <v-spacer></v-spacer>
-                  
-                  <v-btn
-                    dark
-                    elevation="0"
-                    color="primary"
-                    v-for="(link, j) in project.links"
-                    :key="j"
-                    :href="link.target"
-                    target="_blank"
-                  >
-                    {{ link.title }}
-
-                    <img
-                      src="/icons/link.svg"
-                      height="18"
-                      width="18"
-                      class="mr-n1 ml-2"
-                    >
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-row>
-          </v-carousel-item>
-        </v-carousel>
-      </div>
-    </v-row>
-
-    <v-row
-      v-if="$vuetify.breakpoint.xs"
+      class="margin"
+      v-for="(project, i) in projects"
+      :key="i"
     >
       <v-col
-        cols="12"
-        class="pt-0"
-        v-for="(project, i) in projects"
-        :key="i"
+        :cols="$vuetify.breakpoint.xs ? '12' : '6'"
+        :class="$vuetify.breakpoint.xs ? 'text-center' : ''"
+        :order="$vuetify.breakpoint.xs ? '2' : i%2 === 0 ? '1' : '2'"
       >
-        <v-card
-          elevation="0"
-          :outlined="!$vuetify.theme.dark"
+        <h2
+          class="mx-auto my-2 primary--text"
         >
-          <v-card-title>
-            {{ project.title }}
-          </v-card-title>
+          {{ project.title }}
+        </h2>
 
-          <v-card-text
-            class="secondary--text"
+        <p
+          class="my-4"
+        >
+          {{ project.description }}
+        </p>
+
+        <v-btn
+          dark
+          elevation="0"
+          color="primary"
+          class="mt-5 mr-auto"
+          :href="project.link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          See More
+
+          <img
+            class="ml-2"
+            src="/icons/arrow-white.svg"
+            height="18"
+            width="18"
           >
-            {{ project.description }}
-          </v-card-text>
+        </v-btn>
+      </v-col>
 
-          <v-card-actions
-            class="px-4 pb-4"
+      <v-col
+        :cols="$vuetify.breakpoint.xs ? '12' : '6'"
+        :order="$vuetify.breakpoint.xs ? '1' : i%2 === 0 ? '2' : '1'"
+        class="d-flex justify-center align-center shadow"
+      >
+        <video 
+          width='90%'
+          muted
+          controls
+          style="border-radius: 0.35em;"
+        >
+          <source 
+            :src="project.demo" 
+            type="video/mp4"
           >
-            <v-spacer></v-spacer>
 
-            <v-btn
-              dark
-              elevation="0"
-              color="primary"
-              class="mr-2"
-              v-for="(link, j) in project.links"
-              :key="j"
-              :href="link.target"
-              target="_blank"
-            >
-              {{ link.title }}
-
-              <img
-                src="/icons/link.svg"
-                height="18"
-                width="18"
-                class="mr-n1 ml-2"
-              >
-            </v-btn>
-          </v-card-actions>
-        </v-card>
+          Your browser does not support the video tag.
+        </video>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<style>
-.v-window__next, .v-window__prev {
-  background: transparent !important
+<style scoped>
+.shadow {
+  filter: drop-shadow(0 0 3.5em #536DFE)
+}
+
+.margin {
+  margin-top: 3em;
+  margin-bottom: 7em;
+}
+
+.separation {
+  margin-top: 15%;
+  margin-bottom: 3em;
 }
 </style>
 
@@ -461,7 +321,7 @@ export default {
         icon: "/icons/database.svg",
         items: [
           {
-            title: "MariaDB",
+            title: "MongoDB",
             value: 70
           },
           {
@@ -495,66 +355,38 @@ export default {
     ],
     services: [
       {
-        title: "SOFTWARE DEVELOPMENT",
-        icon: "/icons/web-programming.svg",
-        descriptions: [
-          "I develope quality software products.",
-          "I manage software maintenance.",
-          "Knowledge of some of the most popular programming languages."
-        ]
+        title: "Web development",
+        icon: "/icons/layer.svg",
+        description: "I perform modern web pages, having knowledge of Multiple frameworks in a Fullstack development."
       },
       {
         title: "UI / UX",
         icon: "/icons/ux-design.svg",
-        descriptions: [
-          "I develope the user interface.",
-          "Web page design.",
-          "I create ux element interactions.",
-        ]
+        description: "I develope the user interface, design web pages and create ux element interactions."
       },
       {
-        title: "WEB DEVELOPMENT",
-        icon: "/icons/speedometer.svg",
-        descriptions: [
-          "I perform modern web pages.",
-          "Multiple frameworks knowledge.",
-          "Full Stack development.",
-        ]
+        title: "Software development",
+        icon: "/icons/web-programming.svg",
+        description: "I develope quality software products, manage software maintenance, and have Knowledge of some of the most popular programming languages."
       },
       {
-        title: "SOCIAL SKILLS",
-        icon: "/icons/team.svg",
-        descriptions: [
-          "I am an interactive and communicative person.",
-          "I prefer to work in a team instead of alone.",
-          "Speech abilities.",
-        ]
+        title: "Social skills",
+        icon: "/icons/people.svg",
+        description: "I am an interactive and communicative person, prefering to work in a team instead of alone."
       },
     ],
     projects: [
       {
         title: "Infopueblo",
-        description: "Webapp to collect information through web scraping, and classification of Emptied Spain by machine learning of Spanish municipalities.",
-        links: [
-          {
-            title: "Front-end",
-            target: "https://github.com/juliandpt/Infopueblo-Frontend"
-          },
-          {
-            title: "Back-end",
-            target: "https://github.com/juliandpt/Infopueblo-Backend"
-          }
-        ]
+        description: "Search webapp of Spanish municipalities. It offers leisure data from the different municipalities, compiling the information through web scrapping.",
+        link: "https://github.com/juliandpt/Infopueblo",
+        demo: "/videos/infopueblo.mp4"
       },
       {
-        title: "Ada 2012 Compiler",
-        description: "Basic compiler for Ada 2012 using Flex and Bison.",
-        links: [
-          {
-            title: "See more",
-            target: "https://github.com/juliandpt/Compilador"
-          }
-        ]
+        title: "Webstats",
+        description: "Web service responsible for analyzing the security implemented in the different endpoints of any web domain.",
+        link: "https://github.com/juliandpt/Webstats",
+        demo: "/videos/webstats.mp4"
       },
     ],
   }),

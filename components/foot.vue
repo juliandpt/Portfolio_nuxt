@@ -27,6 +27,7 @@
           >
             <img
               :src="social.icon"
+              :alt="social.alt"
               height="24"
               width="24"
             >
@@ -68,9 +69,11 @@
               :key="i"
               :href="social.link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 :src="social.icon"
+                :alt="social.alt"
                 height="24"
                 width="24"
               >
@@ -88,19 +91,23 @@ export default {
     socials: [
       {
         icon: "/icons/instagram.svg",
-        link: "https://www.instagram.com/julidpt"
+        link: "https://www.instagram.com/julidpt",
+        alt: "instagram"
       },
       {
         icon: "/icons/twitter.svg",
-        link: "https://twitter.com/Depabloj"
+        link: "https://twitter.com/Depabloj",
+        alt: "twitter"
       },
       {
         icon: "/icons/facebook.svg",
-        link: "https://www.facebook.com/juli.depablo"
+        link: "https://www.facebook.com/juli.depablo",
+        alt: "facebook"
       },
       {
         icon: "/icons/linkedin.svg",
-        link: 'https://www.linkedin.com/in/juliandepablo'
+        link: 'https://www.linkedin.com/in/juliandepablo',
+        alt: "linkedin"
       }
     ]
   })

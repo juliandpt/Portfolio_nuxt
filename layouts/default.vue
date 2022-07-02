@@ -1,17 +1,11 @@
 <template>
   <v-app>
-    <navbar/>
+    <Navbar/>
 
     <v-main>
       <nuxt />
     </v-main>
 
-    <foot />
+    <Foot />
   </v-app>
 </template>
-
-<style scoped>
-#app {
-  font-family: 'Poppins', sans-serif;
-}
-</style>

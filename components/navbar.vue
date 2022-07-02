@@ -1,6 +1,6 @@
 <template>
   <div
-    class='glass'
+    class="glass"
   >
     <v-card
       flat
@@ -22,6 +22,7 @@
           >
             <img
               src="/icons/bars-white.svg"
+              alt="bars-white"
               height="24"
               width="24"
               v-if="$vuetify.theme.dark"
@@ -29,25 +30,21 @@
 
             <img
               src="/icons/bars-black.svg"
+              alt="bars-black"
               height="24"
               width="24"
               v-else
             >
           </v-btn>
 
-          <v-toolbar-title
-            class="pa-0"
-            style="font-size: 1.5em;"
-          >
-            Julián
-
-            <span 
-              class="primary--text"
-            >
-              .
-            </span>
-          </v-toolbar-title>
-
+          <img 
+            src="/favicon.ico"
+            alt="icon"
+            :class="$vuetify.breakpoint.xs ? 'ml-3 d-flex align-center' : 'd-flex align-center'"
+            :height="$vuetify.breakpoint.xs ? '24' : '50'"
+            width="auto"
+          />
+          
           <v-spacer />
 
           <div
@@ -77,6 +74,7 @@
             >
               <img
                 src="/icons/sun.svg"
+                alt="sun"
                 height="24"
                 width="24"
                 v-if="!$vuetify.theme.dark"
@@ -88,6 +86,7 @@
             >
               <img
                 src="/icons/moon.svg"
+                alt="moon"
                 height="24"
                 width="24"
                 v-if="$vuetify.theme.dark"
@@ -121,6 +120,7 @@
           >
             <img
               src="/icons/close-grey.svg"
+              alt="close-grey"
               height="24"
               width="24"
             >
@@ -134,6 +134,7 @@
             <v-list-item-icon>
               <img
                 :src="route.link === $route.path ? route.icon : route.icon_grey"
+                :alt="route.alt"
                 height="28"
                 width="28"
               >
@@ -164,10 +165,6 @@
   top: 0;
   z-index: 50;
 }
-
-.title {
-
-}
 </style>
 
 <script>
@@ -177,27 +174,31 @@ export default({
     group: null,
     routes: [
       {
-        title: 'Home',
+        title: "Home",
         icon: "/icons/home.svg",
         icon_grey: "/icons/home-grey.svg",
+        alt: "home",
         link: "/"
       },
       {
-        title: 'About',
+        title: "About",
         icon: "/icons/info.svg",
         icon_grey: "/icons/info-grey.svg",
+        alt: "about",
         link: "/about"
       },
       {
-        title: 'Skills',
+        title: "Skills",
         icon: "/icons/laptop.svg",
         icon_grey: "/icons/laptop-grey.svg",
+        alt: "skills",
         link: "/skills"
       },
       {
-        title: 'Contact',
+        title: "Contact",
         icon: "/icons/at.svg",
         icon_grey: "/icons/at-grey.svg",
+        alt: "contact",
         link: "/contact"
       },
     ],

@@ -56,7 +56,7 @@ export default {
         light: {
           primary: colors.indigo.accent2,
           secondary: colors.grey.base,
-          accent: colors.grey.darken3,
+          lighten: colors.grey.lighten5,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.red.accent2,
@@ -65,7 +65,6 @@ export default {
         dark: {
           primary: colors.indigo.accent2,
           secondary: colors.grey.base,
-          accent: colors.grey.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.red.accent2,

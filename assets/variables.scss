@@ -1,9 +1,54 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
-h1 {
-    font-size: 2rem;
+
+:root {
+  --primary: #536DFE;
+  --secondary: grey;
+}
+
+#app {
+  font-family: 'Poppins', sans-serif;
 }
 
 .v-btn {
-    text-transform: none; 
-    letter-spacing: 0;
+  text-transform: none; 
+  letter-spacing: 0;
+}
+
+.margin {
+  margin-bottom: 10%;
+}
+
+.shadow {
+  filter: drop-shadow(0 0 3.5em var(--primary))
+}
+
+.title-background {
+  font-size: 4em;
+  font-weight: 1000;
+  margin-bottom: 2rem;
+  background: linear-gradient(to top, transparent 0%, var(--secondary) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .1;
+}
+
+.title-primary {
+  font-size: 2.5em;
+  font-weight: 700;
+  transform: translateY(-60px)
+}
+
+.title-primary:before {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 5px;
+  right: 0;
+  bottom: 0;
+  background: var(--primary);
+  border-radius: 1em;
+}
+
+::selection {
+  background: var(--primary);
 }

@@ -58,6 +58,7 @@
       >
         <v-img
           src="/images/doge.png"
+          alt="doge"
           height="auto"
           max-height="400"
           contain

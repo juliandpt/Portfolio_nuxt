@@ -2,23 +2,13 @@
   <v-container
     :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
+    <Title
+      :title="'Contact me'"
+    />
+
     <v-row
-      class="mt-8 mb-8 d-flex flex-column justify-center"
+      class="margin"
     >
-      <h1
-        class="mx-auto mb-0"
-      >
-        Contact me
-      </h1>
-
-      <p
-        class="mx-auto secondary--text"
-      >
-        Let's get in touch!
-      </p>
-    </v-row>
-
-    <v-row>
       <v-col
         md="6"
         sm="6"
@@ -37,6 +27,7 @@
         >
           <img
             :src="card.icon"
+            :alt="card.alt"
             class="mx-3"
             height="24"
             width="24"
@@ -61,9 +52,10 @@
               hide-on-leave
             >
               <img
+                src="/icons/check.svg"
+                alt="check"
                 height="24"
                 width="24"
-                src="/icons/check.svg"
                 v-if="card.copied"
               >
             </v-scroll-x-transition>
@@ -72,9 +64,10 @@
               hide-on-leave
             >
               <img
+                src="/icons/copy.svg"
+                alt="copy"
                 height="24"
                 width="24"
-                src="/icons/copy.svg"
                 v-if="!card.copied"
               >
             </v-scroll-x-transition>
@@ -204,6 +197,7 @@
       >
         <img
           src="/icons/error-white.svg"
+          alt="error-white"
           class="mr-1"
           height="24"
           width="24"
@@ -212,6 +206,7 @@
 
         <img
           src="/icons/error.svg"
+          alt="error"
           class="mr-1"
           height="24"
           width="24"
@@ -220,6 +215,7 @@
 
         <img
           src="/icons/circle-check-white.svg"
+          alt="circle-check-white"
           class="mr-1"
           height="24"
           width="24"
@@ -228,6 +224,7 @@
 
         <img
           src="/icons/circle-check-green.svg"
+          alt="circle-check-green"
           class="mr-1"
           height="24"
           width="24"
@@ -247,6 +244,7 @@
         >
           <img
             src="/icons/close-white.svg"
+            alt="close-white"
             height="24"
             width="24"
             v-if="$vuetify.theme.dark"
@@ -254,6 +252,7 @@
 
           <img
             src="/icons/close-red.svg"
+            alt="close-red"
             height="24"
             width="24"
             v-if="!$vuetify.theme.dark && error"
@@ -261,6 +260,7 @@
 
           <img
             src="/icons/close-green.svg"
+            alt="close-green"
             height="24"
             width="24"
             v-if="!$vuetify.theme.dark && !error"
@@ -271,11 +271,13 @@
   </v-container>
 </template>
 
-<style lang="scss" scoped>
+
+<style scoped>
 .container {
   min-height: 100%;
 }
 </style>
+
 
 <script>
 import emailjs from 'emailjs-com';
@@ -312,18 +314,21 @@ export default {
       {
         icon: "/icons/mail.svg",
         text: "juliandpt98@gmail.com",
+        alt: "mail",
         canCopy: true,
         copied: false
       },
       {
         icon: "/icons/phone.svg",
         text: "+34 620 69 69 68",
+        alt: "phone",
         canCopy: true,
         copied: false
       },
       {
         icon: "/icons/location.svg",
         text: "Madrid, Spain",
+        alt: "location",
         canCopy: false,
         copied: false
       }

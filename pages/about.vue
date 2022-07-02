@@ -2,23 +2,14 @@
   <v-container
     :style="$vuetify.breakpoint.xl || $vuetify.breakpoint.sm ? 'padding: 0 15%' : ''"
   >
+    <Title
+      :title="'About Me'"
+      :description="'My introduction'"
+    />
+
     <v-row
-      class="d-flex flex-column justify-center my-8"
+      class="margin"
     >
-      <h1
-        class="mx-auto mb-0"
-      >
-        About Me
-      </h1>
-
-      <p
-        class="mx-auto secondary--text"
-      >
-        My introduction
-      </p>
-    </v-row>
-
-    <v-row>
       <v-col
         md="6"
         sm="12"
@@ -26,6 +17,7 @@
       >
         <v-img
           src="/images/about.png"
+          alt="me"
           height="auto"
           max-height="350"
           contain
@@ -41,7 +33,7 @@
             <p
               :class="$vuetify.breakpoint.xs ? 'text-center' : ''"
             >
-              I am a computer engineering student finishing the last year of my degree. I am passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.
+              Computer engineer passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.
             </p>
           </v-col>
         </v-row>
@@ -79,21 +71,9 @@
       </v-col>
     </v-row>
 
-    <v-row
-      class="mt-16 mb-6 d-flex flex-column justify-center"
-    >
-      <h1
-        class="mx-auto  mb-0"
-      >
-        Qualification
-      </h1>
-
-      <p
-        class="mx-auto secondary--text"
-      >
-        My personal journey
-      </p>
-    </v-row>
+    <Title
+      :title="'Aptitudes'"
+    />
 
     <v-row>
       <v-col>
@@ -118,6 +98,7 @@
             >
               <img
                 :src="qualification.icon"
+                :alt="qualification.title"
                 height="30"
                 width="30"
                 class="mx-1"
@@ -126,6 +107,7 @@
 
               <img
                 :src="qualification.icon_grey"
+                :alt="qualification.title"
                 height="30"
                 width="30"
                 class="mx-1"
@@ -187,6 +169,7 @@
                     >
                       <img
                         src="/icons/date.svg"
+                        alt="date"
                         height="24"
                         width="24"
                         class="mr-2"
@@ -204,6 +187,7 @@
     </v-row>
   </v-container>
 </template>
+
 
 <script>
 export default {

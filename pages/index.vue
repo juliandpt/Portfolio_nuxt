@@ -48,6 +48,7 @@
 
             <img
               src="/icons/arrow.svg"
+              alt="arrow"
               height="18"
               width="18"
               class="mr-n1 ml-2"
@@ -67,6 +68,7 @@
 
               <img
                 src="/icons/download.svg"
+                alt="download"
                 height="18"
                 width="18"
                 class="mr-n1 ml-2"
@@ -75,7 +77,7 @@
         </div>
 
         <div
-          :style="$vuetify.breakpoint.xs ? 'margin-top: 3em' : 'margin-top: 7em; margin-left:-1em;'"
+          :style="$vuetify.breakpoint.xs ? 'margin-top: 3em' : 'margin-top: 4em; margin-left:-1em;'"
         >
           <v-btn
             icon
@@ -90,6 +92,7 @@
           >
             <img
               :src="social.icon"
+              :alt="social.alt"
               height="28"
               width="28"
             >
@@ -101,26 +104,28 @@
         cols="12"
         md="6"
         sm="12"
-        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '1' : '2'"
         class="d-flex flex-column justify-center"
+        :order="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '1' : '2'"
       >
         <v-img
           contain
           src="/images/index.png"
           height="auto"
-          style="filter: drop-shadow(0 0 3.5em #536DFE);"
+          class="shadow"
         ></v-img>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<style lang="scss" scoped>
+
+<style scoped>
 .container,
 .row {
   height: 100%;
 }
 </style>
+
 
 <script>
 import Vue from 'vue'
@@ -138,15 +143,18 @@ export default {
     socials: [
       {
         icon: "/icons/linkedin.svg",
-        link: 'https://www.linkedin.com/in/juliandepablo'
+        link: 'https://www.linkedin.com/in/juliandepablo',
+        alt: "linkedin"
       },
       {
         icon: "/icons/dribbble.svg",
-        link: 'https://dribbble.com/juliandpt'
+        link: 'https://dribbble.com/juliandpt',
+        alt: "dribbble"
       },
       {
         icon: "/icons/github.svg",
-        link: 'https://github.com/juliandpt'
+        link: 'https://github.com/juliandpt',
+        alt: "github"
       }
     ]
   })

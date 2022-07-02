@@ -1,24 +1,14 @@
 <template>
   <v-container
-    :style="$vuetify.breakpoint.xl ? 'padding-left: 15%; padding-right: 15%' : ''"
+    :style="$vuetify.breakpoint.xl ? 'padding: 0 15%' : ''"
   >
-    <v-row
-      class="mt-8 separation d-flex flex-column justify-center"
-    >
-      <h1
-        class="mx-auto mb-0"
-      >
-        Skills
-      </h1>
-
-      <p
-        class="mx-auto secondary--text"
-      >
-        My thechnical level
-      </p>
-    </v-row>
+    <Title
+      :title="'Skills'"
+    />
       
-    <v-row>
+    <v-row
+      class="margin"
+    >
       <v-col
         cols="12"
         sm="6"
@@ -38,9 +28,10 @@
               >
                 <img
                   :src="skill.icon"
+                  :alt="skill.title"
+                  class="pa-0 mr-3"
                   height="32"
                   width="32"
-                  class="pa-0 mr-3"
                 >
 
                 {{ skill.title }}
@@ -58,66 +49,49 @@
             </v-expansion-panel-header>
 
             <v-expansion-panel-content>
-              <v-card
-                flat
-                tile
-                color="transparent"
-                v-for="(card, j) in skill.items"
-                :key="j"
-              >
-                <v-card-title
-                  class="px-0"
+              <v-row>
+                <v-col
+                  cols="6"
+                  v-for="(item, i) in skill.items"
+                  :key="i"
                 >
-                  <template
+                  <v-card
+                    flat
                     class="d-flex"
+                    :color="$vuetify.theme.dark ? '' : 'lighten'"
                   >
-                    <p
-                      class="ma-0"
+                    <div 
+                      class="d-flex align-center justify-center"
                     >
-                      {{ card.title }}
-                    </p>
+                      <img 
+                        :src="item.icon"
+                        :alt="item.title"
+                        class="ml-4"
+                        height="25"
+                        width="auto"
+                      />
+                    </div>
 
-                    <p
-                      class="ml-auto ma-0"
-                    >
-                      {{ card.value }}%
-                    </p>
-                  </template>
-                </v-card-title>
-
-                <v-card-text
-                  class="px-0"
-                >
-                  <v-progress-linear
-                    rounded
-                    color="primary"
-                    :value="card.value"
-                  ></v-progress-linear>
-                </v-card-text>
-              </v-card>
+                    <v-card-text>
+                      {{ item.title }}
+                    </v-card-text>
+                    
+                  </v-card>
+                </v-col>
+              </v-row>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </v-col>
     </v-row>
 
+    <Title
+      :title="'Services'"
+    />
+
     <v-row
-      class="separation d-flex flex-column justify-center title-wrapper"
+      class="margin"
     >
-      <h1
-        class="mx-auto mb-0"
-      >
-        My Services
-      </h1>
-
-      <p
-        class="mx-auto secondary--text"
-      >
-        What I offer
-      </p>
-    </v-row>
-
-    <v-row>
       <v-col
         cols="12"
         md="4"
@@ -127,9 +101,8 @@
         :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
         <v-card
-          loading
-          outlined
-          :color="!$vuetify.theme.dark ? 'grey lighten-5' : ''"
+          flat
+          :color="!$vuetify.theme.dark ? 'lighten' : ''"
           height="100%"
         >
           <template 
@@ -143,6 +116,7 @@
           <v-card-title>
             <img 
               :src="service.icon"
+              :alt="service.title"
               height="40"
               width="40"
             />
@@ -167,21 +141,9 @@
       </v-col>
     </v-row>
 
-    <v-row
-      class="separation d-flex flex-column justify-center"
-    >
-      <h1
-        class="mx-auto mb-0"
-      >
-        My projects
-      </h1>
-
-      <p
-        class="mx-auto secondary--text"
-      >
-        The projects I developed
-      </p>
-    </v-row>
+    <Title
+      :title="'Projects'"
+    />
 
     <v-row
       class="margin"
@@ -194,7 +156,7 @@
         :order="$vuetify.breakpoint.xs ? '2' : i%2 === 0 ? '1' : '2'"
       >
         <h2
-          class="mx-auto my-2 primary--text"
+          class="my-2 primary--text"
         >
           {{ project.title }}
         </h2>
@@ -219,6 +181,7 @@
           <img
             class="ml-2"
             src="/icons/arrow-white.svg"
+            alt="arrow-white"
             height="18"
             width="18"
           >
@@ -228,7 +191,7 @@
       <v-col
         :cols="$vuetify.breakpoint.xs ? '12' : '6'"
         :order="$vuetify.breakpoint.xs ? '1' : i%2 === 0 ? '2' : '1'"
-        class="d-flex justify-center align-center shadow"
+        class="shadow d-flex flex-column justify-center align-center"
       >
         <video 
           width='90%'
@@ -248,21 +211,6 @@
   </v-container>
 </template>
 
-<style scoped>
-.shadow {
-  filter: drop-shadow(0 0 3.5em #536DFE)
-}
-
-.margin {
-  margin-top: 3em;
-  margin-bottom: 7em;
-}
-
-.separation {
-  margin-top: 15%;
-  margin-bottom: 3em;
-}
-</style>
 
 <script>
 export default {
@@ -274,7 +222,6 @@ export default {
   data: () => ({
     model: null,
     dialog: false,
-    info: { },
     skills: [
       {
         title: "Frontend",
@@ -282,23 +229,35 @@ export default {
         items: [
           {
             title: "HTML",
-            value: 70
+            icon: "/images/html.png"
           },
           {
             title: "CSS",
-            value: 40
+            icon: "/images/css.png"
           },
           {
             title: "Javascript",
-            value: 50
+            icon: "/images/javascript.png"
+          },
+          {
+            title: "Typescript",
+            icon: "/images/typescript.png"
           },
           {
             title: "Angular",
-            value: 50
+            icon: "/images/angular.png"
           },
           {
             title: "Vue",
-            value: 20
+            icon: "/images/vue.png"
+          },
+          {
+            title: "Nuxt",
+            icon: "/images/nuxt.png"
+          },
+          {
+            title: "Svelte",
+            icon: "/images/svelte.png"
           }
         ]
       },
@@ -308,11 +267,15 @@ export default {
         items: [
           {
             title: "Node.js",
-            value: 50
+            icon: "/images/nodejs.png"
+          },
+          {
+            title: "Firebase",
+            icon: "/images/firebase.png"
           },
           {
             title: "Flask",
-            value: 50
+            icon: "/images/flask.png"
           },
         ]
       },
@@ -322,16 +285,13 @@ export default {
         items: [
           {
             title: "MongoDB",
-            value: 70
+            icon: "/images/mongodb.png"
           },
           {
             title: "PostgreSQL",
-            value: 70
+            icon: "/images/postgresql.png"
           },
-          {
-            title: "Firebase",
-            value: 20
-          }
+          
         ]
       },
       {
@@ -340,15 +300,15 @@ export default {
         items: [
           {
             title: "Python",
-            value: 70
+            icon: "/images/python.png"
           },
           {
             title: "Java",
-            value: 40
+            icon: "/images/java.png"
           },
           {
             title: "C++",
-            value: 40
+            icon: "/images/c++.png"
           }
         ]
       },
@@ -360,7 +320,7 @@ export default {
         description: "I perform modern web pages, having knowledge of Multiple frameworks in a Fullstack development."
       },
       {
-        title: "UI / UX",
+        title: "UI / UX Design",
         icon: "/icons/ux-design.svg",
         description: "I develope the user interface, design web pages and create ux element interactions."
       },
@@ -389,12 +349,6 @@ export default {
         demo: "/videos/webstats.mp4"
       },
     ],
-  }),
-  methods: {
-    showInfo (data) {
-      this.info = data
-      this.dialog = true
-    }
-  }
+  })
 };
 </script>

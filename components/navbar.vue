@@ -63,6 +63,67 @@
 
           <v-spacer />
 
+          <!-- <v-menu
+            offset-y
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                icon
+                color="transparent"
+                :plain="!$vuetify.breakpoint.xs"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <img
+                  src="/icons/language-white.svg"
+                  alt="sun"
+                  height="24"
+                  width="24"
+                  v-if="$vuetify.theme.dark"
+                >
+
+                <img
+                  src="/icons/arrow-down-white.svg"
+                  alt="sun"
+                  height="24"
+                  width="24"
+                  v-if="$vuetify.theme.dark"
+                >
+
+                <img
+                  src="/icons/language-black.svg"
+                  alt="sun"
+                  height="24"
+                  width="24"
+                  v-if="!$vuetify.theme.dark"
+                >
+
+                <img
+                  src="/icons/arrow-down-black.svg"
+                  alt="sun"
+                  height="24"
+                  width="24"
+                  v-if="!$vuetify.theme.dark"
+                >
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item
+                v-for="(language, i) in languages"
+                :key="i"
+              >
+                <v-btn
+                  text
+                  block
+                  @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+                >
+                  {{ language.name }}
+                </v-btn>
+              </v-list-item>
+            </v-list>
+          </v-menu> -->
+
           <v-btn
             icon
             color="transparent"
@@ -172,6 +233,18 @@ export default({
   data: () => ({
     drawer: false,
     group: null,
+    languages: [
+      {
+        name: 'English',
+        icon: '/images/english.png',
+        alt: "english"
+      },
+      {
+        name: 'Spanish',
+        icon: '/images/spanish.png',
+        alt: "spanish"
+      }
+    ],
     routes: [
       {
         title: "Home",

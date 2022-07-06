@@ -1,84 +1,79 @@
-Portfolio personal de Julián de Pablo Torremocha. En este se detalla su educación, sus proyectos, su carrera profesional, entre otras.
+# Julian's Portfolio
 
-## Cofiguración del entorno
+Julian's personal portfolio. It details his education, his projects, his professional career, among others.
 
-### Prerequisitos:
+## Built with 🛠️
 
-![Node + Npm](https://clientes.hostinglabs.net/images/kb/177_nodejsnpm.png)
+- [Nuxt](https://nuxtjs.org) - The web framework used
+- [Vuetify](https://vuetifyjs.com) - The UI framework used
+- [Firebase](https://firebase.google.com) - The hosting service used
 
-- Instalación de Node.js:
+## Requirements 📋
 
-[Node.js](https://nodejs.org/es/download/)
+*Nuxt installation:*
 
-- Instalación de Npm:
+during the installation of [NodeJS](https://nodejs.org)
 
+*Firebase instalation:*
+
+>
 ```sh
-npm install -g npm
+npm install firebase-tools
 ```
 
-### Tecnologías:
+> Crear proyecto en [Firebase console](https://console.firebase.google.com)
 
-[![Nuxt](https://miro.medium.com/max/990/1*SlAgtr2Xlb6V2kL2uVu0DA.png)](https://nuxtjs.org)
+> Habilitar las opciones necesarias (para este proyecto, solo es necesario Hosting)
 
-Instalación de NuxtJS:
-Realizada una vez se instala npm.
+## Environment configuration ⚙️
 
-[![Vuetify](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5P6I3201Fh16-Um-nS_BNYXQumigSw1I3h_nCw7K9k54Wtbx0gJx_XlIraVD768Zj3Hc&usqp=CAU)](https://vuetifyjs.com/en/)
+*Project creation:*
 
-Instalación de Vuetify:
-Durante la creación del proyecto.
-
-[![Firebase](https://i.ytimg.com/vi/rAcWLPQIL38/maxresdefault.jpg)](https://firebase.google.com)
-
-Instalación de Firebase:
-
-- En el ordenador personal:
-
-```sh
-npm install -g firebase-tools
-```
-Nota: Realizar la descarga en una terminal de administrador.
-
-- En el servicio online:
-  > Crear proyecto en [Firebase console](https://console.firebase.google.com)
-
-  > Habilitar las opciones necesarias (para este proyecto, solo es necesario Hosting)
-
-### Creación del proyecto
-
-- Elegir uno de los dos siguientes métodos:
 ```sh
 npm init nuxt-app <project-name>
 ```
+
+*Install dependencies:*
+
 ```sh
-npx create-nuxt-app <project-name>
+npm install
 ```
 
-- Elegir las opciones necesarias.
+*Install Typescript:*
 
-### Mantenimiento del proyecto
-
-- Comandos de NPM:
-```bash
-# Instalación de paquetes y dependencias
-$ npm install
-
-# Compilar con recarga automatica en localhost:3000
-$ npm run dev
-
-# Compilar para producción y servidor de lanzamiento
-$ npm run build
-$ npm run start
-
-# Generar versión estatica del proyecto
-$ npm run generate
+```sh
+node scripts/setupTypeScript.js
 ```
 
-- Comandos de Firebase:
-```bash
-# Instalación de firebase en el proyecto (Nota: solo hacerlo la primera vez)
-$ firebase init
+## Deployment 📦
 
-# Actualizar versión de la web en el dominio
-$ firebase deploy
+*Execute project in development mode:*
+
+```bash
+npm run dev
+```
+
+*Building and running in production mode:*
+
+```bash
+npm run build
+npm run start
+```
+
+*Generate static version of the project:*
+
+```bash
+npm run dev
+```
+
+*Installation of firebase in the project (Note: only do it the first time):*
+
+```bash
+firebase init
+```
+
+*Update version of the web in the domain:*
+
+```bash
+firebase deploy
 ```

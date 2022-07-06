@@ -71,10 +71,6 @@
       </v-col>
     </v-row>
 
-    <Title
-      :title="'Aptitudes'"
-    />
-
     <v-row>
       <v-col>
         <v-card
@@ -240,43 +236,43 @@ export default {
           },
         ]
       },
-      {
-        title: "Courses",
-        icon: "/icons/courses.svg",
-        icon_grey: "/icons/courses-grey.svg",
-        items: [
-          {
-            title: "SAS Macro Language 1: Essentials",
-            location: "SAS",
-            date: "nov 2021"
-          },
-          {
-            title: "SAS SQL 1: Essentials",
-            location: "SAS",
-            date: "nov 2021"
-          },
-          {
-            title: "SAS Certified Specialist: Base Programming Using SAS 9.4",
-            location: "SAS",
-            date: "oct 2021"
-          },
-          {
-            title: "SAS Programming 2: Data Manipulation Techniques",
-            location: "SAS",
-            date: "oct 2021"
-          },
-          {
-            title: "SAS Programming 1: Essentials",
-            location: "SAS",
-            date: "oct 2021"
-          },
-          {
-            title: "Google Cloud Platform Fundamentals: Core Infrastructure",
-            location: "Coursera",
-            date: "oct 2020"
-          },
-        ]
-      }
+      // {
+      //   title: "Courses",
+      //   icon: "/icons/courses.svg",
+      //   icon_grey: "/icons/courses-grey.svg",
+      //   items: [
+      //     {
+      //       title: "SAS Macro Language 1: Essentials",
+      //       location: "SAS",
+      //       date: "nov 2021"
+      //     },
+      //     {
+      //       title: "SAS SQL 1: Essentials",
+      //       location: "SAS",
+      //       date: "nov 2021"
+      //     },
+      //     {
+      //       title: "SAS Certified Specialist: Base Programming Using SAS 9.4",
+      //       location: "SAS",
+      //       date: "oct 2021"
+      //     },
+      //     {
+      //       title: "SAS Programming 2: Data Manipulation Techniques",
+      //       location: "SAS",
+      //       date: "oct 2021"
+      //     },
+      //     {
+      //       title: "SAS Programming 1: Essentials",
+      //       location: "SAS",
+      //       date: "oct 2021"
+      //     },
+      //     {
+      //       title: "Google Cloud Platform Fundamentals: Core Infrastructure",
+      //       location: "Coursera",
+      //       date: "oct 2020"
+      //     },
+      //   ]
+      // }
     ],
   })
 };

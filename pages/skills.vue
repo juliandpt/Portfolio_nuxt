@@ -101,6 +101,7 @@
         :class="$vuetify.breakpoint.xs ? 'pt-0' : ''"
       >
         <v-card
+          loading
           flat
           :color="!$vuetify.theme.dark ? 'lighten' : ''"
           height="100%"

@@ -11,32 +11,47 @@
       class="margin"
     >
       <v-col
+        cols="12"
         md="6"
-        sm="12"
-        class="d-flex flex-column justify-center align-center"
+        class="d-flex justify-center align-center"
       >
-        <v-img
+        <img
           src="/images/about.png"
           alt="me"
           height="auto"
-          max-height="350"
-          contain
-        ></v-img>
+          width="70%"
+          class="rounded"
+        >
       </v-col>
 
       <v-col
+        cols="12"
         md="6"
-        sm="12"
       >
         <v-row>
           <v-col>
-            <p
-              :class="$vuetify.breakpoint.xs ? 'text-center' : ''"
+            <div
+              v-for="(description, i) in descriptions"
+              :key="i"
+              class="d-flex align-center mb-3"
             >
-              Computer engineer passionate about working on professional projects and contributing to digital transformation. I consider myself open, communicative and willing to work as a team.
-            </p>
+              <img
+                src="/icons/circle-check.svg"
+                alt="circle-checkl"
+                height="18"
+                width="18"
+                class="mr-3"
+              >
+
+              <span>
+                {{ description }}
+              </span>
+            </div>
+            
           </v-col>
         </v-row>
+
+        <v-spacer />
 
         <v-row>
           <v-col
@@ -83,10 +98,6 @@
             color="primary"
             v-model="tab"
           >
-            <v-tabs-slider
-              color="transparent"
-            ></v-tabs-slider>
-
             <v-tab
               background-color="transparent"
               v-for="(qualification, i) in qualifications"
@@ -111,7 +122,7 @@
               >
 
               <span
-                class="mx-1"
+                class="mx-1 normalize-text"
                 v-if="!$vuetify.breakpoint.xs"
               >
                 {{ qualification.title }}
@@ -126,52 +137,42 @@
             <v-tab-item
               v-for="(qualification, i) in qualifications"
               :key="i"
-              :class="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '' : 'mx-auto'"
-              :style="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm ? '' : 'width: 50%'"
             >
               <v-timeline
-                align-top
-                :dense="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
+                :dense="$vuetify.breakpoint.xs"
                 class="pt-0 my-12"
               >
                 <v-timeline-item
                   small
-                  fill-dot
+                  plain
                   color="primary"
-                  background-color="transparent"
-                  class="px-0 pt-0"
                   :right="$vuetify.breakpoint.xs || $vuetify.breakpoint.sm"
                   v-for="(item, j) in qualification.items"
                   :key="j"
                 >
                   <v-card
                     flat
-                    color="transparent"
+                    :outlined="!$vuetify.theme.dark"
+                    class="pa-7"
                   >
                     <v-card-text
-                      :class="(j%2 !== 0 && !$vuetify.breakpoint.xs) && (j%2 !== 0 && !$vuetify.breakpoint.sm) ? 'pt-0 px-0 pb-1 text-h6 text-right' : 'pt-0 px-0 pb-1 text-h6'"
+                      class="text-center text-h5 font-weight-bold"
+                      style="padding: 0 0 15px 0;"
                     >
                       {{ item.title }}
                     </v-card-text>
 
                     <v-card-text
-                      :class="(j%2 !== 0 && !$vuetify.breakpoint.xs) && (j%2 !== 0 && !$vuetify.breakpoint.sm) ? 'pt-0 px-0 secondary--text text-right' : 'pt-0 px-0 secondary--text'"
+                      class="secondary--text text-center pa-0"
+                      v-if="item.company  && item.company.length > 0"
                     >
-                      {{ item.location }}
+                      <p class="mb-1">{{ item.company }}</p>
                     </v-card-text>
 
                     <v-card-text
-                      :class="(j%2 !== 0 && !$vuetify.breakpoint.xs) && (j%2 !== 0 && !$vuetify.breakpoint.sm) ? 'pa-0 secondary--text d-flex align-center justify-end' : 'pa-0 secondary--text d-flex align-center'"
+                      class="secondary--text d-flex align-center justify-center pa-0"
                     >
-                      <img
-                        src="/icons/date.svg"
-                        alt="date"
-                        height="24"
-                        width="24"
-                        class="mr-2"
-                      >
-
-                      {{ item.date }}
+                      <p class="mb-1">{{ item.date }}</p>
                     </v-card-text>
                   </v-card>
                 </v-timeline-item>
@@ -184,7 +185,6 @@
   </v-container>
 </template>
 
-
 <script>
 export default {
   head() {
@@ -194,6 +194,11 @@ export default {
   },
   data: () => ({
     tab: 0,
+    descriptions: [
+      "Computer engineer, specialized in web development.",
+      "Passionate about working on professional projects.",
+      "Open, communicative and willing to work as a team."
+    ],
     experiences: [
       {
         title_top: 'Years',
@@ -218,9 +223,8 @@ export default {
         icon_grey: "/icons/education-grey.svg",
         items: [
           {
-            title: "Computer Engineer",
-            location: "Madrid - Universidad Europea",
-            date: "2017 - present"
+            title: "Bachelor in Computer Engineering",
+            date: "2017 - 2022"
           },
         ]
       },
@@ -231,7 +235,7 @@ export default {
         items: [
           {
             title: "Consulting Intern",
-            location: "Madrid - SAS Institute",
+            company: "SAS Institute",
             date: "2021 - present"
           },
         ]

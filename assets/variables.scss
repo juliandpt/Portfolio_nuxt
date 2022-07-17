@@ -22,6 +22,11 @@
   filter: drop-shadow(0 0 3.5em var(--primary))
 }
 
+.video {
+  box-shadow: 0 6.5625em 6.25em -6.25em var(--primary),
+    0 -6.5625em 6.25em -6.25em var(--primary);
+}
+
 .title-background {
   font-size: 4em;
   font-weight: 1000;
@@ -47,6 +52,12 @@
   bottom: 0;
   background: var(--primary);
   border-radius: 1em;
+}
+
+.v-timeline-item__dot, .v-timeline__dot--small {
+  box-shadow: 0 0 0 0;
+  background: transparent;
+  margin: 5px;
 }
 
 ::selection {

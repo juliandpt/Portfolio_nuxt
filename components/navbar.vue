@@ -37,13 +37,17 @@
             >
           </v-btn>
 
-          <img 
-            src="/favicon.ico"
-            alt="icon"
-            :class="$vuetify.breakpoint.xs ? 'ml-3 d-flex align-center' : 'd-flex align-center'"
-            :height="$vuetify.breakpoint.xs ? '24' : '50'"
-            width="auto"
-          />
+          <router-link 
+            to="/"
+          >
+            <img 
+              src="/favicon.ico"
+              alt="icon"
+              :class="$vuetify.breakpoint.xs ? 'ml-3 d-flex align-center' : 'd-flex align-center'"
+              :height="$vuetify.breakpoint.xs ? '24' : '50'"
+              width="auto"
+            />
+          </router-link>
           
           <v-spacer />
 

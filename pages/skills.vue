@@ -31,7 +31,7 @@
                   :alt="skill.title"
                   class="pa-0 mr-3"
                   height="32"
-                  width="32"
+                  width="auto"
                 >
 
                 {{ skill.title }}
@@ -67,8 +67,8 @@
                         :src="item.icon"
                         :alt="item.title"
                         class="ml-4"
-                        height="25"
-                        width="auto"
+                        height="auto"
+                        width="25"
                       />
                     </div>
 
@@ -192,13 +192,14 @@
       <v-col
         :cols="$vuetify.breakpoint.xs ? '12' : '6'"
         :order="$vuetify.breakpoint.xs ? '1' : i%2 === 0 ? '2' : '1'"
-        class="shadow d-flex flex-column justify-center align-center"
+        class="d-flex flex-column justify-center align-center"
       >
         <video 
-          width='90%'
           muted
           controls
-          style="border-radius: 0.35em;"
+          width="90%"
+          height="auto"
+          class="video rounded"
         >
           <source 
             :src="project.demo" 
@@ -211,7 +212,6 @@
     </v-row>
   </v-container>
 </template>
-
 
 <script>
 export default {

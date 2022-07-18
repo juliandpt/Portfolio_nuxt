@@ -196,6 +196,7 @@ export default {
     tab: 0,
     descriptions: [
       "Computer engineer, specialized in web development.",
+      "Knowledge in Data Analysis and Cibersecurity Gobernance.",
       "Passionate about working on professional projects.",
       "Open, communicative and willing to work as a team."
     ],
@@ -234,7 +235,7 @@ export default {
         icon_grey: "/icons/work-grey.svg",
         items: [
           {
-            title: "Consulting Intern",
+            title: "Technical Consulting Intern",
             company: "SAS Institute",
             date: "2021 - present"
           },

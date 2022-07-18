@@ -60,6 +60,10 @@
   margin: 5px;
 }
 
+.v-chip--disabled {
+  opacity: 1;
+}
+
 ::selection {
   background: var(--primary);
 }

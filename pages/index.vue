@@ -23,7 +23,7 @@
         </h1>
 
         <vue-typed-js
-          :strings="['Fullstack Developer', 'Web Designer', 'Software Engineer']"
+          :strings="['Fullstack Developer', 'Web Designer', 'Computer Engineer']"
           :loop="true"
           :backSpeed="40"
           :cursorChar="'_'"

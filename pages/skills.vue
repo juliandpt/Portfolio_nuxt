@@ -68,7 +68,7 @@
                         :alt="item.title"
                         class="ml-4"
                         height="auto"
-                        width="25"
+                        width="20"
                       />
                     </div>
 
@@ -157,22 +157,46 @@
         :order="$vuetify.breakpoint.xs ? '2' : i%2 === 0 ? '1' : '2'"
       >
         <h2
-          class="my-2 primary--text"
+          class="mb-4 primary--text"
         >
           {{ project.title }}
         </h2>
 
         <p
-          class="my-4"
+          class="mb-2"
         >
           {{ project.description }}
         </p>
+
+        <v-flex
+          justify="center"
+          class="mb-9"
+        >
+          <v-chip
+            small
+            outlined
+            disabled
+            class="my-1 mr-2" 
+            v-for="(chip, j) in project.chips"
+            :key="j"
+            :color="chip.color"
+          >
+            <img
+              :src="chip.icon"
+              :alt="chip.name"
+              height="12"
+              width="auto"
+              class="mr-2"
+            />
+
+            {{ chip.name }}
+          </v-chip>
+        </v-flex>
 
         <v-btn
           dark
           elevation="0"
           color="primary"
-          class="mt-5 mr-auto"
           :href="project.link"
           target="_blank"
           rel="noopener noreferrer"
@@ -310,6 +334,10 @@ export default {
           {
             title: "C++",
             icon: "/images/c++.png"
+          },
+          {
+            title: "SAS",
+            icon: "/images/sas.png"
           }
         ]
       },
@@ -341,12 +369,61 @@ export default {
         title: "Infopueblo",
         description: "Search webapp of Spanish municipalities. It offers leisure data from the different municipalities, compiling the information through web scrapping.",
         link: "https://github.com/juliandpt/Infopueblo",
+        chips: [
+          {
+            name: "Angular.js",
+            icon: "/images/angular.png",
+            color: "primary"
+          },
+          {
+            name: "Bootstrap",
+            icon: "/images/bootstrap.png",
+            color: "primary"
+          },
+          {
+            name: "Node.js",
+            icon: "/images/nodejs.png",
+            color: "primary"
+          },
+          {
+            name: "PostgreSQL",
+            icon: "/images/postgresql.png",
+            color: "primary"
+          },
+          {
+            name: "Python",
+            icon: "/images/python.png",
+            color: "primary"
+          }
+        ],
         demo: "/videos/infopueblo.mp4"
       },
       {
         title: "Webstats",
         description: "Web service responsible for analyzing the security implemented in the different endpoints of any web domain.",
         link: "https://github.com/juliandpt/Webstats",
+        chips: [
+          {
+            name: "Nuxt.js",
+            icon: "/images/nuxt.png",
+            color: "primary"
+          },
+          {
+            name: "Vuetify",
+            icon: "/images/vuetify.png",
+            color: "primary"
+          },
+          {
+            name: "Node.js",
+            icon: "/images/nodejs.png",
+            color: "primary"
+          },
+          {
+            name: "MongoDB",
+            icon: "/images/mongodb.png",
+            color: "primary"
+          }
+        ],
         demo: "/videos/webstats.mp4"
       },
     ],

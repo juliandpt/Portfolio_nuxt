@@ -1,7 +1,4 @@
 @font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('~assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-family: 'SF Pro Text';
+    src: url('~assets/fonts/SFPro/SFProText-Regular.ttf');
 }

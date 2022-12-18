@@ -426,6 +426,24 @@ export default {
         ],
         demo: "/videos/webstats.mp4"
       },
+      {
+        title: "Weather?",
+        description: "Web service capable of showing different climatic data of a locality. Created to learn the basics of communication with APIs.",
+        link: "https://github.com/juliandpt/WeatherApp",
+        chips: [
+          {
+            name: "Sveltekit",
+            icon: "/images/svelte.png",
+            color: "primary"
+          },
+          {
+            name: "Bootstrap",
+            icon: "/images/bootstrap.png",
+            color: "primary"
+          }
+        ],
+        demo: "/videos/weather.mp4"
+      },
     ],
   })
 };

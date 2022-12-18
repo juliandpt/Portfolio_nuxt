@@ -10,79 +10,18 @@
     <v-row
       class="margin"
     >
-      <v-col
-        cols="12"
-        md="6"
-        class="d-flex justify-center align-center"
-      >
-        <img
-          src="/images/about.png"
-          alt="me"
-          height="auto"
-          width="70%"
-          class="rounded"
+      <v-col class="wrapper">
+        <div
+          class="ticket mx-auto pa-4"
         >
-      </v-col>
-
-      <v-col
-        cols="12"
-        md="6"
-      >
-        <v-row>
-          <v-col>
-            <div
-              v-for="(description, i) in descriptions"
-              :key="i"
-              class="d-flex align-center mb-3"
-            >
-              <img
-                src="/icons/circle-check.svg"
-                alt="circle-checkl"
-                height="18"
-                width="18"
-                class="mr-3"
-              >
-
-              <span>
-                {{ description }}
-              </span>
-            </div>
-            
-          </v-col>
-        </v-row>
-
-        <v-spacer />
-
-        <v-row>
-          <v-col
-            md="4"
-            sm="4"
-            v-for="(experience, i) in experiences"
-            :key="i"
+          <div
+            class="ticket-border"
+            height="100%"
           >
-            <v-card
-              flat
-              color="transparent"
-            >
-              <v-card-title
-                class="justify-center"
-                style="font-size: 2rem"
-              >
-                {{ experience.value }}
-              </v-card-title>
-
-              <v-card-text
-                class="text-center secondary--text"
-              >
-                {{ experience.title_top }}
-
-                <br>
-
-                {{ experience.title_bottom }}
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
+            caca
+          </div>
+        </div>
+        
       </v-col>
     </v-row>
 
@@ -185,7 +124,27 @@
   </v-container>
 </template>
 
+<style>
+.ticket {
+  box-shadow: 0 0 30px rgba(0, 0, 0, .4);
+  border: 2px solid #3F51B5;
+  width: 100%;
+  aspect-ratio: 18/9;
+  border-radius: 6px;
+  position: relative;
+}
+
+.wrapper {
+  perspective: 1000px;
+}
+
+.ticket-border {
+  border: 4px solid #536DFE;
+}
+</style>
+
 <script>
+
 export default {
   head() {
     return {
@@ -279,6 +238,32 @@ export default {
       //   ]
       // }
     ],
-  })
+  }),
+  mounted: () => {
+    const $ = selector => document.querySelector(selector);
+
+    const wrapper = $(".wrapper")
+    const ticket = $(".ticket")
+
+    const { width, height } = wrapper.getBoundingClientRect();
+    const halfWidth = width/2
+    const halfHeight = height/2
+
+    wrapper.addEventListener('mousemove', event => {
+      ticket.style.transition = 'none'
+
+      const { offsetX, offsetY } = event
+
+      const rotationX = ((offsetX - halfWidth) / halfWidth) * 10
+      const rotationY = ((offsetY - halfHeight) / halfHeight) * 10
+
+      ticket.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`
+    })
+
+    wrapper.addEventListener('mouseleave', () => {
+      ticket.style.transition = 'transform .5s ease-in-out'
+      ticket.style.transform = 'rotateX(0deg) rotateY(0deg)'
+    })
+  }
 };
 </script>
